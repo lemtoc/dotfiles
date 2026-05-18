@@ -10,6 +10,7 @@
     taps = [
       "dimentium/autoraise"
       "k1low/tap"
+      "kayac/tap"
       "mfyuu/tap"
       "anomalyco/tap"
       "manaflow-ai/cmux"
@@ -18,6 +19,7 @@
       "create-dmg"
       "k1low/tap/git-wt"
       "k1low/tap/mo"
+      "kayac/tap/ecspresso"
       "mfyuu/tap/muu"
       "anomalyco/tap/opencode"
     ];
@@ -45,6 +47,7 @@
       "postman"
       "raycast"
       "rectangle"
+      "session-manager-plugin"
       "slack"
       "visual-studio-code"
       "warp"
