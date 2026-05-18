@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778722926960,
+  "lastUpdate": 1779103924656,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -899,6 +899,37 @@ window.BENCHMARK_DATA = {
             "range": "12.5 ms",
             "unit": "ms",
             "extra": "median: 42.39 ms\nmin: 34.13 ms\nmax: 90.39 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "b7cdbb0fd0b681354fe93c0a77df6939359824c1",
+          "message": "chore: update flake dependencies",
+          "timestamp": "2026-05-18T20:28:10+09:00",
+          "tree_id": "df8b3e34949ec4947de277374f9695d46f087c87",
+          "url": "https://github.com/mfyuu/dotfiles/commit/b7cdbb0fd0b681354fe93c0a77df6939359824c1"
+        },
+        "date": 1779103922937,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 44,
+            "range": "5.19 ms",
+            "unit": "ms",
+            "extra": "median: 44 ms\nmin: 35.08 ms\nmax: 54.42 ms\nruns: 50"
           }
         ]
       }
