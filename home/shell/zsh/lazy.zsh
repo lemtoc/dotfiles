@@ -56,6 +56,21 @@ mcd() {
   fi
 }
 
+toggle-env() {
+  local dir="${1:-.}"
+  if [ -f "$dir/.env.stg" ]; then
+    mv "$dir/.env.local" "$dir/.env.dev"
+    mv "$dir/.env.stg"   "$dir/.env.local"
+    echo "DEV -> STG"
+  elif [ -f "$dir/.env.dev" ]; then
+    mv "$dir/.env.local" "$dir/.env.stg"
+    mv "$dir/.env.dev"   "$dir/.env.local"
+    echo "STG -> DEV"
+  else
+    echo "error: .env.stg / .env.dev が見つかりません" >&2
+  fi
+}
+
 # interactive-only aliases
 [[ -o interactive ]] && alias cd='z'
 [[ -o interactive ]] && alias cdi='zi'

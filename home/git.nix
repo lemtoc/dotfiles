@@ -38,6 +38,8 @@
       "**/.serena/"
       "**/.review/"
       "**/.docs/"
+      "**/.env.stg"
+      "**/.env.dev"
     ];
   };
 }
