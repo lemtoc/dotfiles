@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779103924656,
+  "lastUpdate": 1779149929050,
   "repoUrl": "https://github.com/mfyuu/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -930,6 +930,37 @@ window.BENCHMARK_DATA = {
             "range": "5.19 ms",
             "unit": "ms",
             "extra": "median: 44 ms\nmin: 35.08 ms\nmax: 54.42 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "ea7d8cc781cf6a5a43ffa38ec717de684441012c",
+          "message": "chore: update home-manager flake input\n\n- bump home-manager to 736c2084ea750a049ecdbdd7ff5817d2eeeef444\n- refresh narHash and lastModified for the new revision",
+          "timestamp": "2026-05-19T09:15:42+09:00",
+          "tree_id": "0b00cd944c34710a175f6e2003fecddb82bd4996",
+          "url": "https://github.com/mfyuu/dotfiles/commit/ea7d8cc781cf6a5a43ffa38ec717de684441012c"
+        },
+        "date": 1779149927232,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 37.01,
+            "range": "0.56 ms",
+            "unit": "ms",
+            "extra": "median: 37.01 ms\nmin: 36.51 ms\nmax: 38.86 ms\nruns: 50"
           }
         ]
       }
