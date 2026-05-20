@@ -5,7 +5,7 @@
   # vscode is managed by programs.vscode (home/vscode.nix)
   home.packages = with pkgs; [
     # Language runtimes & package managers
-    nodejs
+    # node is provided by mise (programs.mise) — keep nodejs OUT of nix
     go
     pnpm
     yarn

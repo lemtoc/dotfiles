@@ -4,6 +4,7 @@ let
   zoxideBin = lib.getExe config.programs.zoxide.package;
   fzfBin = lib.getExe config.programs.fzf.package;
   direnvBin = lib.getExe config.programs.direnv.package;
+  miseBin = lib.getExe config.programs.mise.package;
 in
 {
   xdg.configFile = {
@@ -130,6 +131,7 @@ in
         zsh-defer cache_eval "${zoxideBin} init zsh"
         zsh-defer cache_eval "${fzfBin} --zsh"
         zsh-defer cache_eval "${direnvBin} hook zsh"
+        zsh-defer cache_eval "${miseBin} activate zsh"
         zsh-defer cache_eval "COMPLETE=zsh muu"
       '')
 

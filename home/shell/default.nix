@@ -5,6 +5,7 @@
     ./starship.nix
     ./zoxide.nix
     ./direnv.nix
+    ./mise.nix
     ./eza.nix
     ./fzf.nix
   ];
