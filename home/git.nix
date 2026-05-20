@@ -12,8 +12,8 @@
 
     settings = {
       user = {
-        name = "mfyuu";
-        email = "83203852+mfyuu@users.noreply.github.com";
+        name = "lemtoc";
+        email = "83203852+lemtoc@users.noreply.github.com";
       };
       init.defaultBranch = "main";
       pull.ff = "only";

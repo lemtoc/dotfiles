@@ -11,7 +11,7 @@
       "dimentium/autoraise"
       "k1low/tap"
       "kayac/tap"
-      "mfyuu/tap"
+      "lemtoc/tap"
       "anomalyco/tap"
       "manaflow-ai/cmux"
     ];
@@ -20,7 +20,7 @@
       "k1low/tap/git-wt"
       "k1low/tap/mo"
       "kayac/tap/ecspresso"
-      "mfyuu/tap/muu"
+      "lemtoc/tap/muu"
       "anomalyco/tap/opencode"
     ];
     casks = [

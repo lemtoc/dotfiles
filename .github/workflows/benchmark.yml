@@ -44,4 +44,4 @@ jobs:
           comment-always: true
           fail-on-alert: true
           summary-always: true
-          alert-comment-cc-users: "@mfyuu"
+          alert-comment-cc-users: "@lemtoc"
