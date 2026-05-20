@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779149929050,
-  "repoUrl": "https://github.com/mfyuu/dotfiles",
+  "lastUpdate": 1779262475259,
+  "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
       {
@@ -961,6 +961,37 @@ window.BENCHMARK_DATA = {
             "range": "0.56 ms",
             "unit": "ms",
             "extra": "median: 37.01 ms\nmin: 36.51 ms\nmax: 38.86 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "d243301bba0ccc906b348e60978fe2b272eadc6a",
+          "message": "perf(shell): use precompiled mise binary to skip Rust source build\n\nnixpkgs.mise and the official mise-flake both rely on rustPlatform.buildRustPackage,\nwhich expands into 800+ derivations and consistently misses cache.nixos.org for\naarch64-darwin. CI hit the 30-minute job timeout while compiling mise from source\non every push.\n\nWrap the upstream macOS arm64 release tarball with fetchurl + stdenv.mkDerivation\nand inject it via programs.mise.package. The same activationPackage build that\npreviously enqueued 805 derivations now requires 9 and completes in under 10\nseconds.",
+          "timestamp": "2026-05-20T16:29:41+09:00",
+          "tree_id": "edc34d96c8165732f7a7cab91ddd4487106aa024",
+          "url": "https://github.com/lemtoc/dotfiles/commit/d243301bba0ccc906b348e60978fe2b272eadc6a"
+        },
+        "date": 1779262473939,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 44.38,
+            "range": "6.57 ms",
+            "unit": "ms",
+            "extra": "median: 44.38 ms\nmin: 39.69 ms\nmax: 63.68 ms\nruns: 50"
           }
         ]
       }
