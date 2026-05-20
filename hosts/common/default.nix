@@ -22,7 +22,7 @@
     builtins.elem (lib.getName pkg) [
       "vscode"
     ];
-  system.primaryUser = "mfyuu";
+  system.primaryUser = "lemtoc";
   system.stateVersion = 6;
 
   # nix-darwin's /etc/zshrc runs compinit + bashcompinit + promptinit synchronously (~47ms).
@@ -31,8 +31,8 @@
   programs.zsh.enableBashCompletion = false;
   programs.zsh.promptInit = "";
 
-  users.users.mfyuu = {
-    name = "mfyuu";
-    home = "/Users/mfyuu";
+  users.users.lemtoc = {
+    name = "lemtoc";
+    home = "/Users/lemtoc";
   };
 }
