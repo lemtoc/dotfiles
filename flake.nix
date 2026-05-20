@@ -61,7 +61,7 @@
               echo "Updating Homebrew..."
               /opt/homebrew/bin/brew update
               echo "Building and switching to darwin configuration for $HOST_NAME..."
-              sudo nix run nix-darwin -- switch --flake "$HOME/.dotfiles#$HOST_NAME" |& ${pkgs.nix-output-monitor}/bin/nom
+              sudo nix run nix-darwin -- switch --flake "$HOME/.dotfiles#$HOST_NAME"
               echo "Done!"
             ''
           );
