@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779435444645,
+  "lastUpdate": 1779435631699,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1085,6 +1085,37 @@ window.BENCHMARK_DATA = {
             "range": "30.39 ms",
             "unit": "ms",
             "extra": "median: 88.96 ms\nmin: 49.11 ms\nmax: 197.58 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "d7874736b6534d1570467137f9c511d9862dd8b7",
+          "message": "chore(claude): default to sonnet instead of opus\n\nMost day-to-day coding tasks don't need opus-level reasoning, and sonnet\nis meaningfully faster / cheaper. Use the unversioned alias so future\nsonnet releases pick up automatically.",
+          "timestamp": "2026-05-22T16:30:22+09:00",
+          "tree_id": "cc06bc02e490926a02a9bcc852d5136edb9b7f6a",
+          "url": "https://github.com/lemtoc/dotfiles/commit/d7874736b6534d1570467137f9c511d9862dd8b7"
+        },
+        "date": 1779435630176,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 39.32,
+            "range": "13.73 ms",
+            "unit": "ms",
+            "extra": "median: 39.32 ms\nmin: 36.04 ms\nmax: 119 ms\nruns: 50"
           }
         ]
       }
