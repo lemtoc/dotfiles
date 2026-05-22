@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779433494145,
+  "lastUpdate": 1779435444645,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1054,6 +1054,37 @@ window.BENCHMARK_DATA = {
             "range": "7.35 ms",
             "unit": "ms",
             "extra": "median: 52.25 ms\nmin: 46.69 ms\nmax: 81.27 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "82f7ccb9a2b807049cf4f49c9a4705bcce55c1eb",
+          "message": "chore(claude): extend session retention to 365 days\n\nClaude Code's default `cleanupPeriodDays` of 30 days silently prunes\ntop-level session jsonl files older than that window, which is how a\nfew months of koutei history vanished after the macOS user rename\neven though the per-uuid subagent directories remained. Bump retention\nto a year so resume stays useful across longer rename / cleanup gaps.",
+          "timestamp": "2026-05-22T16:27:19+09:00",
+          "tree_id": "7d51b55d1879fcd72175eb5cb4091a01dae108b8",
+          "url": "https://github.com/lemtoc/dotfiles/commit/82f7ccb9a2b807049cf4f49c9a4705bcce55c1eb"
+        },
+        "date": 1779435443060,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 88.96,
+            "range": "30.39 ms",
+            "unit": "ms",
+            "extra": "median: 88.96 ms\nmin: 49.11 ms\nmax: 197.58 ms\nruns: 50"
           }
         ]
       }
