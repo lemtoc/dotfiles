@@ -17,7 +17,7 @@ runs:
       shell: bash
       run: |
         HM_GEN=$(nix build --no-link --print-out-paths \
-          '.#darwinConfigurations.M4Pro.config.home-manager.users.lemtoc.home.activationPackage')
+          '.#darwinConfigurations.M4Pro.config.home-manager.users.t1190078.home.activationPackage')
         echo "hm_gen=$HM_GEN" >> "$GITHUB_OUTPUT"
 
     - name: Set up shell environment
@@ -35,9 +35,9 @@ runs:
           echo "" > /etc/zshrc
         '
 
-        # Create /Users/lemtoc for HISTFILE (home-manager hardcodes home.homeDirectory)
-        sudo mkdir -p /Users/lemtoc
-        sudo chown "$(whoami)" /Users/lemtoc
+        # Create /Users/t1190078 for HISTFILE (home-manager hardcodes home.homeDirectory)
+        sudo mkdir -p /Users/t1190078
+        sudo chown "$(whoami)" /Users/t1190078
 
         # Symlink user-level dotfiles
         ln -sf "$HM_GEN/home-files/.zshrc" ~/.zshrc

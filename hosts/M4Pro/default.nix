@@ -1,10 +1,10 @@
 { ... }:
 let
-  customCert = "/Users/lemtoc/.local/share/ca-certificates/corp.pem";
+  customCert = "/Users/t1190078/.local/share/ca-certificates/corp.pem";
 in
 {
   # M4Pro-specific configuration (corporate SSL certificate)
-  home-manager.users.lemtoc = {
+  home-manager.users.t1190078 = {
     home.sessionVariables = {
       DENO_CERT = customCert;
       NODE_EXTRA_CA_CERTS = customCert;

@@ -5,5 +5,5 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
-  home-manager.users.lemtoc = import ../../home;
+  home-manager.users.t1190078 = import ../../home;
 }
