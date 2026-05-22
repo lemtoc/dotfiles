@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779435631699,
+  "lastUpdate": 1779436258329,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1116,6 +1116,37 @@ window.BENCHMARK_DATA = {
             "range": "13.73 ms",
             "unit": "ms",
             "extra": "median: 39.32 ms\nmin: 36.04 ms\nmax: 119 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "ed2d7cc704f2552ae00191edef9ab2a7d6a3d51e",
+          "message": "chore: update flake.lock\n\nBump home-manager 2026-05-19 -> 2026-05-21 (bd868f7 -> 928d723)\nand nixpkgs 2026-05-15 -> 2026-05-21 (d233902 -> 4a29d73).",
+          "timestamp": "2026-05-22T16:46:41+09:00",
+          "tree_id": "4080088c077618e0bb4cd0baede574ec63fe7222",
+          "url": "https://github.com/lemtoc/dotfiles/commit/ed2d7cc704f2552ae00191edef9ab2a7d6a3d51e"
+        },
+        "date": 1779436256996,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 65.2,
+            "range": "32.18 ms",
+            "unit": "ms",
+            "extra": "median: 65.2 ms\nmin: 32.47 ms\nmax: 208.31 ms\nruns: 50"
           }
         ]
       }
