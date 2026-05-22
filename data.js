@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779436258329,
+  "lastUpdate": 1779438962593,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1147,6 +1147,37 @@ window.BENCHMARK_DATA = {
             "range": "32.18 ms",
             "unit": "ms",
             "extra": "median: 65.2 ms\nmin: 32.47 ms\nmax: 208.31 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "007ec2856e6afb9b1116e48f0c2126e0cda9db0b",
+          "message": "refactor(nix): parameterize username via specialArgs per host\n\n- add `username` arg to `mkDarwinConfig` and thread through `specialArgs`\n- add `home-manager.extraSpecialArgs` to propagate `username` into home modules\n- replace hardcoded `t1190078` with `${username}` in common/default.nix and M4Pro config\n- declare M4Pro username as `t1190078`, M4Air as `lemtoc` in flake.nix",
+          "timestamp": "2026-05-22T17:32:32+09:00",
+          "tree_id": "bff6340c092f93e4665454cb0c43773e6f96a7c3",
+          "url": "https://github.com/lemtoc/dotfiles/commit/007ec2856e6afb9b1116e48f0c2126e0cda9db0b"
+        },
+        "date": 1779438960695,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 74.87,
+            "range": "19.47 ms",
+            "unit": "ms",
+            "extra": "median: 74.87 ms\nmin: 38.81 ms\nmax: 139.78 ms\nruns: 50"
           }
         ]
       }
