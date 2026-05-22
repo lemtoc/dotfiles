@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779262475259,
+  "lastUpdate": 1779431982904,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -992,6 +992,37 @@ window.BENCHMARK_DATA = {
             "range": "6.57 ms",
             "unit": "ms",
             "extra": "median: 44.38 ms\nmin: 39.69 ms\nmax: 63.68 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "5c26ef6848ab49e6e3a8511e88dfe74f79a29179",
+          "message": "chore(scripts): add rename-claude-projects utility\n\nSibling utility to scripts/rewrite-gh-remotes.sh. Migrates\n~/.claude/projects/-Users-<old>-* directories to <new> after a macOS\nshortname change, so /resume continues to find past sessions.",
+          "timestamp": "2026-05-22T15:10:14+09:00",
+          "tree_id": "0cc7ce2e5fff0ce143104435fc0215dd9be3bfd9",
+          "url": "https://github.com/lemtoc/dotfiles/commit/5c26ef6848ab49e6e3a8511e88dfe74f79a29179"
+        },
+        "date": 1779431981076,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 38.88,
+            "range": "3.94 ms",
+            "unit": "ms",
+            "extra": "median: 38.88 ms\nmin: 35.65 ms\nmax: 54.61 ms\nruns: 50"
           }
         ]
       }
