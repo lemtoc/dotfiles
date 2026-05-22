@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779431982904,
+  "lastUpdate": 1779433494145,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1023,6 +1023,37 @@ window.BENCHMARK_DATA = {
             "range": "3.94 ms",
             "unit": "ms",
             "extra": "median: 38.88 ms\nmin: 35.65 ms\nmax: 54.61 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "ac570a88b739ddbf57f5842288def58bc8d13f68",
+          "message": "chore(scripts): add rewrite-zoxide-history utility\n\nRewrites zoxide's db.zo to remap user home prefixes (e.g. mfyuu/lemtoc\nto t1190078) after the macOS short name change, with rank merging and\noptional pruning of missing dirs.",
+          "timestamp": "2026-05-22T16:01:25+09:00",
+          "tree_id": "146e1f7e9714de066a36e8eb80186c7bf0575212",
+          "url": "https://github.com/lemtoc/dotfiles/commit/ac570a88b739ddbf57f5842288def58bc8d13f68"
+        },
+        "date": 1779433492181,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 52.25,
+            "range": "7.35 ms",
+            "unit": "ms",
+            "extra": "median: 52.25 ms\nmin: 46.69 ms\nmax: 81.27 ms\nruns: 50"
           }
         ]
       }
