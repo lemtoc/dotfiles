@@ -21,9 +21,9 @@
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
       mkDarwinConfig =
-        { hostName }:
+        { hostName, username }:
         nix-darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
           modules = [
             {
               networking.hostName = hostName;
@@ -36,8 +36,8 @@
         };
     in
     {
-      darwinConfigurations."M4Pro" = mkDarwinConfig { hostName = "M4Pro"; };
-      darwinConfigurations."M4Air" = mkDarwinConfig { hostName = "M4Air"; };
+      darwinConfigurations."M4Pro" = mkDarwinConfig { hostName = "M4Pro"; username = "t1190078"; };
+      darwinConfigurations."M4Air" = mkDarwinConfig { hostName = "M4Air"; username = "lemtoc"; };
       formatter.${system} = pkgs.nixfmt-tree;
 
       apps.${system} = {

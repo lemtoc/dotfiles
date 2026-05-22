@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ username, lib, ... }:
 {
   imports = [
     ./home-manager.nix
@@ -22,7 +22,7 @@
     builtins.elem (lib.getName pkg) [
       "vscode"
     ];
-  system.primaryUser = "t1190078";
+  system.primaryUser = username;
   system.stateVersion = 6;
 
   # nix-darwin's /etc/zshrc runs compinit + bashcompinit + promptinit synchronously (~47ms).
@@ -31,8 +31,8 @@
   programs.zsh.enableBashCompletion = false;
   programs.zsh.promptInit = "";
 
-  users.users.t1190078 = {
-    name = "t1190078";
-    home = "/Users/t1190078";
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
   };
 }

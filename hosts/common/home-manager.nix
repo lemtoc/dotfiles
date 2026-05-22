@@ -1,9 +1,10 @@
-{ inputs, ... }:
+{ inputs, username, ... }:
 {
   imports = [ inputs.home-manager.darwinModules.home-manager ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
-  home-manager.users.t1190078 = import ../../home;
+  home-manager.extraSpecialArgs = { inherit username; };
+  home-manager.users.${username} = import ../../home;
 }
