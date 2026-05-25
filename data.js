@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779439351742,
+  "lastUpdate": 1779753158069,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1209,6 +1209,37 @@ window.BENCHMARK_DATA = {
             "range": "14.25 ms",
             "unit": "ms",
             "extra": "median: 74.99 ms\nmin: 50.81 ms\nmax: 100.11 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "4b50c57137e781ae5c3c1dc251e165b387db2657",
+          "message": "refactor(nix): migrate bun and pnpm from nix to mise globalConfig\n\n- remove bun and pnpm from home.packages (home/pkgs.nix)\n- add node (lts), bun (latest), pnpm (latest) to mise globalConfig\n- update comment in pkgs.nix to reflect the new managed tools",
+          "timestamp": "2026-05-26T08:49:12+09:00",
+          "tree_id": "7b458352328f18eb33eed96fffaebbd059b442ac",
+          "url": "https://github.com/lemtoc/dotfiles/commit/4b50c57137e781ae5c3c1dc251e165b387db2657"
+        },
+        "date": 1779753156891,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 37.14,
+            "range": "1.35 ms",
+            "unit": "ms",
+            "extra": "median: 37.14 ms\nmin: 36.41 ms\nmax: 43.57 ms\nruns: 50"
           }
         ]
       }
