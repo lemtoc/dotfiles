@@ -1,3 +1,8 @@
+---
+name: create-pr
+description: Create a GitHub pull request using the gh CLI. Use when the user wants to create a PR, submit changes for review, push and open a pull request on GitHub, or share a branch with collaborators. Handles PR title/body language detection (English/Japanese) and uses repository PR templates when available.
+---
+
 ## Context
 
 - Current repository state: !`git status -sb`
@@ -77,13 +82,13 @@ N/A - [brief description of the purpose]
 
 ## Verification
 
-<!-- Check off completed verification steps -->
+<!--
+  Do NOT list items already verified by CI (tests, lint, type checks, etc.).
+  List manual verification steps that reviewers should actually confirm.
+  These should serve as acceptance criteria — if all are met, the PR can be approved.
+-->
 
-- [ ] Tests pass successfully
-- [ ] No lint/type errors
-- [ ] No breaking changes introduced
-- [ ] Changeset file created (if needed for version bump)
-<!-- Changesets are required when the changes affect the published package (new features, bug fixes, breaking changes). Not needed for internal tooling, docs, or config changes. -->
+- [ ] [Describe the expected behavior or manual verification step]
 
 ## Additional Notes
 
@@ -95,7 +100,9 @@ N/A - [brief description of the purpose]
 - **Title format**:
   - Follow the same convention as commit messages if applicable
   - Be descriptive but concise (max ~72 characters)
-  - Example: `feat(auth): Add user authentication with OAuth2`
+  - **Scope language matches the title language**: for Japanese PRs the scope may be written in Japanese; for English PRs keep the scope in English
+  - Example (English): `feat(auth): Add user authentication with OAuth2`
+  - Example (Japanese): `feat(認証): OAuth2 ログイン機能を追加`
 
 - **Issue section**:
   - Use `fixes #<number>` to automatically close related issues
@@ -106,27 +113,39 @@ N/A - [brief description of the purpose]
   - List all significant changes in bullet points
   - Group related changes together
   - Be specific about what was modified, added, or removed
-  - Follow the examples in the template comments
 
 - **Verification section**:
-  - Check all applicable verification items
-  - Changeset files are required for published packages when:
-    - Adding new features
-    - Fixing bugs
-    - Making breaking changes
-  - Not needed for internal tooling, docs, or config changes
+  - Do not list items already verified by CI (tests, lint, type checks, etc.)
+  - List manual verification steps that reviewers should actually confirm
+  - All items should serve as acceptance criteria — if met, the PR can be approved
+  - Keep checkboxes unchecked (`- [ ]`)
 
 - **Additional Notes section**:
   - Include implementation details for complex changes
   - Add context that helps reviewers understand the approach
   - Mention any trade-offs or alternatives considered
 
+- **Verification in repository templates**:
+  - If the repository's PR template has a verification/confirmation section (e.g., "確認したこと", "Verification", "Checklist"), apply the same rules as the Verification section above
+  - Do not list CI-verified items — only include manual verification steps reviewers should confirm
+
 - **Language rule**:
   - Use the same language as the majority of recent commits
   - If `$ARGUMENTS` includes a language instruction, follow that instead
 
 - **Arguments rule**:
-  - Treat `$ARGUMENTS` as additional context or instruction for the PRtitle/description
+  - Treat `$ARGUMENTS` as additional context or instruction for the PR title/description
+
+## HEREDOC Handling for PR Body
+
+When composing the PR body with `gh pr create --body "$(cat <<...EOF ... EOF)"`, the HEREDOC quoting style affects how backticks are interpreted:
+
+- **Single-quoted HEREDOC (`<<'EOF'`)**: No shell expansion happens, so write raw backticks directly (both inline `` ` `` and fenced ```` ``` ````)
+- **Double-quoted or unquoted HEREDOC (`<<"EOF"` / `<<EOF`)**: Bash may try to interpret backticks as command substitution. Avoid inline single backticks — use triple-backtick fenced code blocks (```` ``` ````) instead
+
+**Rationale**: In double-quoted/unquoted HEREDOC, backticks sometimes get auto-escaped as `` \` ``, which breaks Markdown rendering on GitHub (the code block fails to display properly).
+
+**Recommendation**: Prefer `<<'EOF'` whenever the PR body contains backticks, code identifiers, or code blocks — it is the safest default.
 
 ## Important Notes
 

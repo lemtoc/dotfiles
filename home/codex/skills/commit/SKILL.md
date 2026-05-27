@@ -1,3 +1,8 @@
+---
+name: commit
+description: Create a git commit following the Conventional Commits specification. Use when the user wants to commit staged changes, create a commit message, or run git commit. Handles commit message language detection (English/Japanese) based on recent commits.
+---
+
 ## Context
 
 - Current git status: !`git status`
@@ -38,10 +43,10 @@ Based on the above context:
 - Use the **imperative mood** in the description (e.g., "add", not "added" or "adds").
 - Keep the **summary concise** (max ~72 characters).
 - **Body rules**:
-  - By default, always include a body.
-  - Exception: if the change is extremely simple and self-explanatory, a summary alone is acceptable.
-  - Insert one blank line after the summary, then write the body in **bullet points**.
-  - Each bullet should describe a reason, context, or detail of the change.
+  - **Always include a body — no exceptions**, even for trivial-looking changes
+  - Insert one blank line after the summary, then write the body
+  - The body **must** be written as bullet points — **never** use prose paragraphs or a single free-form line
+  - Each bullet should describe a reason, context, or detail of the change
   - Example:
 
     ```
@@ -55,11 +60,23 @@ Based on the above context:
 - **Language rule**:
   - Use the same language as the majority of recent commits
   - If `$ARGUMENTS` includes a language instruction, follow that instead
+  - **Scope language matches the message language**: for Japanese commits, the scope may also be written in Japanese (e.g., `feat(認証): OAuth2 ログインを追加`). For English commits, keep the scope in English.
 - **Focus rule**:
   - Do **not** write vague phrases like "fixed review comments", or "minor fix".
   - Always describe **what was actually changed** (e.g., "remove unused import", "fix null check in auth flow").
 - **Arguments rule**:
   - Treat `$ARGUMENTS` as additional context or instruction for the commit message
+
+## HEREDOC Handling for Commit Messages
+
+When composing a multi-line commit message with `git commit -m "$(cat <<...EOF ... EOF)"`, the HEREDOC quoting style affects how backticks are interpreted:
+
+- **Single-quoted HEREDOC (`<<'EOF'`)**: No shell expansion happens, so write raw backticks directly (e.g., inline `` `functionName` `` or `` `file.ts` `` is safe)
+- **Double-quoted or unquoted HEREDOC (`<<"EOF"` / `<<EOF`)**: Bash may interpret backticks as command substitution. Avoid inline single backticks — use triple-backtick fenced blocks (```` ``` ````) if a code span is needed
+
+**Rationale**: In double-quoted/unquoted HEREDOC, backticks sometimes get auto-escaped as `` \` ``, which leaks literal backslashes into the commit message.
+
+**Recommendation**: Prefer `<<'EOF'` whenever the commit message contains backticks or code identifiers — it is the safest default.
 
 ## Important Notes
 
