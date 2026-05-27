@@ -26,12 +26,5 @@ in
     enable = true;
     package = miseBin;
     enableZshIntegration = false; # handled via cache_eval + zsh-defer in zsh.nix
-    globalConfig = {
-      tools = {
-        node = "lts";
-        bun = "latest";
-        pnpm = "latest";
-      };
-    };
   };
 }
