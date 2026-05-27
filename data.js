@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779870765271,
+  "lastUpdate": 1779872062706,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1271,6 +1271,37 @@ window.BENCHMARK_DATA = {
             "range": "2.14 ms",
             "unit": "ms",
             "extra": "median: 42.44 ms\nmin: 41.23 ms\nmax: 49.61 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "ea8b2bd3782ddae85c00a002af47407f2709d0d6",
+          "message": "docs(codex): document JavaScript toolchain usage\n\n- require JavaScript and TypeScript commands to use the project toolchain\n- prefer `mise exec` when running package managers or Node-dependent commands\n- document package manager detection from `package.json` and lockfiles",
+          "timestamp": "2026-05-27T17:50:56+09:00",
+          "tree_id": "47ffd94fb6d9a2cdeac92f81e95b3f8c4e8abd8d",
+          "url": "https://github.com/lemtoc/dotfiles/commit/ea8b2bd3782ddae85c00a002af47407f2709d0d6"
+        },
+        "date": 1779872060876,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 35.93,
+            "range": "2.94 ms",
+            "unit": "ms",
+            "extra": "median: 35.93 ms\nmin: 34.47 ms\nmax: 47.37 ms\nruns: 50"
           }
         ]
       }
