@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779753158069,
+  "lastUpdate": 1779870765271,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1240,6 +1240,37 @@ window.BENCHMARK_DATA = {
             "range": "1.35 ms",
             "unit": "ms",
             "extra": "median: 37.14 ms\nmin: 36.41 ms\nmax: 43.57 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "a91ffa23b65c1245337a5f043294efe5d5398726",
+          "message": "chore(codex): migrate prompts to skills\n\n- move commit and create-pr prompts into Codex skill directories\n- install skills through .agents/skills so Codex discovers folder symlinks\n- add OpenAI agent metadata for skill picker display",
+          "timestamp": "2026-05-27T17:29:29+09:00",
+          "tree_id": "ee82f842e7e9f00e3211e83f2e4746c74032fe94",
+          "url": "https://github.com/lemtoc/dotfiles/commit/a91ffa23b65c1245337a5f043294efe5d5398726"
+        },
+        "date": 1779870764007,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 42.44,
+            "range": "2.14 ms",
+            "unit": "ms",
+            "extra": "median: 42.44 ms\nmin: 41.23 ms\nmax: 49.61 ms\nruns: 50"
           }
         ]
       }
