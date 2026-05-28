@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779935353102,
+  "lastUpdate": 1779955438316,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1364,6 +1364,37 @@ window.BENCHMARK_DATA = {
             "range": "5.68 ms",
             "unit": "ms",
             "extra": "median: 35.34 ms\nmin: 34.43 ms\nmax: 58.55 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "22706e10258d2fa75eee86d28d642903510d1933",
+          "message": "chore(shell): update prompt colors and git ignores\n\n- Set modified and untracked Starship git status colors to match cmd duration yellow\n- Ignore local .pnpm-store directories globally\n\nCo-authored-by: Codex <codex@openai.com>",
+          "timestamp": "2026-05-28T17:00:44+09:00",
+          "tree_id": "f65d10fb1a1a05ceddd1f0456b0406df3ee8dd06",
+          "url": "https://github.com/lemtoc/dotfiles/commit/22706e10258d2fa75eee86d28d642903510d1933"
+        },
+        "date": 1779955437073,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 42.68,
+            "range": "5.11 ms",
+            "unit": "ms",
+            "extra": "median: 42.68 ms\nmin: 39.83 ms\nmax: 63.59 ms\nruns: 50"
           }
         ]
       }
