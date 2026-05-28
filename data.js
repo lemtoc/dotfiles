@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779934761975,
+  "lastUpdate": 1779935353102,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1333,6 +1333,37 @@ window.BENCHMARK_DATA = {
             "range": "3.13 ms",
             "unit": "ms",
             "extra": "median: 42.28 ms\nmin: 38.19 ms\nmax: 53.12 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "27503022273811a228d45e0bcb727f61299f7865",
+          "message": "fix(mise): configure default Node.js runtime\n\n- set Node.js LTS as the default mise-managed runtime\n- ensure Home Manager writes the mise global tools config\n\nCo-authored-by: Codex <codex@openai.com>",
+          "timestamp": "2026-05-28T11:26:00+09:00",
+          "tree_id": "e02d5b90254ece0483ec10572116ba8aecc60848",
+          "url": "https://github.com/lemtoc/dotfiles/commit/27503022273811a228d45e0bcb727f61299f7865"
+        },
+        "date": 1779935351527,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 35.34,
+            "range": "5.68 ms",
+            "unit": "ms",
+            "extra": "median: 35.34 ms\nmin: 34.43 ms\nmax: 58.55 ms\nruns: 50"
           }
         ]
       }
