@@ -24,6 +24,7 @@
   home.sessionPath = [
     "$HOME/bin"
     "$HOME/.local/bin"
+    "$HOME/.local/share/mise/shims"
   ];
 
   home.sessionVariables = {

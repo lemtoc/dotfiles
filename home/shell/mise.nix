@@ -28,7 +28,9 @@ in
     enableZshIntegration = false; # handled via cache_eval + zsh-defer in zsh.nix
     globalConfig = {
       tools = {
+        bun = "latest";
         node = "lts";
+        pnpm = "latest";
       };
     };
   };
