@@ -49,7 +49,6 @@
       "rectangle"
       "session-manager-plugin"
       "slack"
-      "visual-studio-code"
       "warp"
       "zoom"
       "manaflow-ai/cmux/cmux"

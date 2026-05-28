@@ -36,8 +36,14 @@
         };
     in
     {
-      darwinConfigurations."M4Pro" = mkDarwinConfig { hostName = "M4Pro"; username = "t1190078"; };
-      darwinConfigurations."M4Air" = mkDarwinConfig { hostName = "M4Air"; username = "lemtoc"; };
+      darwinConfigurations."M4Pro" = mkDarwinConfig {
+        hostName = "M4Pro";
+        username = "t1190078";
+      };
+      darwinConfigurations."M4Air" = mkDarwinConfig {
+        hostName = "M4Air";
+        username = "lemtoc";
+      };
       formatter.${system} = pkgs.nixfmt-tree;
 
       apps.${system} = {

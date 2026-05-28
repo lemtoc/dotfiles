@@ -12,7 +12,9 @@
   nixpkgs.overlays = [
     (final: prev: {
       direnv = prev.direnv.overrideAttrs (old: {
-        env = (old.env or { }) // { CGO_ENABLED = "1"; };
+        env = (old.env or { }) // {
+          CGO_ENABLED = "1";
+        };
       });
     })
   ];
