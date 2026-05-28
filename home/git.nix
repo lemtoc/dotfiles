@@ -41,6 +41,7 @@
       "**/.docs/"
       "**/.env.stg"
       "**/.env.dev"
+      "**/.pnpm-store/"
     ];
   };
 }
