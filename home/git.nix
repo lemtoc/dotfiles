@@ -34,6 +34,7 @@
       "dist/"
       "*.swp"
       "**/.claude/settings.local.json"
+      "**/.codex/"
       "**/CLAUDE.local.md"
       "**/.serena/"
       "**/.review/"

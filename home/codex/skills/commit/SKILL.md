@@ -3,83 +3,38 @@ name: commit
 description: Create a git commit following the Conventional Commits specification. Use when the user wants to commit staged changes, create a commit message, or run git commit. Handles commit message language detection (English/Japanese) based on recent commits.
 ---
 
-## Context
+## Commit Workflow
 
-- Current git status: !`git status`
-- Staged changes: !`git diff --staged`
-- Recent commits (for language detection): !`git log -n 10 --pretty=format:"%s"`
-- Current branch: !`git branch --show-current`
+1. Inspect the repository state before committing:
+   - `git status --short`
+   - `git diff --staged`
+   - `git log -n 10 --pretty=format:%s`
+   - `git branch --show-current`
+2. Commit only staged changes. Do not run `git add` unless the user explicitly asks.
+3. If unstaged changes exist, leave them untouched and mention them after the commit.
+4. Check staged changes for secrets, broken partial edits, or obviously wrong files. If found, stop and ask the user.
+5. Choose the commit message language from recent commits unless the user specifies one.
+6. Run `git commit` and verify with `git status --short`.
 
-## Your Task
+## Commit Message
 
-Based on the above context:
+- Use Conventional Commits: `<type>(scope): <description>`.
+- Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`.
+- Keep the summary imperative and under about 72 characters.
+- Use the same language as the majority of recent commits unless the user specifies one.
+- For Japanese commit messages, the scope may also be Japanese, e.g. `feat(認証): OAuth2 ログインを追加`.
+- Always include a body.
+- Write the body as bullet points.
+- Do not insert blank lines between bullet points.
+- Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
+- Add this trailer at the end of every commit message:
 
-1. Analyze the staged changes for any critical issues:
-   - Review the **Staged changes** from context above
-   - Check for sensitive information (passwords, API keys, etc.)
-   - Verify that the changes are complete and coherent
-   - If issues are found, confirm with the user before proceeding
+```text
+Co-authored-by: Codex <codex@openai.com>
+```
 
-2. Determine the commit message language:
-   - Based on the **Recent commits** from context above
-   - If the majority are in English, write in English
-   - If the majority are in Japanese, write in Japanese
-   - If `$ARGUMENTS` includes a language instruction, follow that instead
+## Command Notes
 
-3. Create and execute the commit:
-   - Refer to the **Commit Message Guidelines** section below when writing the message
-   - Use `git commit -m` with an appropriate message
-
-4. Verify the commit was successful:
-   - Execute `git status` to verify the commit was successful
-   - Provide a summary of what was committed to the user
-
-## Commit Message Guidelines
-
-- Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
-  - Format: `<type>(optional scope): <description>`
-  - Example: `feat(auth): add OAuth2 login support`
-- **Allowed types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
-- Use the **imperative mood** in the description (e.g., "add", not "added" or "adds").
-- Keep the **summary concise** (max ~72 characters).
-- **Body rules**:
-  - **Always include a body — no exceptions**, even for trivial-looking changes
-  - Insert one blank line after the summary, then write the body
-  - The body **must** be written as bullet points — **never** use prose paragraphs or a single free-form line
-  - Each bullet should describe a reason, context, or detail of the change
-  - Example:
-
-    ```
-    feat(auth): add OAuth2 login support
-
-    - implement login with OAuth2
-    - update user model with providerId
-    - add tests for OAuth2 flow
-    ```
-
-- **Language rule**:
-  - Use the same language as the majority of recent commits
-  - If `$ARGUMENTS` includes a language instruction, follow that instead
-  - **Scope language matches the message language**: for Japanese commits, the scope may also be written in Japanese (e.g., `feat(認証): OAuth2 ログインを追加`). For English commits, keep the scope in English.
-- **Focus rule**:
-  - Do **not** write vague phrases like "fixed review comments", or "minor fix".
-  - Always describe **what was actually changed** (e.g., "remove unused import", "fix null check in auth flow").
-- **Arguments rule**:
-  - Treat `$ARGUMENTS` as additional context or instruction for the commit message
-
-## HEREDOC Handling for Commit Messages
-
-When composing a multi-line commit message with `git commit -m "$(cat <<...EOF ... EOF)"`, the HEREDOC quoting style affects how backticks are interpreted:
-
-- **Single-quoted HEREDOC (`<<'EOF'`)**: No shell expansion happens, so write raw backticks directly (e.g., inline `` `functionName` `` or `` `file.ts` `` is safe)
-- **Double-quoted or unquoted HEREDOC (`<<"EOF"` / `<<EOF`)**: Bash may interpret backticks as command substitution. Avoid inline single backticks — use triple-backtick fenced blocks (```` ``` ````) if a code span is needed
-
-**Rationale**: In double-quoted/unquoted HEREDOC, backticks sometimes get auto-escaped as `` \` ``, which leaks literal backslashes into the commit message.
-
-**Recommendation**: Prefer `<<'EOF'` whenever the commit message contains backticks or code identifiers — it is the safest default.
-
-## Important Notes
-
-- Do not execute `git add`
-- The changes are already staged with the correct granularity and responsibility.
-- Do not execute `git push`
+- Prefer a single commit message body string or a message file so bullet points stay contiguous.
+- If using heredoc, use single-quoted heredoc (`<<'EOF'`) when the message contains backticks.
+- Do not push.

@@ -1,4 +1,3 @@
-- When specifications are ambiguous or information is insufficient and requires user judgment, use the `AskUserQuestion Tool`.
 - Always resolve any type errors and linting errors displayed in the console.
 - Avoid using `any`.
 - Minimize the use of type casting with `as`.
