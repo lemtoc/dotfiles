@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779872062706,
+  "lastUpdate": 1779934761975,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1302,6 +1302,37 @@ window.BENCHMARK_DATA = {
             "range": "2.94 ms",
             "unit": "ms",
             "extra": "median: 35.93 ms\nmin: 34.47 ms\nmax: 47.37 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "b4d856cf1c8b9f83459b79af158081ca297c3cda",
+          "message": "docs(codex): simplify commit and PR instructions\n\n- remove Claude Code-specific AskUserQuestion guidance\n- replace commit and PR skills with compact Codex workflows\n- ignore local .codex directories in global git excludes\n\nCo-authored-by: Codex <codex@openai.com>",
+          "timestamp": "2026-05-28T11:15:12+09:00",
+          "tree_id": "1d7a2d0cc69c5480feb6616996e77782c79de9a6",
+          "url": "https://github.com/lemtoc/dotfiles/commit/b4d856cf1c8b9f83459b79af158081ca297c3cda"
+        },
+        "date": 1779934760834,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 42.28,
+            "range": "3.13 ms",
+            "unit": "ms",
+            "extra": "median: 42.28 ms\nmin: 38.19 ms\nmax: 53.12 ms\nruns: 50"
           }
         ]
       }
