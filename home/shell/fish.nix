@@ -25,6 +25,7 @@
       test -n "$XDG_CACHE_HOME"; and set prompt_cache_home "$XDG_CACHE_HOME"
       set -g __prompt_session (random)(random)
       set -g __prompt_tick 0
+      set -g __prompt_first_render 1
       set -g __prompt_git_cache_file "$prompt_cache_home/fish/prompt-git-$fish_pid-$__prompt_session"
       mkdir -p (dirname $__prompt_git_cache_file)
 
@@ -64,7 +65,7 @@
       __prompt_bump_tick = {
         onEvent = "fish_preexec";
         body = ''
-          set -g __prompt_tick (math $__prompt_tick + 1)
+          set -e __prompt_git_repaint
 
           if string match --quiet --regex '^\s*(command\s+)?clear(\s|$)' -- "$argv[1]"
             set -g __prompt_suppress_next_git_repaint 1
@@ -79,10 +80,16 @@
         '';
       };
 
+      __prompt_clear_git_repaint = {
+        onEvent = "fish_postexec";
+        body = ''
+          set -e __prompt_git_repaint
+        '';
+      };
+
       __prompt_reset_git = {
         onVariable = "PWD";
         body = ''
-          set -g __prompt_tick (math $__prompt_tick + 1)
           set -e __prompt_git_root
           set -e __prompt_git_text
           set -e __prompt_git_loaded_root
@@ -107,13 +114,21 @@
           set -l text (string join " " $lines[3..-1])
 
           if test "$PWD" != "$root"; and not string match --quiet -- "$root/*" "$PWD"
+            set -e __prompt_git_pid
+            return
+          end
+
+          if test "$tick" != "$__prompt_tick"
+            set -e __prompt_git_pid
+            set -g __prompt_git_repaint 1
+            commandline -f repaint 2>/dev/null
             return
           end
 
           set -g __prompt_git_root $root
           set -g __prompt_git_text $text
           set -g __prompt_git_loaded_root $root
-          set -g __prompt_git_loaded_tick $__prompt_tick
+          set -g __prompt_git_loaded_tick $tick
           set -e __prompt_git_pid
 
           if set -q __prompt_suppress_next_git_repaint
@@ -121,6 +136,7 @@
             return
           end
 
+          set -g __prompt_git_repaint 1
           commandline -f repaint 2>/dev/null
         '';
       };
@@ -281,6 +297,23 @@
       '';
 
       fish_prompt = ''
+        set -l prompt_status $status $pipestatus
+        set -l last_status $prompt_status[1]
+        set -l last_pipestatus $prompt_status[2..-1]
+        test -n "$last_status"; or set last_status 0
+        test (count $last_pipestatus) -gt 0; or set last_pipestatus $last_status
+
+        if set -q __prompt_git_repaint
+          set -e __prompt_git_repaint
+        else
+          if test "$__prompt_first_render" = 1
+            set -g __prompt_first_render 0
+            set last_status 0
+            set last_pipestatus 0
+          end
+          set -g __prompt_tick (math $__prompt_tick + 1)
+        end
+
         set -l reset (set_color normal)
         set -l time_color (set_color brblack)
         set -l user_color (set_color brcyan)
@@ -289,6 +322,7 @@
         set -l aws_color (set_color yellow)
         set -l duration_color (set_color brblack)
         set -l prompt_color (set_color normal)
+        set -l error_color (set_color brred)
 
         set -l parts "$time_color"(command date '+%H:%M')"$reset"
 
@@ -311,6 +345,18 @@
         set -l duration (__prompt_duration)
         if test -n "$duration"
           set --append parts "$duration_color$duration$reset"
+        end
+
+        set -l status_text
+        if test "$last_status" -ne 0
+          if test (count $last_pipestatus) -gt 1
+            set status_text "["(string join "|" $last_pipestatus)"]"
+          else
+            set status_text "[$last_status]"
+          end
+
+          set --append parts "$error_color$status_text$reset"
+          set prompt_color "$error_color"
         end
 
         printf '%s\n%s ' (string join ' ' $parts) "$prompt_color❱$reset"
