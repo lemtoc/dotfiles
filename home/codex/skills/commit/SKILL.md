@@ -26,6 +26,7 @@ description: Create a git commit following the Conventional Commits specificatio
 - Always include a body.
 - Write the body as bullet points.
 - Do not insert blank lines between bullet points.
+- Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
 - Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
 - Add this trailer at the end of every commit message:
 
