@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  # zoxide, eza, fzf, direnv, starship are managed by programs.* modules (home/shell/*.nix)
+  # fish, zoxide, eza, fzf, direnv are managed by programs.* modules (home/shell/*.nix)
   # gh is managed by programs.gh (home/gh.nix)
   # vscode is managed by programs.vscode (home/vscode.nix)
   home.packages = with pkgs; [
@@ -12,7 +12,6 @@
     bun
     deno
     uv
-    fish
     # CLI tools
     awscli2
     bat

@@ -25,7 +25,8 @@ in
   programs.mise = {
     enable = true;
     package = miseBin;
-    enableZshIntegration = false; # handled via cache_eval + zsh-defer in zsh.nix
+    enableFishIntegration = true;
+    enableZshIntegration = false;
     globalConfig = {
       tools = {
         bun = "latest";

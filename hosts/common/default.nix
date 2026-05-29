@@ -1,4 +1,9 @@
-{ username, lib, ... }:
+{
+  username,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./home-manager.nix
@@ -27,14 +32,26 @@
   system.primaryUser = username;
   system.stateVersion = 6;
 
-  # nix-darwin's /etc/zshrc runs compinit + bashcompinit + promptinit synchronously (~47ms).
-  # These are redundant because our user config handles compinit via zsh-defer and starship replaces promptinit.
+  # Keep fallback zsh startup lean; fish is the configured login shell.
   programs.zsh.enableGlobalCompInit = false;
   programs.zsh.enableBashCompletion = false;
   programs.zsh.promptInit = "";
+  programs.fish.enable = true;
+  environment.shells = [ pkgs.fish ];
+
+  system.activationScripts.postActivation.text = lib.mkAfter ''
+    currentShell=$(dscl . -read /Users/${username} UserShell 2>/dev/null || true)
+    currentShell="''${currentShell#UserShell: }"
+    targetShell="/run/current-system/sw/bin/fish"
+    if [ "$currentShell" != "$targetShell" ]; then
+      echo "setting ${username}'s login shell to fish..." >&2
+      dscl . -create /Users/${username} UserShell "$targetShell"
+    fi
+  '';
 
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
+    shell = pkgs.fish;
   };
 }

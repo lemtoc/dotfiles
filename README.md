@@ -33,7 +33,7 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
 5. Reload your shell:
 
    ```bash
-   exec zsh
+   exec fish
    ```
 
 [^1]: The first run may fail. If it does, just run the same command again and it should succeed.

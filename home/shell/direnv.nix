@@ -2,7 +2,8 @@
 {
   programs.direnv = {
     enable = true;
-    enableZshIntegration = false; # handled via cache_eval + zsh-defer in zsh.nix
+    enableFishIntegration = true;
+    enableZshIntegration = false;
     nix-direnv.enable = true;
   };
 
