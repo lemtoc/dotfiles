@@ -126,6 +126,11 @@
           set -g __prompt_aws_fetched_at $lines[3]
           set -e __prompt_aws_pid
 
+          set -l next_text (__prompt_aws_remaining "$__prompt_aws_expiration_epoch")
+          test "$next_text" != "$__prompt_aws_text"
+          or return
+
+          set -g __prompt_aws_text "$next_text"
           set -g __prompt_aws_repaint 1
           commandline -f repaint 2>/dev/null
         '';
@@ -335,7 +340,7 @@
         or return
 
         if test "$remaining" -le 0
-          printf expired
+          printf '[!]'
         else if test "$remaining" -le 3600
           set -l minutes (math --scale=0 "ceil($remaining / 60)")
           printf '%sm' "$minutes"
@@ -348,6 +353,7 @@
         set -e __prompt_aws_profile
         set -e __prompt_aws_expiration_epoch
         set -e __prompt_aws_fetched_at
+        set -e __prompt_aws_text
         command rm -f -- "$__prompt_aws_cache_file" "$__prompt_aws_cache_file.tmp" 2>/dev/null
       '';
 
@@ -359,6 +365,7 @@
         set -g __prompt_aws_profile "$AWS_PROFILE"
         set -g __prompt_aws_expiration_epoch 0
         set -g __prompt_aws_fetched_at "$now"
+        set -g __prompt_aws_text '[!]'
 
         set -l tmp_file "$__prompt_aws_cache_file.tmp"
         printf '%s\n%s\n%s\n' "$AWS_PROFILE" 0 "$now" >"$tmp_file"
@@ -373,12 +380,22 @@
         set -l expiration_epoch unknown
 
         set -l credentials (command aws configure export-credentials --profile "$profile" --format process 2>/dev/null)
+        set -l credentials_status $status
         set -l expiration (string match --regex --groups-only '"Expiration"[[:space:]]*:[[:space:]]*"([^"]+)"' -- $credentials)
 
         if test -n "$expiration"
           set -l expiration_utc (string replace --regex '(\+00:00|Z)$' 'Z' -- "$expiration")
           set expiration_epoch (command date -j -u -f '%Y-%m-%dT%H:%M:%SZ' "$expiration_utc" '+%s' 2>/dev/null)
           or set expiration_epoch (command date -d "$expiration" '+%s' 2>/dev/null)
+        else
+          set -l sso_start_url (command aws configure get sso_start_url --profile "$profile" 2>/dev/null)
+          set -l sso_session (command aws configure get sso_session --profile "$profile" 2>/dev/null)
+          if test -n "$sso_start_url$sso_session"; and begin
+              test "$credentials_status" -ne 0
+              or test -z "$credentials"
+            end
+            set expiration_epoch 0
+          end
         end
 
         test -n "$expiration_epoch"
@@ -417,6 +434,7 @@
             set -g __prompt_aws_render (__prompt_aws_remaining "$__prompt_aws_expiration_epoch")
           end
         end
+        set -g __prompt_aws_text "$__prompt_aws_render"
 
         set -l should_refresh 0
         if test "$__prompt_aws_profile" != "$AWS_PROFILE"; or test -z "$__prompt_aws_expiration_epoch"
@@ -494,7 +512,7 @@
 
         if test -n "$AWS_PROFILE"
           __prompt_aws
-          if test "$__prompt_aws_render" = expired
+          if test "$__prompt_aws_render" = '[!]'
             set --append parts "$aws_color"aws:$AWS_PROFILE"$reset $aws_expired_color$__prompt_aws_render$reset"
           else if test -n "$__prompt_aws_render"
             set --append parts "$aws_color"aws:$AWS_PROFILE $__prompt_aws_render"$reset"
