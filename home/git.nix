@@ -42,6 +42,7 @@
       "**/.env.stg"
       "**/.env.dev"
       "**/.pnpm-store/"
+      "**/.envrc"
     ];
   };
 }
