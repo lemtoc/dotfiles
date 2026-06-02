@@ -326,7 +326,7 @@
 
       __prompt_aws_remaining = ''
         set -l expiration_epoch $argv[1]
-        test -n "$expiration_epoch"
+        test -n "$expiration_epoch"; and test "$expiration_epoch" != unknown
         or return
 
         set -l now (command date +%s)
@@ -336,14 +336,11 @@
 
         if test "$remaining" -le 0
           printf expired
-        else if test "$remaining" -lt 3600
-          set -l minutes (math --scale=0 "floor($remaining / 60)")
-          set -l seconds (math --scale=0 "$remaining % 60")
-          printf '%sm%ss' "$minutes" "$seconds"
+        else if test "$remaining" -le 3600
+          set -l minutes (math --scale=0 "ceil($remaining / 60)")
+          printf '%sm' "$minutes"
         else
-          set -l hours (math --scale=0 "floor($remaining / 3600)")
-          set -l minutes (math --scale=0 "floor(($remaining % 3600) / 60)")
-          printf '%sh%sm' "$hours" "$minutes"
+          return
         end
       '';
 
@@ -373,7 +370,7 @@
         set -l parent_pid $argv[2]
         set -l cache_file $argv[3]
         set -l now (command date +%s)
-        set -l expiration_epoch 0
+        set -l expiration_epoch unknown
 
         set -l credentials (command aws configure export-credentials --profile "$profile" --format process 2>/dev/null)
         set -l expiration (string match --regex --groups-only '"Expiration"[[:space:]]*:[[:space:]]*"([^"]+)"' -- $credentials)
@@ -385,7 +382,7 @@
         end
 
         test -n "$expiration_epoch"
-        or set expiration_epoch 0
+        or set expiration_epoch unknown
 
         set -l tmp_file "$cache_file.tmp"
         printf '%s\n%s\n%s\n' "$profile" "$expiration_epoch" "$now" >"$tmp_file"
@@ -410,8 +407,15 @@
           end
         end
 
+        set -l cache_age
+        if test -n "$__prompt_aws_fetched_at"
+          set cache_age (math "$now - $__prompt_aws_fetched_at" 2>/dev/null)
+        end
+
         if test "$__prompt_aws_profile" = "$AWS_PROFILE"; and test -n "$__prompt_aws_expiration_epoch"
-          set -g __prompt_aws_render (__prompt_aws_remaining "$__prompt_aws_expiration_epoch")
+          if test "$__prompt_aws_expiration_epoch" != 0; or test -n "$cache_age"; and test "$cache_age" -lt 60
+            set -g __prompt_aws_render (__prompt_aws_remaining "$__prompt_aws_expiration_epoch")
+          end
         end
 
         set -l should_refresh 0
