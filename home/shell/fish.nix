@@ -27,6 +27,7 @@
       set -g __prompt_tick 0
       set -g __prompt_first_render 1
       set -g __prompt_git_cache_file "$prompt_cache_home/fish/prompt-git-$fish_pid-$__prompt_session"
+      set -g __prompt_aws_cache_file "$prompt_cache_home/fish/prompt-aws-$fish_pid-$__prompt_session"
       mkdir -p (dirname $__prompt_git_cache_file)
 
       abbr --add g git
@@ -66,6 +67,7 @@
         onEvent = "fish_preexec";
         body = ''
           set -e __prompt_git_repaint
+          set -e __prompt_aws_repaint
 
           if string match --quiet --regex '^\s*(command\s+)?clear(\s|$)' -- "$argv[1]"
             set -g __prompt_suppress_next_git_repaint 1
@@ -84,6 +86,48 @@
         onEvent = "fish_postexec";
         body = ''
           set -e __prompt_git_repaint
+          set -e __prompt_aws_repaint
+
+          if string match --quiet --regex '^\s*(command\s+)?aws\s+sso\s+logout(\s|$)' -- "$argv[1]"
+            __prompt_expire_aws
+          else if string match --quiet --regex '^\s*(command\s+)?aws\s+sso\s+login(\s|$)' -- "$argv[1]"
+            __prompt_reset_aws_cache
+          end
+        '';
+      };
+
+      __prompt_reset_aws = {
+        onVariable = "AWS_PROFILE";
+        body = ''
+          __prompt_reset_aws_cache
+
+          if set -q __prompt_aws_pid[1]
+            command kill $__prompt_aws_pid 2>/dev/null
+            set -e __prompt_aws_pid
+          end
+        '';
+      };
+
+      __prompt_aws_ready = {
+        onSignal = "USR2";
+        body = ''
+          test -f "$__prompt_aws_cache_file"
+          or return
+
+          set -l lines (string split \n -- (command cat "$__prompt_aws_cache_file"))
+          test "$lines[1]" = "$AWS_PROFILE"
+          or begin
+            set -e __prompt_aws_pid
+            return
+          end
+
+          set -g __prompt_aws_profile $lines[1]
+          set -g __prompt_aws_expiration_epoch $lines[2]
+          set -g __prompt_aws_fetched_at $lines[3]
+          set -e __prompt_aws_pid
+
+          set -g __prompt_aws_repaint 1
+          commandline -f repaint 2>/dev/null
         '';
       };
 
@@ -280,6 +324,116 @@
         end
       '';
 
+      __prompt_aws_remaining = ''
+        set -l expiration_epoch $argv[1]
+        test -n "$expiration_epoch"
+        or return
+
+        set -l now (command date +%s)
+        set -l remaining (math "$expiration_epoch - $now" 2>/dev/null)
+        test -n "$remaining"
+        or return
+
+        if test "$remaining" -le 0
+          printf expired
+        else if test "$remaining" -lt 3600
+          set -l minutes (math --scale=0 "floor($remaining / 60)")
+          set -l seconds (math --scale=0 "$remaining % 60")
+          printf '%sm%ss' "$minutes" "$seconds"
+        else
+          set -l hours (math --scale=0 "floor($remaining / 3600)")
+          set -l minutes (math --scale=0 "floor(($remaining % 3600) / 60)")
+          printf '%sh%sm' "$hours" "$minutes"
+        end
+      '';
+
+      __prompt_reset_aws_cache = ''
+        set -e __prompt_aws_profile
+        set -e __prompt_aws_expiration_epoch
+        set -e __prompt_aws_fetched_at
+        command rm -f -- "$__prompt_aws_cache_file" "$__prompt_aws_cache_file.tmp" 2>/dev/null
+      '';
+
+      __prompt_expire_aws = ''
+        test -n "$AWS_PROFILE"
+        or return
+
+        set -l now (command date +%s)
+        set -g __prompt_aws_profile "$AWS_PROFILE"
+        set -g __prompt_aws_expiration_epoch 0
+        set -g __prompt_aws_fetched_at "$now"
+
+        set -l tmp_file "$__prompt_aws_cache_file.tmp"
+        printf '%s\n%s\n%s\n' "$AWS_PROFILE" 0 "$now" >"$tmp_file"
+        and command mv "$tmp_file" "$__prompt_aws_cache_file"
+      '';
+
+      __prompt_aws_worker = ''
+        set -l profile $argv[1]
+        set -l parent_pid $argv[2]
+        set -l cache_file $argv[3]
+        set -l now (command date +%s)
+        set -l expiration_epoch 0
+
+        set -l credentials (command aws configure export-credentials --profile "$profile" --format process 2>/dev/null)
+        set -l expiration (string match --regex --groups-only '"Expiration"[[:space:]]*:[[:space:]]*"([^"]+)"' -- $credentials)
+
+        if test -n "$expiration"
+          set -l expiration_utc (string replace --regex '(\+00:00|Z)$' 'Z' -- "$expiration")
+          set expiration_epoch (command date -j -u -f '%Y-%m-%dT%H:%M:%SZ' "$expiration_utc" '+%s' 2>/dev/null)
+          or set expiration_epoch (command date -d "$expiration" '+%s' 2>/dev/null)
+        end
+
+        test -n "$expiration_epoch"
+        or set expiration_epoch 0
+
+        set -l tmp_file "$cache_file.tmp"
+        printf '%s\n%s\n%s\n' "$profile" "$expiration_epoch" "$now" >"$tmp_file"
+        and command mv "$tmp_file" "$cache_file"
+        and command kill -USR2 "$parent_pid" 2>/dev/null
+      '';
+
+      __prompt_aws = ''
+        set -g __prompt_aws_render
+
+        test -n "$AWS_PROFILE"
+        or return
+
+        set -l now (command date +%s)
+
+        if test -f "$__prompt_aws_cache_file"
+          set -l lines (string split \n -- (command cat "$__prompt_aws_cache_file"))
+          if test "$lines[1]" = "$AWS_PROFILE"
+            set -g __prompt_aws_profile $lines[1]
+            set -g __prompt_aws_expiration_epoch $lines[2]
+            set -g __prompt_aws_fetched_at $lines[3]
+          end
+        end
+
+        if test "$__prompt_aws_profile" = "$AWS_PROFILE"; and test -n "$__prompt_aws_expiration_epoch"
+          set -g __prompt_aws_render (__prompt_aws_remaining "$__prompt_aws_expiration_epoch")
+        end
+
+        set -l should_refresh 0
+        if test "$__prompt_aws_profile" != "$AWS_PROFILE"; or test -z "$__prompt_aws_expiration_epoch"
+          set should_refresh 1
+        else if test -z "$__prompt_aws_fetched_at"; or test (math "$now - $__prompt_aws_fetched_at") -ge 60
+          set should_refresh 1
+        end
+
+        if set -q __prompt_aws_pid[1]
+          if not command kill -0 $__prompt_aws_pid 2>/dev/null
+            set -e __prompt_aws_pid
+          end
+        end
+
+        if test "$should_refresh" = 1; and not set -q __prompt_aws_pid[1]
+          command fish -c '__prompt_aws_worker $argv[1] $argv[2] $argv[3]' "$AWS_PROFILE" "$fish_pid" "$__prompt_aws_cache_file" >/dev/null 2>&1 &
+          set -g __prompt_aws_pid $last_pid
+          disown $__prompt_aws_pid 2>/dev/null
+        end
+      '';
+
       __prompt_duration = ''
         test -n "$CMD_DURATION"
         or return
@@ -303,8 +457,9 @@
         test -n "$last_status"; or set last_status 0
         test (count $last_pipestatus) -gt 0; or set last_pipestatus $last_status
 
-        if set -q __prompt_git_repaint
+        if set -q __prompt_git_repaint; or set -q __prompt_aws_repaint
           set -e __prompt_git_repaint
+          set -e __prompt_aws_repaint
         else
           if test "$__prompt_first_render" = 1
             set -g __prompt_first_render 0
@@ -320,6 +475,7 @@
         set -l pwd_color (set_color brblue)
         set -l git_color (set_color brgreen)
         set -l aws_color (set_color yellow)
+        set -l aws_expired_color (set_color brred)
         set -l duration_color (set_color brblack)
         set -l prompt_color (set_color normal)
         set -l error_color (set_color brred)
@@ -333,7 +489,14 @@
         set --append parts "$pwd_color"(prompt_pwd)"$reset"
 
         if test -n "$AWS_PROFILE"
-          set --append parts "$aws_color"aws:$AWS_PROFILE"$reset"
+          __prompt_aws
+          if test "$__prompt_aws_render" = expired
+            set --append parts "$aws_color"aws:$AWS_PROFILE"$reset $aws_expired_color$__prompt_aws_render$reset"
+          else if test -n "$__prompt_aws_render"
+            set --append parts "$aws_color"aws:$AWS_PROFILE $__prompt_aws_render"$reset"
+          else
+            set --append parts "$aws_color"aws:$AWS_PROFILE"$reset"
+          end
         end
 
         __prompt_git
