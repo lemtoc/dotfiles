@@ -6,14 +6,15 @@
       cleanup = "zap";
       autoUpdate = true;
       upgrade = true;
+      extraFlags = [ "--force-cleanup" ];
     };
     taps = [
       "dimentium/autoraise"
       "k1low/tap"
       "kayac/tap"
       "lemtoc/tap"
-      "anomalyco/tap"
       "manaflow-ai/cmux"
+      "productdevbook/tap"
     ];
     brews = [
       "create-dmg"
@@ -21,7 +22,6 @@
       "k1low/tap/mo"
       "kayac/tap/ecspresso"
       "lemtoc/tap/muu"
-      "anomalyco/tap/opencode"
     ];
     casks = [
       "1password"
@@ -50,9 +50,9 @@
       "session-manager-plugin"
       "slack"
       "visual-studio-code"
-      "warp"
       "zoom"
       "manaflow-ai/cmux/cmux"
+      "productdevbook/tap/portkiller"
     ];
   };
 }
