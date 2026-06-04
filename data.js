@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779955438316,
+  "lastUpdate": 1780546660138,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1395,6 +1395,39 @@ window.BENCHMARK_DATA = {
             "range": "5.11 ms",
             "unit": "ms",
             "extra": "median: 42.68 ms\nmin: 39.83 ms\nmax: 63.59 ms\nruns: 50"
+          }
+        ]
+      }
+    ],
+    "Fish Startup Time": [
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "e81429e553d71b67820c475fe5977207ce803bc0",
+          "message": "fix(ci): switch benchmark from zsh to fish\n\n- remove sheldon cache pre-population (sheldon no longer installed since zsh.nix is not imported)\n- remove zsh dotfile symlinks (.zshrc, .zshenv, .zprofile) no longer generated\n- propagate home-manager bin path via GITHUB_PATH for cross-step availability\n- change hyperfine target from 'zsh -i -c exit' to 'fish -i -c exit'\n- remove unused hm_gen input from run-benchmark action\n- rename workflow/job names from \"Zsh Startup *\" to \"Fish Startup *\"",
+          "timestamp": "2026-06-04T13:12:21+09:00",
+          "tree_id": "839cb3b87f029e5277f9edfd384f7f26b13fe0ee",
+          "url": "https://github.com/lemtoc/dotfiles/commit/e81429e553d71b67820c475fe5977207ce803bc0"
+        },
+        "date": 1780546658626,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 223.86,
+            "range": "13.75 ms",
+            "unit": "ms",
+            "extra": "median: 223.86 ms\nmin: 208.67 ms\nmax: 267.5 ms\nruns: 50"
           }
         ]
       }
