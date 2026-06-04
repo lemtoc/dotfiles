@@ -43,6 +43,7 @@
       "**/.env.dev"
       "**/.pnpm-store/"
       "**/.envrc"
+      "**/.playwright-mcp/"
     ];
   };
 }
