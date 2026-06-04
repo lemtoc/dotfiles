@@ -1,10 +1,5 @@
 name: Run Benchmark
-description: Run zsh startup benchmark with hyperfine and convert results
-
-inputs:
-  hm_gen:
-    description: Path to the home-manager generation (for PATH setup)
-    required: true
+description: Run fish startup benchmark with hyperfine and convert results
 
 outputs:
   result-path:
@@ -17,13 +12,11 @@ runs:
     - name: Run benchmark
       shell: bash
       run: |
-        export PATH="${{ inputs.hm_gen }}/home-path/bin:$PATH"
-
         hyperfine \
           --warmup 10 \
           --runs 50 \
           --export-json bench-result.json \
-          'zsh -i -c exit'
+          'fish -i -c exit'
 
     - name: Convert to benchmark format
       shell: bash

@@ -1,5 +1,5 @@
 name: Setup Benchmark Environment
-description: Install Nix, build home-manager generation, and set up shell environment for benchmarking
+description: Install Nix, build home-manager generation, and set up fish shell environment for benchmarking
 
 outputs:
   hm_gen:
@@ -39,11 +39,6 @@ runs:
         sudo mkdir -p /Users/t1190078
         sudo chown "$(whoami)" /Users/t1190078
 
-        # Symlink user-level dotfiles
-        ln -sf "$HM_GEN/home-files/.zshrc" ~/.zshrc
-        ln -sf "$HM_GEN/home-files/.zshenv" ~/.zshenv
-        ln -sf "$HM_GEN/home-files/.zprofile" ~/.zprofile
-
         # Symlink .config directories
         mkdir -p ~/.config
         for item in "$HM_GEN/home-files/.config/"*; do
@@ -54,9 +49,4 @@ runs:
 
         # Add home-manager binaries to PATH
         export PATH="$HM_GEN/home-path/bin:$PATH"
-
-        # Pre-populate sheldon cache (first run clones plugins via git)
-        mkdir -p ~/.cache/sheldon
-        sheldon lock
-        sheldon source > ~/.cache/sheldon/sheldon.zsh
-        readlink ~/.config/sheldon/plugins.toml > ~/.cache/sheldon/sheldon.zsh.lock
+        echo "$HM_GEN/home-path/bin" >> "$GITHUB_PATH"
