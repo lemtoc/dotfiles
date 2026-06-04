@@ -56,7 +56,6 @@
     "swift-lsp@claude-plugins-official": true
   },
   "cleanupPeriodDays": 365,
-  "model": "sonnet",
   "language": "Japanese",
   "env": {
     "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
