@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780546660138,
+  "lastUpdate": 1780548565770,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1428,6 +1428,37 @@ window.BENCHMARK_DATA = {
             "range": "13.75 ms",
             "unit": "ms",
             "extra": "median: 223.86 ms\nmin: 208.67 ms\nmax: 267.5 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "0402942e81c5118e4713816fec69dfc84ff0bd75",
+          "message": "chore(claude): remove default model setting",
+          "timestamp": "2026-06-04T13:35:39+09:00",
+          "tree_id": "b7d37189c59d5935c0c99e58e05ee9c45bab7a98",
+          "url": "https://github.com/lemtoc/dotfiles/commit/0402942e81c5118e4713816fec69dfc84ff0bd75"
+        },
+        "date": 1780548564629,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 208.32,
+            "range": "4.71 ms",
+            "unit": "ms",
+            "extra": "median: 208.32 ms\nmin: 200.53 ms\nmax: 226.45 ms\nruns: 50"
           }
         ]
       }
