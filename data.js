@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780548565770,
+  "lastUpdate": 1780554536126,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1459,6 +1459,37 @@ window.BENCHMARK_DATA = {
             "range": "4.71 ms",
             "unit": "ms",
             "extra": "median: 208.32 ms\nmin: 200.53 ms\nmax: 226.45 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "a2d4c49c5b8f0114ea0812ab1a9300d001497235",
+          "message": "chore(git): ignore playwright-mcp directories\n\n- add **/.playwright-mcp/ to the global git ignore list\n- keep Playwright MCP working directories out of all repos\n\nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>",
+          "timestamp": "2026-06-04T15:24:56+09:00",
+          "tree_id": "d2d284f5f4fb645122240e999d04d0bc401e6a7f",
+          "url": "https://github.com/lemtoc/dotfiles/commit/a2d4c49c5b8f0114ea0812ab1a9300d001497235"
+        },
+        "date": 1780554534032,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 550.31,
+            "range": "61.04 ms",
+            "unit": "ms",
+            "extra": "median: 550.31 ms\nmin: 498.39 ms\nmax: 883.62 ms\nruns: 50"
           }
         ]
       }
