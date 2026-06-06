@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780643432369,
+  "lastUpdate": 1780739609344,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1521,6 +1521,37 @@ window.BENCHMARK_DATA = {
             "range": "18.89 ms",
             "unit": "ms",
             "extra": "median: 87.31 ms\nmin: 53.93 ms\nmax: 137.18 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "e1d4e6f326b8afcb4c18662d6393c9bace8f7ac6",
+          "message": "chore(nix): update home-manager input\n\n- bump home-manager to b2b7db4 (2026-06-05)\n- refresh narHash for the new revision\n\nCo-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>",
+          "timestamp": "2026-06-06T18:49:29+09:00",
+          "tree_id": "a6fa649d286b30cbf912911b9d9fff40a2291aa0",
+          "url": "https://github.com/lemtoc/dotfiles/commit/e1d4e6f326b8afcb4c18662d6393c9bace8f7ac6"
+        },
+        "date": 1780739607664,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 600.64,
+            "range": "11.84 ms",
+            "unit": "ms",
+            "extra": "median: 600.64 ms\nmin: 562.14 ms\nmax: 632.06 ms\nruns: 50"
           }
         ]
       }
