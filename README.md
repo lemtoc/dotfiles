@@ -64,7 +64,7 @@ nix run .#build
 
 Zsh startup time is continuously tracked in CI. Every push to main runs 50 iterations with [hyperfine](https://github.com/sharkdp/hyperfine) and records the results.
 
-https://bench.mfyuu.dev
+https://bench.lemtoc.me
 
 > [!NOTE]
 > These numbers are from GitHub Actions runners and may not reflect local performance. Use the trend to catch regressions, not as absolute measurements.
