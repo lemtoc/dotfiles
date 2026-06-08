@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780882609345,
+  "lastUpdate": 1780885338738,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1583,6 +1583,37 @@ window.BENCHMARK_DATA = {
             "range": "14.25 ms",
             "unit": "ms",
             "extra": "median: 217.25 ms\nmin: 206.91 ms\nmax: 274.34 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "fe2ee36f3a0db6f0fecd942dc70db66b9f9dcc9b",
+          "message": "docs(readme): update benchmark URL to new domain\n\n- replace bench.mfyuu.dev with bench.lemtoc.me\n- reflect Cloudflare domain migration from mfyuu.dev to lemtoc.me",
+          "timestamp": "2026-06-08T11:13:48+09:00",
+          "tree_id": "ca20970e853538de5c8f724964774cc1006568c1",
+          "url": "https://github.com/lemtoc/dotfiles/commit/fe2ee36f3a0db6f0fecd942dc70db66b9f9dcc9b"
+        },
+        "date": 1780885337494,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 55.59,
+            "range": "5.73 ms",
+            "unit": "ms",
+            "extra": "median: 55.59 ms\nmin: 47.34 ms\nmax: 72.32 ms\nruns: 50"
           }
         ]
       }
