@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780885338738,
+  "lastUpdate": 1780970812549,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1614,6 +1614,37 @@ window.BENCHMARK_DATA = {
             "range": "5.73 ms",
             "unit": "ms",
             "extra": "median: 55.59 ms\nmin: 47.34 ms\nmax: 72.32 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "d3ac1d2754f654bb6c8263a21b919948c5dea419",
+          "message": "chore(nix): update home-manager input\n\n- bump home-manager to df391424 from nix-community\n- refresh lastModified and narHash for the new revision",
+          "timestamp": "2026-06-09T11:02:46+09:00",
+          "tree_id": "970eae6ef93901175efb3277dda4d34f906567e8",
+          "url": "https://github.com/lemtoc/dotfiles/commit/d3ac1d2754f654bb6c8263a21b919948c5dea419"
+        },
+        "date": 1780970811291,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 69.02,
+            "range": "18.34 ms",
+            "unit": "ms",
+            "extra": "median: 69.02 ms\nmin: 57.55 ms\nmax: 141.18 ms\nruns: 50"
           }
         ]
       }
