@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781059700980,
+  "lastUpdate": 1781105840209,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1707,6 +1707,37 @@ window.BENCHMARK_DATA = {
             "range": "2.79 ms",
             "unit": "ms",
             "extra": "median: 67.65 ms\nmin: 62.69 ms\nmax: 76.98 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "0bc6e20e8f77ecf79c0259fd121e55b4d597e96d",
+          "message": "fix(nix): use GitHub token for API requests\n\n- Configure mise to resolve GitHub credentials via gh auth token.\n- Pass gh's token to Nix update and switch operations through NIX_CONFIG.\n- Preserve existing GitHub token configuration and avoid storing token values.\n\nCo-authored-by: Codex <codex@openai.com>",
+          "timestamp": "2026-06-10T20:47:27+09:00",
+          "tree_id": "04d1306199d58299ece7ca2e04220a1414933b34",
+          "url": "https://github.com/lemtoc/dotfiles/commit/0bc6e20e8f77ecf79c0259fd121e55b4d597e96d"
+        },
+        "date": 1781105837329,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 635,
+            "range": "34.17 ms",
+            "unit": "ms",
+            "extra": "median: 635 ms\nmin: 605.84 ms\nmax: 781.99 ms\nruns: 50"
           }
         ]
       }
