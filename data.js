@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1780970812549,
+  "lastUpdate": 1781055354745,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1645,6 +1645,37 @@ window.BENCHMARK_DATA = {
             "range": "18.34 ms",
             "unit": "ms",
             "extra": "median: 69.02 ms\nmin: 57.55 ms\nmax: 141.18 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "f8687fcf2ffb4be3e9f4cf7c0b305f2e79ada53b",
+          "message": "chore(nix): update flake inputs\n\n- bump home-manager to bd42777\n- bump nixpkgs to 8c3cede",
+          "timestamp": "2026-06-10T10:31:59+09:00",
+          "tree_id": "fc20dec61a580869287035af95d2aa489141b24c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/f8687fcf2ffb4be3e9f4cf7c0b305f2e79ada53b"
+        },
+        "date": 1781055353209,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 72.95,
+            "range": "21.43 ms",
+            "unit": "ms",
+            "extra": "median: 72.95 ms\nmin: 59.94 ms\nmax: 168.13 ms\nruns: 50"
           }
         ]
       }
