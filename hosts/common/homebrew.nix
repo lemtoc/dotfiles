@@ -50,6 +50,7 @@
       "session-manager-plugin"
       "slack"
       "visual-studio-code"
+      "zed"
       "zoom"
       "manaflow-ai/cmux/cmux"
       "productdevbook/tap/portkiller"
