@@ -28,6 +28,11 @@ in
     enableFishIntegration = true;
     enableZshIntegration = false;
     globalConfig = {
+      settings = {
+        github = {
+          credential_command = "gh auth token";
+        };
+      };
       tools = {
         bun = "latest";
         node = "lts";

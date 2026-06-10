@@ -20,6 +20,26 @@
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
+      nixGithubTokenHelpers = ''
+        export_nix_github_token() {
+          local github_token
+          case "''${NIX_CONFIG-}" in
+            *"github.com="*)
+              return
+              ;;
+          esac
+
+          if ! github_token=$(${pkgs.gh}/bin/gh auth token 2>/dev/null) || [ -z "$github_token" ]; then
+            return
+          fi
+
+          if [ -n "''${NIX_CONFIG-}" ]; then
+            export NIX_CONFIG="$(printf '%s\n%s' "$NIX_CONFIG" "extra-access-tokens = github.com=$github_token")"
+          else
+            export NIX_CONFIG="extra-access-tokens = github.com=$github_token"
+          fi
+        }
+      '';
       mkDarwinConfig =
         { hostName, username }:
         nix-darwin.lib.darwinSystem {
@@ -52,6 +72,8 @@
           program = toString (
             pkgs.writeShellScript "flake-update" ''
               set -e
+              ${nixGithubTokenHelpers}
+              export_nix_github_token
               echo "Updating flake.lock..."
               nix flake update --flake "$HOME/.dotfiles"
               echo "Done! Run 'nix run .#switch' to apply changes."
@@ -67,7 +89,9 @@
               echo "Updating Homebrew..."
               /opt/homebrew/bin/brew update
               echo "Building and switching to darwin configuration for $HOST_NAME..."
-              sudo nix run nix-darwin -- switch --flake "$HOME/.dotfiles#$HOST_NAME"
+              ${nixGithubTokenHelpers}
+              export_nix_github_token
+              sudo -H --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake "$HOME/.dotfiles#$HOST_NAME"
               echo "Done!"
             ''
           );
