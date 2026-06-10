@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781055354745,
+  "lastUpdate": 1781059700980,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1676,6 +1676,37 @@ window.BENCHMARK_DATA = {
             "range": "21.43 ms",
             "unit": "ms",
             "extra": "median: 72.95 ms\nmin: 59.94 ms\nmax: 168.13 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "6a2e94b3a09e28b2f0050eab62ecf670542e63b3",
+          "message": "chore(nix): add zed editor to homebrew casks\n\n- install zed editor via homebrew cask\n- keep casks list in alphabetical order",
+          "timestamp": "2026-06-10T11:44:27+09:00",
+          "tree_id": "88a1eb30ee6c3c4f8b62c7032a99d3efa58488a6",
+          "url": "https://github.com/lemtoc/dotfiles/commit/6a2e94b3a09e28b2f0050eab62ecf670542e63b3"
+        },
+        "date": 1781059699286,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 67.65,
+            "range": "2.79 ms",
+            "unit": "ms",
+            "extra": "median: 67.65 ms\nmin: 62.69 ms\nmax: 76.98 ms\nruns: 50"
           }
         ]
       }
