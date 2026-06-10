@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781105840209,
+  "lastUpdate": 1781134147161,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1738,6 +1738,37 @@ window.BENCHMARK_DATA = {
             "range": "34.17 ms",
             "unit": "ms",
             "extra": "median: 635 ms\nmin: 605.84 ms\nmax: 781.99 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "3855697db3b4964ff479a4c8bbade9a12a254d6d",
+          "message": "chore(vscode): consolidate import settings and set fish profile\n\n- replace separate javascript/typescript updateImportsOnFileMove with the unified js/ts setting\n- set fish as the default macOS terminal profile\n- expand presentation-mode command arrays to multi-line formatting",
+          "timestamp": "2026-06-11T08:25:09+09:00",
+          "tree_id": "00e4a0afbcd5530c8a91273155b035c7b370cd7e",
+          "url": "https://github.com/lemtoc/dotfiles/commit/3855697db3b4964ff479a4c8bbade9a12a254d6d"
+        },
+        "date": 1781134145375,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 84.07,
+            "range": "30.77 ms",
+            "unit": "ms",
+            "extra": "median: 84.07 ms\nmin: 56.73 ms\nmax: 187.3 ms\nruns: 50"
           }
         ]
       }
