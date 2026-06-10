@@ -33,9 +33,11 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "githubPullRequests.createOnPublishBranch": "never",
   "githubPullRequests.pullBranch": "never",
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "presentation-mode.active": {
-    "commands": ["workbench.action.closeSidebar"],
+    "commands": [
+      "workbench.action.closeSidebar"
+    ],
     "editor.fontSize": 16,
     "editor.matchBrackets": "never",
     "editor.minimap.enabled": false,
@@ -68,7 +70,9 @@
     "workbench.statusBar.visible": false
   },
   "presentation-mode.inactive": {
-    "commands": ["workbench.action.focusSideBar"]
+    "commands": [
+      "workbench.action.focusSideBar"
+    ]
   },
   "scm.inputFontFamily": "editor",
   "security.workspace.trust.untrustedFiles": "open",
@@ -79,9 +83,9 @@
     "Q_NEW_SESSION": "1"
   },
   "terminal.integrated.fontSize": 13,
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
   "workbench.startupEditor": "none",
-  "workbench.tree.indent": 24
+  "workbench.tree.indent": 24,
+  "terminal.integrated.defaultProfile.osx": "fish"
 }
