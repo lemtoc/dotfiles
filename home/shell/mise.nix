@@ -37,6 +37,7 @@ in
         bun = "latest";
         node = "lts";
         pnpm = "latest";
+        pinact = "latest";
       };
     };
   };
