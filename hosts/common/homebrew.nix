@@ -1,4 +1,19 @@
-{ ... }:
+{ username, ... }:
+let
+  # Third-party taps. Homebrew 6.0+ refuses to load formulae/casks from these
+  # unless they are trusted, so this list is also the source of truth for the
+  # generated ~/.homebrew/trust.json below.
+  taps = [
+    "dimentium/autoraise"
+    "k1low/tap"
+    "kayac/tap"
+    "lemtoc/tap"
+    "manaflow-ai/cmux"
+    "productdevbook/tap"
+  ];
+  # Trusting a whole tap covers every formula and cask it provides.
+  trustJson = builtins.toJSON { trustedtaps = taps; };
+in
 {
   homebrew = {
     enable = true;
@@ -8,14 +23,7 @@
       upgrade = true;
       extraFlags = [ "--force-cleanup" ];
     };
-    taps = [
-      "dimentium/autoraise"
-      "k1low/tap"
-      "kayac/tap"
-      "lemtoc/tap"
-      "manaflow-ai/cmux"
-      "productdevbook/tap"
-    ];
+    inherit taps;
     brews = [
       "create-dmg"
       "k1low/tap/git-wt"
@@ -56,4 +64,15 @@
       "productdevbook/tap/portkiller"
     ];
   };
+
+  # Write the trust file before the homebrew bundle runs (preActivation precedes
+  # the homebrew activation script). The activation runs as root, so the file is
+  # chowned back to the primary user that actually invokes `brew`.
+  system.activationScripts.preActivation.text = ''
+    homebrewDir="/Users/${username}/.homebrew"
+    mkdir -p "$homebrewDir"
+    printf '%s\n' '${trustJson}' > "$homebrewDir/trust.json"
+    chown ${username} "$homebrewDir" "$homebrewDir/trust.json"
+    chmod 600 "$homebrewDir/trust.json"
+  '';
 }
