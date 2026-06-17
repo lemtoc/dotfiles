@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781134147161,
+  "lastUpdate": 1781659533294,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1769,6 +1769,37 @@ window.BENCHMARK_DATA = {
             "range": "30.77 ms",
             "unit": "ms",
             "extra": "median: 84.07 ms\nmin: 56.73 ms\nmax: 187.3 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "99c5744f2daa79f6667b31784e92b302158c9f2c",
+          "message": "chore(claude): drop pinned model from skill definitions\n\n- remove the model field from issue-start, parallel-review and review-merge\n- let these skills inherit the session model instead of pinning older opus builds\n\nCo-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>",
+          "timestamp": "2026-06-17T10:21:14+09:00",
+          "tree_id": "08f960c884f5a4baadcfe70b8f2c420f1b314052",
+          "url": "https://github.com/lemtoc/dotfiles/commit/99c5744f2daa79f6667b31784e92b302158c9f2c"
+        },
+        "date": 1781659531263,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 656.31,
+            "range": "29.28 ms",
+            "unit": "ms",
+            "extra": "median: 656.31 ms\nmin: 626.57 ms\nmax: 770.99 ms\nruns: 50"
           }
         ]
       }
