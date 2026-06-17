@@ -26,6 +26,7 @@ in
     inherit taps;
     brews = [
       "create-dmg"
+      "tree"
       "k1low/tap/git-wt"
       "k1low/tap/mo"
       "kayac/tap/ecspresso"
