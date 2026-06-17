@@ -36,7 +36,7 @@ in
       tools = {
         bun = "latest";
         node = "lts";
-        pnpm = "latest";
+        pnpm = "11.5.0";
         pinact = "latest";
       };
     };
