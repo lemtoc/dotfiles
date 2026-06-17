@@ -3,7 +3,6 @@ name: issue-start
 allowed-tools: Bash(gh issue view:*), Bash(gh issue list:*), Bash(gh pr view:*), Bash(gh pr list:*), Bash(gh api:*), Bash(git log:*), Bash(git branch:*), Bash(git status:*), Bash(git diff:*), Bash(git rev-parse:*), Read(*), Grep(*), Glob(*), AskUserQuestion
 argument-hint: [issue number | issue URL]
 description: Kick off work on a GitHub issue — read the issue and related code, then align understanding with the user via one-question-at-a-time clarifications. Does NOT write code.
-model: claude-opus-4-7
 ---
 
 ## Context

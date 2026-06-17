@@ -3,7 +3,6 @@ name: parallel-review
 allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git status:*), Bash(git branch:*), Bash(git rev-parse:*), Bash(gh pr:*), Bash(gh api:*), Bash(bunx ulid), Bash(mkdir:*), Agent, Write(*), Read(*)
 argument-hint: [PR number | commit hash | range | "staged"]
 description: Four agents will conduct parallel reviews, which will then be merged.
-model: claude-opus-4-6
 ---
 
 ## Context

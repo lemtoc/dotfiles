@@ -3,7 +3,6 @@ name: review-merge
 allowed-tools: Bash(bunx ulid), Bash(mkdir:*), Bash(ls:*), Bash(git rev-parse:*), Write(*), Read(*), Glob(*)
 argument-hint: [prefix matching files in .review/]
 description: Merge multiple review files in .review/ into a consolidated summary and review comments
-model: claude-opus-4-6
 ---
 
 ## Your Task
