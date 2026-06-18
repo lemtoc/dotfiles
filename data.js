@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781659533294,
+  "lastUpdate": 1781744362481,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1800,6 +1800,37 @@ window.BENCHMARK_DATA = {
             "range": "29.28 ms",
             "unit": "ms",
             "extra": "median: 656.31 ms\nmin: 626.57 ms\nmax: 770.99 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "3aaeb1a1339e3a86c77ac1bbbffd699df3fa48d9",
+          "message": "feat(dpca-ide): add EC2 access tooling via SSO and SSM\n\n- add dpca-ide SSO profile with the DPCa-IDE-User role in aws.nix\n- generalize mkSsoProfile into mkSsoProfileWithRole to allow custom roles\n- add dpca-ide ssh host using SSM start-session as ProxyCommand\n- include git-ignored ~/.ssh/config.d/dpca-ide.conf to keep instance id private\n- add mise tasks for aws login/whoami and ec2 start/stop/ssh/connect/status\n- read the instance id from ~/.config/dpca/instance-id to avoid hardcoding it\n- unpin pnpm back to latest in mise.nix",
+          "timestamp": "2026-06-18T09:55:03+09:00",
+          "tree_id": "e0228924e36591b1803f14e4d6bad863fbf47831",
+          "url": "https://github.com/lemtoc/dotfiles/commit/3aaeb1a1339e3a86c77ac1bbbffd699df3fa48d9"
+        },
+        "date": 1781744361447,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 289.17,
+            "range": "11.51 ms",
+            "unit": "ms",
+            "extra": "median: 289.17 ms\nmin: 276.24 ms\nmax: 315.47 ms\nruns: 50"
           }
         ]
       }
