@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781744611098,
+  "lastUpdate": 1781748108604,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1862,6 +1862,37 @@ window.BENCHMARK_DATA = {
             "range": "42.33 ms",
             "unit": "ms",
             "extra": "median: 757.72 ms\nmin: 673.53 ms\nmax: 851.55 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "0c8d65e6044b4d94f3d5e25d6b190bcc8ee765c3",
+          "message": "chore(nix): add actionlint to packages\n\n- manage actionlint declaratively via home.packages\n- enables linting GitHub Actions workflows and composite actions locally",
+          "timestamp": "2026-06-18T10:58:08+09:00",
+          "tree_id": "ab323c36bc04cea7c9b641c6c2998ebe040561b6",
+          "url": "https://github.com/lemtoc/dotfiles/commit/0c8d65e6044b4d94f3d5e25d6b190bcc8ee765c3"
+        },
+        "date": 1781748106682,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 55.24,
+            "range": "10.68 ms",
+            "unit": "ms",
+            "extra": "median: 55.24 ms\nmin: 49.54 ms\nmax: 102.81 ms\nruns: 50"
           }
         ]
       }
