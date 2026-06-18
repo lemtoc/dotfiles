@@ -13,6 +13,7 @@
     deno
     uv
     # CLI tools
+    actionlint
     awscli2
     bat
     fd
