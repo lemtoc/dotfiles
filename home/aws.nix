@@ -1,13 +1,15 @@
 { ... }:
 let
-  mkSsoProfile = name: accountId: ''
+  mkSsoProfileWithRole = roleName: name: accountId: ''
     [profile ${name}]
     sso_session = sso
     sso_account_id = ${accountId}
-    sso_role_name = AWSAdministratorAccess
+    sso_role_name = ${roleName}
     region = ap-northeast-1
     output = json
   '';
+
+  mkSsoProfile = mkSsoProfileWithRole "AWSAdministratorAccess";
 
   ssoSession = ''
     [sso-session sso]
@@ -26,6 +28,7 @@ in
     (mkSsoProfile "toda" "434274117771")
     (mkSsoProfile "niyarepo" "649213662808")
     (mkSsoProfile "booklift" "537452063997")
+    (mkSsoProfileWithRole "DPCa-IDE-User" "dpca-ide" "474212321352")
     ''
       [profile amplify-toda]
       credential_process = aws configure export-credentials --profile toda
