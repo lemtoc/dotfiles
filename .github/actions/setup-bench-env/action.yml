@@ -50,3 +50,19 @@ runs:
         # Add home-manager binaries to PATH
         export PATH="$HM_GEN/home-path/bin:$PATH"
         echo "$HM_GEN/home-path/bin" >> "$GITHUB_PATH"
+
+    # Warm the mise cache BEFORE benchmarking so we measure realistic
+    # warm-start behaviour. Otherwise `mise hook-env` (run from fish's
+    # activation hook on every startup) resolves the dynamic `latest`/`lts`
+    # tool versions over the GitHub API inside the measured region, adding
+    # 100s of ms of nondeterministic noise that trips the 150% alert.
+    # `mise install` lays down the tools so hook-env never touches the
+    # network; if install fails we still warm the version cache via `ls`.
+    # This runs outside the hyperfine measurement, so its latency is free.
+    - name: Warm mise cache
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        mise install || mise ls --current
