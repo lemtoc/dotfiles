@@ -1,17 +1,18 @@
 { ... }:
 let
-  mkSsoProfileWithRole = roleName: name: accountId: ''
+  mkSsoProfileWithRole = sessionName: roleName: name: accountId: ''
     [profile ${name}]
-    sso_session = sso
+    sso_session = ${sessionName}
     sso_account_id = ${accountId}
     sso_role_name = ${roleName}
     region = ap-northeast-1
     output = json
   '';
 
-  mkReadOnly = name: mkSsoProfileWithRole "AWSReadOnlyAccess" "${name}/readOnly";
-  mkPowerUser = name: mkSsoProfileWithRole "AWSPowerUserAccess" "${name}/powerUser";
-  mkAdmin = name: mkSsoProfileWithRole "AWSAdministratorAccess" "${name}/admin";
+  # admin ロールは admin セッション、それ以外は default セッションに紐づける
+  mkReadOnly = name: mkSsoProfileWithRole "default" "AWSReadOnlyAccess" "${name}/readOnly";
+  mkPowerUser = name: mkSsoProfileWithRole "default" "AWSPowerUserAccess" "${name}/powerUser";
+  mkAdmin = name: mkSsoProfileWithRole "admin" "AWSAdministratorAccess" "${name}/admin";
 
   # 通常アカウントは readOnly → admin の順で 2 つの profile を生成する
   mkAccount = name: accountId: builtins.concatStringsSep "" [
@@ -19,8 +20,9 @@ let
     (mkAdmin name accountId)
   ];
 
-  ssoSession = ''
-    [sso-session sso]
+  # admin は別ログインにしたいので sso-session を default と admin に分ける
+  mkSsoSession = name: ''
+    [sso-session ${name}]
     sso_start_url = https://toda.awsapps.com/start
     sso_region = ap-northeast-1
     sso_registration_scopes = sso:account:access
@@ -28,7 +30,8 @@ let
 in
 {
   home.file.".aws/config".text = builtins.concatStringsSep "" [
-    ssoSession
+    (mkSsoSession "default")
+    (mkSsoSession "admin")
     (mkAccount "sandbox" "962800862825")
     (mkAccount "tip-extra" "341238550926")
     (mkAccount "booklift" "537452063997")
@@ -40,7 +43,7 @@ in
     (mkAdmin "niyarepo" "649213662808")
     (mkAccount "toda" "434274117771")
     # dpca-ide は専用ロールのみで readOnly は追加しない
-    (mkSsoProfileWithRole "DPCa-IDE-User" "dpca-ide" "474212321352")
+    (mkSsoProfileWithRole "default" "DPCa-IDE-User" "dpca-ide" "474212321352")
     ''
       [profile amplify-toda]
       credential_process = aws configure export-credentials --profile toda/readOnly
