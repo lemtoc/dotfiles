@@ -38,6 +38,7 @@ in
         node = "lts";
         pnpm = "latest";
         pinact = "latest";
+        "github:lemtoc/awsctx" = "latest";
       };
       # EC2 (dpca-ide) 操作タスク。
       # インスタンス ID は PUBLIC リポジトリに載せたくないので git 管理外の

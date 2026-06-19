@@ -52,6 +52,8 @@
 
       alias cd='z'
       alias cdi='zi'
+
+      awsctx activate fish --aws-wrapper | source
     '';
 
     shellAliases = {
