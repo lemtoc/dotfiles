@@ -44,6 +44,7 @@
       "**/.pnpm-store/"
       "**/.envrc"
       "**/.playwright-mcp/"
+      "**/mise.local.toml"
     ];
   };
 }
