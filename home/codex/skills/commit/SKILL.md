@@ -28,11 +28,19 @@ description: Create a git commit following the Conventional Commits specificatio
 - Do not insert blank lines between bullet points.
 - Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
 - Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
-- Add this trailer at the end of every commit message:
+- Add this trailer at the end of every commit message, including the model you are currently running as:
 
 ```text
-Co-authored-by: Codex <codex@openai.com>
+Co-authored-by: Codex <MODEL> <codex@openai.com>
 ```
+
+- Replace `<MODEL>` with your current model name, e.g. `GPT-5.5`, `GPT-5.4`, `GPT-5.4-Mini`, `GPT-5.3-Codex-Spark`. Full example:
+
+```text
+Co-authored-by: Codex GPT-5.5 <codex@openai.com>
+```
+
+- If you cannot determine your model name, fall back to the plain trailer `Co-authored-by: Codex <codex@openai.com>`.
 
 ## Command Notes
 
