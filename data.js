@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781748108604,
+  "lastUpdate": 1781834906389,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1893,6 +1893,37 @@ window.BENCHMARK_DATA = {
             "range": "10.68 ms",
             "unit": "ms",
             "extra": "median: 55.24 ms\nmin: 49.54 ms\nmax: 102.81 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "9b06fff0a8a3022e2e717182f6d6f9f5c1c8275a",
+          "message": "feat(aws): switch SSO profiles to awsctx with per-role granularity\n\n- add `github:lemtoc/awsctx` as a mise tool and source its fish wrapper\n- generate readOnly and admin profiles per account via `mkAccount`\n- add a powerUser profile for niyarepo (readOnly -> powerUser -> admin)\n- keep dpca-ide on its dedicated role without a readOnly profile\n- point amplify-toda credential_process at the toda/readOnly profile",
+          "timestamp": "2026-06-19T10:58:11+09:00",
+          "tree_id": "c1b231d55eba49e9db421aae733587410de5cae8",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9b06fff0a8a3022e2e717182f6d6f9f5c1c8275a"
+        },
+        "date": 1781834904462,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 76.99,
+            "range": "20.52 ms",
+            "unit": "ms",
+            "extra": "median: 76.99 ms\nmin: 63.47 ms\nmax: 133.4 ms\nruns: 50"
           }
         ]
       }
