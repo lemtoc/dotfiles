@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781834906389,
+  "lastUpdate": 1781842002539,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1924,6 +1924,37 @@ window.BENCHMARK_DATA = {
             "range": "20.52 ms",
             "unit": "ms",
             "extra": "median: 76.99 ms\nmin: 63.47 ms\nmax: 133.4 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "12877b9a1a7d0aee3a324774c398d944ef9e532f",
+          "message": "feat(aws): split admin SSO profiles into a dedicated session\n\n- thread a `sessionName` arg through `mkSsoProfileWithRole`\n- generalize the fixed `ssoSession` into a reusable `mkSsoSession`\n- emit both `default` and `admin` sso-session blocks in the config\n- bind admin profiles to the `admin` session, others to `default`\n- require a separate login when assuming administrator access\n\nCo-authored-by: Claude Opus 4.8 (1M context) <noreply@anthropic.com>",
+          "timestamp": "2026-06-19T13:03:22+09:00",
+          "tree_id": "6118a62f9de33e9a0e53d09b357cb0cf0db44003",
+          "url": "https://github.com/lemtoc/dotfiles/commit/12877b9a1a7d0aee3a324774c398d944ef9e532f"
+        },
+        "date": 1781842000651,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 66.65,
+            "range": "3.8 ms",
+            "unit": "ms",
+            "extra": "median: 66.65 ms\nmin: 65.16 ms\nmax: 87.57 ms\nruns: 50"
           }
         ]
       }
