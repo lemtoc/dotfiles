@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781842002539,
+  "lastUpdate": 1781971925744,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1955,6 +1955,37 @@ window.BENCHMARK_DATA = {
             "range": "3.8 ms",
             "unit": "ms",
             "extra": "median: 66.65 ms\nmin: 65.16 ms\nmax: 87.57 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "c1b756255049857859458cf431186d336b77dede",
+          "message": "chore(nix): update home-manager flake input\n\n- bump home-manager to revision 37f21df\n- pull in latest upstream module fixes from nix-community",
+          "timestamp": "2026-06-21T01:08:05+09:00",
+          "tree_id": "b583e1147bc13a546e3c2d2b51af26b229368e59",
+          "url": "https://github.com/lemtoc/dotfiles/commit/c1b756255049857859458cf431186d336b77dede"
+        },
+        "date": 1781971924049,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 91.62,
+            "range": "19.8 ms",
+            "unit": "ms",
+            "extra": "median: 91.62 ms\nmin: 83.67 ms\nmax: 172.31 ms\nruns: 50"
           }
         ]
       }
