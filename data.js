@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781971925744,
+  "lastUpdate": 1782086910634,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1986,6 +1986,37 @@ window.BENCHMARK_DATA = {
             "range": "19.8 ms",
             "unit": "ms",
             "extra": "median: 91.62 ms\nmin: 83.67 ms\nmax: 172.31 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "9e3ff9d8c299612bb107f5d8ce25b4a42630d936",
+          "message": "chore(nix): bump home-manager flake input\n\n- Update home-manager from 37f21dfa5d27e71b75bacd9418b156f9265e312e to d1ccd0721ec599866622665f3651e19e6e2d4c6a.\n- Refresh the locked nar hash and timestamp for the new input revision.\n\nCo-authored-by: Codex GPT-5 <codex@openai.com>",
+          "timestamp": "2026-06-22T09:04:34+09:00",
+          "tree_id": "932ced16bee55dea496ae95c0c59d41ae158a797",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9e3ff9d8c299612bb107f5d8ce25b4a42630d936"
+        },
+        "date": 1782086909365,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 94.78,
+            "range": "21.58 ms",
+            "unit": "ms",
+            "extra": "median: 94.78 ms\nmin: 79.38 ms\nmax: 160.2 ms\nruns: 50"
           }
         ]
       }
