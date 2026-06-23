@@ -44,6 +44,7 @@
       abbr --add warp 'open -a Warp'
       abbr --add ghostty 'open -a Ghostty'
       abbr --add --command git sw switch
+      abbr --add --command git ci commit
       abbr --add --command git push-f 'push --force-with-lease'
       abbr --add --command git push-u 'push -u origin HEAD'
       abbr --add --command git delete 'branch | fzf | xargs git branch -D'
