@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782197239028,
+  "lastUpdate": 1782197575492,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2048,6 +2048,37 @@ window.BENCHMARK_DATA = {
             "range": "12.47 ms",
             "unit": "ms",
             "extra": "median: 107.67 ms\nmin: 89.3 ms\nmax: 135.74 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "5b7e5e885b672b1c14c5fb2d4f8daffd4f836e71",
+          "message": "feat(fish): add git commit abbreviation\n\n- Add a git ci abbreviation that expands to git commit in Fish shell setup.\n\nCo-authored-by: Codex GPT-5 <codex@openai.com>",
+          "timestamp": "2026-06-23T15:48:14+09:00",
+          "tree_id": "edd5b88b40616bfb54bee15d3e221e549633891a",
+          "url": "https://github.com/lemtoc/dotfiles/commit/5b7e5e885b672b1c14c5fb2d4f8daffd4f836e71"
+        },
+        "date": 1782197574172,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 86.02,
+            "range": "12.71 ms",
+            "unit": "ms",
+            "extra": "median: 86.02 ms\nmin: 64.13 ms\nmax: 118.15 ms\nruns: 50"
           }
         ]
       }
