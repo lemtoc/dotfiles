@@ -40,6 +40,8 @@
       abbr --add move 'git switch'
       abbr --add mdv 'gh markdown-preview'
       abbr --add cc claude
+      abbr --add cci codex:commit
+      abbr --add ccpr codex:create-pr
       abbr --add cs cursor
       abbr --add warp 'open -a Warp'
       abbr --add ghostty 'open -a Ghostty'
@@ -66,6 +68,23 @@
     };
 
     functions = {
+      codex-exec-fast = ''
+        codex exec \
+          -m gpt-5.4-mini \
+          -c model_reasoning_effort='"none"' \
+          -c web_search='"disabled"' \
+          --disable image_generation \
+          $argv
+      '';
+
+      "codex:commit" = ''
+        codex-exec-fast "Use the `commit` skill."
+      '';
+
+      "codex:create-pr" = ''
+        codex-exec-fast "Use the `create-pr` skill."
+      '';
+
       __prompt_bump_tick = {
         onEvent = "fish_preexec";
         body = ''
