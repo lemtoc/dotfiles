@@ -42,6 +42,7 @@ in
     (mkPowerUser "niyarepo" "649213662808")
     (mkAdmin "niyarepo" "649213662808")
     (mkAccount "toda" "434274117771")
+    (mkAccount "safety" "577881328254")
     # dpca-ide は専用ロールのみで readOnly は追加しない
     (mkSsoProfileWithRole "default" "DPCa-IDE-User" "dpca-ide" "474212321352")
     ''
