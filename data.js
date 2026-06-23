@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782086910634,
+  "lastUpdate": 1782197239028,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2017,6 +2017,37 @@ window.BENCHMARK_DATA = {
             "range": "21.58 ms",
             "unit": "ms",
             "extra": "median: 94.78 ms\nmin: 79.38 ms\nmax: 160.2 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "bb8703ad9d344f5babd2b0c94e3f17e52c42c4cd",
+          "message": "chore(nix): update home-manager flake input",
+          "timestamp": "2026-06-23T15:43:31+09:00",
+          "tree_id": "cd9f0a8068eae70896532227a30a3dcf7c6e198c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/bb8703ad9d344f5babd2b0c94e3f17e52c42c4cd"
+        },
+        "date": 1782197236917,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 107.67,
+            "range": "12.47 ms",
+            "unit": "ms",
+            "extra": "median: 107.67 ms\nmin: 89.3 ms\nmax: 135.74 ms\nruns: 50"
           }
         ]
       }
