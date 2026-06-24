@@ -71,7 +71,7 @@
       codex-exec-fast = ''
         codex exec \
           -m gpt-5.4-mini \
-          -c model_reasoning_effort='"none"' \
+          -c model_reasoning_effort='"low"' \
           -c web_search='"disabled"' \
           --disable image_generation \
           $argv
