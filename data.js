@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782197575492,
+  "lastUpdate": 1782260114393,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2079,6 +2079,37 @@ window.BENCHMARK_DATA = {
             "range": "12.71 ms",
             "unit": "ms",
             "extra": "median: 86.02 ms\nmin: 64.13 ms\nmax: 118.15 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "f59840c16d19334f2d373439cca0f05a7bda68d5",
+          "message": "fix(fish): raise codex helper reasoning effort\n\n- Set codex-exec-fast to low reasoning effort so commit/create-pr helpers better follow skill workflows.\n- Keep web_search and image_generation disabled to avoid unnecessary tools while preserving lightweight execution.\n- Background: none was faster but missed commit skill requirements such as commit body/trailer and final status verification.\n\nCo-authored-by: Codex GPT-5 <codex@openai.com>",
+          "timestamp": "2026-06-24T09:07:33+09:00",
+          "tree_id": "575c4ab37d191f0cd4a9b929f7ac4fab2a23f24c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/f59840c16d19334f2d373439cca0f05a7bda68d5"
+        },
+        "date": 1782260113027,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 77.66,
+            "range": "7.88 ms",
+            "unit": "ms",
+            "extra": "median: 77.66 ms\nmin: 69.81 ms\nmax: 121.74 ms\nruns: 50"
           }
         ]
       }
