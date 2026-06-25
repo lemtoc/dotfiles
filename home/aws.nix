@@ -26,6 +26,7 @@ let
     sso_start_url = https://toda.awsapps.com/start
     sso_region = ap-northeast-1
     sso_registration_scopes = sso:account:access
+    sso_redirect_port = 34535
   '';
 in
 {

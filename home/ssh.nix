@@ -20,6 +20,7 @@
         # HostName(インスタンスID)は Include 先(~/.ssh/config.d/dpca-ide.conf)で定義する
         IdentityFile = "~/.ssh/dpca-ide-keypair-suzuki.pem";
         User = "ec2-user";
+        LocalForward = "34535 127.0.0.1:34535";
         ProxyCommand = "aws ssm start-session --profile dpca-ide --region ap-northeast-1 --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p";
       };
 
