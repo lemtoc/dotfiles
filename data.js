@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782260114393,
+  "lastUpdate": 1782348368204,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2110,6 +2110,37 @@ window.BENCHMARK_DATA = {
             "range": "7.88 ms",
             "unit": "ms",
             "extra": "median: 77.66 ms\nmin: 69.81 ms\nmax: 121.74 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "4da38f13a7e1612c26e967acc7f6c5f4cfc5cc48",
+          "message": "chore(nix): update flake input pin\n\n- Refresh the locked nixpkgs revision in flake.lock.\n- Keep the rest of the flake inputs unchanged.\n\nCo-authored-by: Codex <codex@openai.com>",
+          "timestamp": "2026-06-25T09:41:52+09:00",
+          "tree_id": "7d08f2a9e44730c2c502de27610bf41b71872f53",
+          "url": "https://github.com/lemtoc/dotfiles/commit/4da38f13a7e1612c26e967acc7f6c5f4cfc5cc48"
+        },
+        "date": 1782348366758,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 85.91,
+            "range": "23 ms",
+            "unit": "ms",
+            "extra": "median: 85.91 ms\nmin: 66.66 ms\nmax: 152.04 ms\nruns: 50"
           }
         ]
       }
