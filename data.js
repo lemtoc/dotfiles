@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782348368204,
+  "lastUpdate": 1782372957542,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2141,6 +2141,37 @@ window.BENCHMARK_DATA = {
             "range": "23 ms",
             "unit": "ms",
             "extra": "median: 85.91 ms\nmin: 66.66 ms\nmax: 152.04 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "0ae966d445e11548112fabf6726e1e4692134169",
+          "message": "feat(aws): align SSO redirect and SSH forwarding\n\n- add a fixed AWS CLI SSO redirect port to match the local SSH tunnel\n- forward the same localhost port through the dpca-ide SSH config\n- prepend the local aws-cli virtualenv bin directory on M4Pro\n\nCo-authored-by: Codex GPT-5.5 <codex@openai.com>",
+          "timestamp": "2026-06-25T16:31:45+09:00",
+          "tree_id": "d4a33f73e4bc3113fe1f51fc76da75cc5d6b12c3",
+          "url": "https://github.com/lemtoc/dotfiles/commit/0ae966d445e11548112fabf6726e1e4692134169"
+        },
+        "date": 1782372956166,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 87.3,
+            "range": "8.06 ms",
+            "unit": "ms",
+            "extra": "median: 87.3 ms\nmin: 81.24 ms\nmax: 118.11 ms\nruns: 50"
           }
         ]
       }
