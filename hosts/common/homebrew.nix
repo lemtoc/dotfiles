@@ -33,7 +33,7 @@ in
       "lemtoc/tap/muu"
     ];
     casks = [
-      "1password"
+      "1password@beta"
       "adobe-creative-cloud"
       "alt-tab"
       "arc"
