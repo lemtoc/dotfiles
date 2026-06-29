@@ -15,10 +15,12 @@ let
   mkAdmin = name: mkSsoProfileWithRole "admin" "AWSAdministratorAccess" "${name}/admin";
 
   # 通常アカウントは readOnly → admin の順で 2 つの profile を生成する
-  mkAccount = name: accountId: builtins.concatStringsSep "" [
-    (mkReadOnly name accountId)
-    (mkAdmin name accountId)
-  ];
+  mkAccount =
+    name: accountId:
+    builtins.concatStringsSep "" [
+      (mkReadOnly name accountId)
+      (mkAdmin name accountId)
+    ];
 
   # admin は別ログインにしたいので sso-session を default と admin に分ける
   mkSsoSession = name: ''

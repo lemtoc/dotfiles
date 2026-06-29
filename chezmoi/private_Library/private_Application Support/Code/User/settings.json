@@ -25,8 +25,8 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": false,
-    "plaintext": false,
     "markdown": false,
+    "plaintext": false,
     "scminput": false,
     "typescriptreact": false
   },
@@ -79,6 +79,7 @@
   "tailwind-fold.autoFold": false,
   "tailwind-fold.unfoldedTextOpacity": 0.7,
   "terminal.external.osxExec": "Warp.app",
+  "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.env.osx": {
     "Q_NEW_SESSION": "1"
   },
@@ -86,6 +87,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
   "workbench.startupEditor": "none",
-  "workbench.tree.indent": 24,
-  "terminal.integrated.defaultProfile.osx": "fish"
+  "workbench.tree.indent": 24
 }

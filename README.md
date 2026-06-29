@@ -23,14 +23,29 @@ macOS dotfiles managed with Nix flakes, nix-darwin, and home-manager.
    git clone https://github.com/lemtoc/dotfiles.git ~/.dotfiles
    ```
 
-4. Apply the nix-darwin configuration [^2] [^3]:
+4. Configure chezmoi to use the source directory inside this repository:
+
+   ```bash
+   mkdir -p ~/.config/chezmoi
+   printf 'sourceDir = "%s"\n' "$HOME/.dotfiles/chezmoi" > ~/.config/chezmoi/chezmoi.toml
+   ```
+
+   This local config is intentionally not tracked by this repository.
+
+5. Apply the nix-darwin configuration [^2] [^3]:
 
    ```bash
    # Replace <hostname> with your machine name (M4Pro, M4Air, etc.)
    sudo nix run nix-darwin -- switch --flake ~/.dotfiles#<hostname>
    ```
 
-5. Reload your shell:
+6. Apply mutable dotfiles managed by chezmoi:
+
+   ```bash
+   chezmoi apply
+   ```
+
+7. Reload your shell:
 
    ```bash
    exec fish
@@ -55,6 +70,12 @@ nix run .#switch
 
 # Dry run (build without applying)
 nix run .#build
+
+# Inspect mutable dotfiles managed by chezmoi
+chezmoi diff
+
+# Apply mutable dotfiles managed by chezmoi
+chezmoi apply
 ```
 
 > [!NOTE]

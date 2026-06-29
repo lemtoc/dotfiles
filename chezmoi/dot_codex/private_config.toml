@@ -1,0 +1,293 @@
+sandbox_mode = "workspace-write"
+
+notify = [
+  "/Users/t1190078/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+  "turn-ended",
+]
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+service_tier = "priority"
+approval_policy = "on-request"
+approvals_reviewer = "guardian_subagent"
+personality = "pragmatic"
+commit_attribution = "Codex GPT-5.5 <noreply@openai.com>"
+
+[shell_environment_policy]
+experimental_use_profile = true
+set = { PATH = "/Users/t1190078/.local/share/mise/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/t1190078/bin:/Users/t1190078/.local/bin:/Users/t1190078/.nix-profile/bin:/etc/profiles/per-user/t1190078/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Codex.app/Contents/Resources" }
+
+[tools]
+web_search = true
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest", "--vision"]
+
+[mcp_servers.serena]
+command = "uvx"
+args = [
+  "--from",
+  "git+https://github.com/oraios/serena",
+  "serena",
+  "start-mcp-server",
+  "--context",
+  "codex",
+]
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/t1190078/.codex"
+CODEX_HOME = "/Users/t1190078/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "a05cdd282c2717f076e11bc0e94b7b20e1fc4759dbe28440bd1c734953606a56"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.623.61825"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-06-29T07:52:51Z"
+source_type = "local"
+source = "/Users/t1190078/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-06-21T03:22:11Z"
+source_type = "local"
+source = "/Users/t1190078/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[features]
+js_repl = false
+codex_git_commit = true
+
+[desktop]
+usePointerCursors = true
+reduced-motion-preference = "on"
+preventSleepWhileRunning = true
+hotkey-window-projectless-default-enabled = true
+dictationDictionary = ["建土"]
+git-pull-request-merge-method = "squash"
+git-show-sidebar-pr-icons = true
+git-commit-instructions = """
+## Commit Workflow
+
+1. Inspect the repository state before committing:
+   - `git status --short`
+   - `git diff --staged`
+   - `git log -n 10 --pretty=format:%s`
+   - `git branch --show-current`
+2. Commit only staged changes. Do not run `git add` unless the user explicitly asks.
+3. If unstaged changes exist, leave them untouched and mention them after the commit.
+4. Check staged changes for secrets, broken partial edits, or obviously wrong files. If found, stop and ask the user.
+5. Choose the commit message language from recent commits unless the user specifies one.
+6. Run `git commit` and verify with `git status --short`.
+
+## Commit Message
+
+- Use Conventional Commits: `<type>(scope): <description>`.
+- Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`.
+- Keep the summary imperative and under about 72 characters.
+- Use the same language as the majority of recent commits unless the user specifies one.
+- For Japanese commit messages, the scope may also be Japanese, e.g. `feat(認証): OAuth2 ログインを追加`.
+- Always include a body.
+- Write the body as bullet points.
+- Do not insert blank lines between bullet points.
+- Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
+- Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
+- Before `git commit`, determine the configured `commit_attribution` value from the active Codex config. When it is non-empty, append `Co-authored-by: <commit_attribution>` as the final trailer.
+
+## Command Notes
+
+- Prefer a single commit message body string or a message file so bullet points stay contiguous.
+- If using heredoc, use single-quoted heredoc (`<<'EOF'`) when the message contains backticks.
+- Do not push.
+"""
+git-pr-instructions = """
+## Pull Request Workflow
+
+1. Inspect the repository state before creating a PR:
+   - `git status -sb`
+   - `git branch -vv`
+   - `gh repo view --json defaultBranchRef --jq '.defaultBranchRef.name'`
+   - `gh repo view --json pullRequestTemplates --jq '.pullRequestTemplates[0].body' 2>/dev/null || echo ""`
+   - `git log -n 10 --pretty=format:%s`
+2. Use the default branch from `gh repo view`.
+3. Review the PR contents:
+   - `git diff origin/<default_branch>..HEAD --stat`
+   - `git log origin/<default_branch>..HEAD --oneline`
+4. Ensure all intended changes are committed before creating the PR.
+5. If there are unstaged or uncommitted changes, stop and ask the user unless they explicitly said a draft/WIP PR is acceptable with local changes left out.
+6. Push the current branch with `git push -u origin HEAD`.
+7. Create the PR with `gh pr create`.
+8. After creating the PR, report the PR URL and a short summary.
+9. Do not merge the PR unless explicitly instructed.
+
+## Pull Request Content
+
+- Use the repository PR template if one exists.
+- If no repository template exists, use the default template below.
+- Use the same language as the majority of recent commits unless the user specifies one.
+- Make the title concise and descriptive, about 72 characters or less.
+- Use a Conventional Commit-style title when it fits: `<type>(scope): <description>`.
+- For Japanese PR titles, the scope may also be Japanese, e.g. `feat(認証): OAuth2 ログイン機能を追加`.
+- Treat user-provided arguments as additional context for the title and body.
+- Keep bullet lists compact. Do not insert blank lines between bullet points.
+- Write sections equivalent to Changes (e.g. `変更内容`, `変更したこと`) and Verification (e.g. `確認したこと`) at a level a PM can read and understand.
+- Do not overload PR readers with excessive detail; keep these sections short and high-signal.
+- In verification/checklist sections, do not list CI-only checks such as lint, typecheck, or tests unless the reviewer must manually verify them.
+- Keep verification items unchecked and phrased as reviewer acceptance criteria.
+- Include implementation notes only when they help reviewers understand the approach or trade-offs.
+- Include this comment at the top of the PR body unless the user asks otherwise:
+
+```markdown
+<!-- Instructions for GitHub Copilot Code Review: Please provide your comments and review this pull request in Japanese. -->
+```
+
+## Default PR Template
+
+```markdown
+<!-- Instructions for GitHub Copilot Code Review: Please provide your comments and review this pull request in Japanese. -->
+
+## Issue
+
+N/A - [brief description of the purpose]
+
+## Changes
+
+- [Describe the main changes made]
+
+## Verification
+
+- [ ] [Describe the expected behavior or manual verification step]
+
+## Additional Notes
+```
+
+## Command Notes
+
+- Prefer a single PR body file or single-quoted heredoc (`<<'EOF'`) so Markdown renders correctly and bullet lists stay contiguous.
+- Do not force push unless absolutely necessary.
+- Do not push unrelated local changes."""
+codeFontSize = 14
+appearanceTheme = "system"
+composerEnterBehavior = "enter"
+git-branch-prefix = "e.g. feat/,fix/,docs/,refactor/,chore/"
+keepRemoteControlAwakeWhilePluggedIn = true
+show-context-window-usage = true
+dock-icon-preference = "app-default"
+followUpQueueMode = "queue"
+
+[desktop.appearanceLightChromeTheme]
+accent = "#339cff"
+contrast = 60
+ink = "#1a1c1f"
+opaqueWindows = false
+surface = "#ffffff"
+
+[desktop.appearanceLightChromeTheme.fonts]
+ui = "Inter"
+code = "UDEV Gothic NFLG"
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#00a240"
+diffRemoved = "#ba2623"
+skill = "#924ff7"
+
+[desktop.appearanceDarkChromeTheme]
+accent = "#339cff"
+contrast = 60
+ink = "#ffffff"
+opaqueWindows = false
+surface = "#181818"
+
+[desktop.appearanceDarkChromeTheme.fonts]
+ui = "Inter"
+code = "UDEV Gothic NFLG"
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = "#40c977"
+diffRemoved = "#fa423e"
+skill = "#ad7bf9"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[projects."/Users/t1190078/.dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/tip-extra/tipextra-frontend"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/haisou/haisou-kanri_backend"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/apps/dpca-baseproject"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/apps/booklift_v2"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/next-server-devtools"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-06-10/mise-up-mise-warn-github-rate"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/apps/safety-training-management"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/tip-extra/tipextra-backend"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-06-18/aws-codeartfict"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/awsctx"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/private/zenn-content"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/private/sandbox/safety-training-management"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/apps/koutei"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/aws-cli"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/ni"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-06-25/cod"]
+trust_level = "trusted"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 1

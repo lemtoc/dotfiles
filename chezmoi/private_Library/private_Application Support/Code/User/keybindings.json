@@ -1,149 +1,149 @@
 [
   {
-    "key": "cmd+f",
     "command": "actions.find",
-    "when": "editorFocus || editorIsOpen"
-  },
-  {
     "key": "cmd+f",
-    "command": "-actions.find",
     "when": "editorFocus || editorIsOpen"
   },
   {
-    "key": "shift+cmd+f",
-    "command": "workbench.action.findInFiles"
+    "command": "-actions.find",
+    "key": "cmd+f",
+    "when": "editorFocus || editorIsOpen"
   },
   {
-    "key": "shift+cmd+f",
-    "command": "-workbench.action.findInFiles"
+    "command": "workbench.action.findInFiles",
+    "key": "shift+cmd+f"
   },
   {
-    "key": "cmd",
+    "command": "-workbench.action.findInFiles",
+    "key": "shift+cmd+f"
+  },
+  {
     "command": "workbench.action.terminal.toggleTerminal",
+    "key": "cmd",
     "when": "terminal.active"
   },
   {
-    "key": "ctrl+`",
     "command": "workbench.action.terminal.focus",
+    "key": "ctrl+`",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+`",
     "command": "workbench.action.focusFirstEditorGroup",
+    "key": "ctrl+`",
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+cmd+g",
     "command": "workbench.view.scm",
+    "key": "ctrl+cmd+g",
     "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
   },
   {
-    "key": "ctrl+shift+g",
     "command": "-workbench.view.scm",
+    "key": "ctrl+shift+g",
     "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
   },
   {
-    "key": "ctrl+cmd+e",
     "command": "workbench.view.explorer",
+    "key": "ctrl+cmd+e",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
   {
-    "key": "shift+cmd+e",
     "command": "-workbench.view.explorer",
+    "key": "shift+cmd+e",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
   {
-    "key": "backspace 1",
     "command": "workbench.action.terminal.focus",
+    "key": "backspace 1",
     "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
   },
   {
-    "key": "cmd+down",
     "command": "-workbench.action.terminal.focus",
+    "key": "cmd+down",
     "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
   },
   {
-    "key": "ctrl+c",
-    "command": "issue.copyGithubPermalink"
+    "command": "issue.copyGithubPermalink",
+    "key": "ctrl+c"
   },
   {
-    "key": "cmd+m",
     "command": "workbench.actions.view.problems",
+    "key": "cmd+m",
     "when": "workbench.panel.markers.view.active"
   },
   {
-    "key": "shift+cmd+m",
     "command": "-workbench.actions.view.problems",
+    "key": "shift+cmd+m",
     "when": "workbench.panel.markers.view.active"
   },
   {
-    "key": "alt+[ [",
     "command": "list.focusAnyUp",
+    "key": "alt+[ [",
     "when": "listFocus && !inputFocus && !treestickyScrollFocused"
   },
   {
-    "key": "ctrl+alt+p",
     "command": "-list.focusAnyUp",
+    "key": "ctrl+alt+p",
     "when": "listFocus && !inputFocus && !treestickyScrollFocused"
   },
   {
-    "key": "cmd+l q",
-    "command": "markdown.marp.showQuickPick"
+    "command": "markdown.marp.showQuickPick",
+    "key": "cmd+l q"
   },
   {
-    "key": "alt+l 0",
-    "command": "workbench.action.files.copyPathOfActiveFile"
+    "command": "workbench.action.files.copyPathOfActiveFile",
+    "key": "alt+l 0"
   },
   {
-    "key": "cmd+k p",
-    "command": "-workbench.action.files.copyPathOfActiveFile"
+    "command": "-workbench.action.files.copyPathOfActiveFile",
+    "key": "cmd+k p"
   },
   {
-    "key": "cmd+l v",
     "command": "markdown.showPreviewToSide",
+    "key": "cmd+l v",
     "when": "!notebookEditorFocused && editorLangId == 'markdown'"
   },
   {
-    "key": "cmd+k v",
     "command": "-markdown.showPreviewToSide",
+    "key": "cmd+k v",
     "when": "!notebookEditorFocused && editorLangId == 'markdown'"
   },
   {
-    "key": "cmd+l p",
     "command": "markdown.showPreview",
+    "key": "cmd+l p",
     "when": "!notebookEditorFocused && editorLangId == 'markdown'"
   },
   {
-    "key": "shift+cmd+v",
     "command": "-markdown.showPreview",
+    "key": "shift+cmd+v",
     "when": "!notebookEditorFocused && editorLangId == 'markdown'"
   },
   {
-    "key": "cmd+`",
     "command": "claude-code.runClaude.keyboard",
+    "key": "cmd+`",
     "when": "claude-code.hasClaudeInPath"
   },
   {
-    "key": "cmd+escape",
     "command": "-claude-code.runClaude.keyboard",
+    "key": "cmd+escape",
     "when": "claude-code.hasClaudeInPath"
   },
   {
-    "key": "shift+space",
     "command": "editor.action.triggerSuggest",
+    "key": "shift+space",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
-    "key": "ctrl+space",
     "command": "-editor.action.triggerSuggest",
+    "key": "ctrl+space",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
-    "key": "shift+enter",
-    "command": "workbench.action.terminal.sendSequence",
     "args": {
       "text": "\\\r\n"
     },
+    "command": "workbench.action.terminal.sendSequence",
+    "key": "shift+enter",
     "when": "terminalFocus"
   }
 ]

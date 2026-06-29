@@ -23,12 +23,6 @@
       });
     })
   ];
-  # Allow only explicitly listed unfree packages (e.g. vscode)
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "vscode"
-    ];
   system.primaryUser = username;
   system.stateVersion = 6;
 
