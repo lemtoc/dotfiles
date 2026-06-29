@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782696701808,
+  "lastUpdate": 1782737525607,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2296,6 +2296,37 @@ window.BENCHMARK_DATA = {
             "range": "9.95 ms",
             "unit": "ms",
             "extra": "median: 75.15 ms\nmin: 69.37 ms\nmax: 136.49 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "857c6fe73e102c441dd0a73bdc87621acdbf03b1",
+          "message": "refactor(dotfiles): move mutable configs to chezmoi\n\n- Move mutable app configuration and skills into the chezmoi source tree.\n- Remove Home Manager modules that previously owned UI-edited config files.\n- Document chezmoi bootstrap and keep Nix focused on packages and stable system config.\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-06-29T21:48:57+09:00",
+          "tree_id": "b87d3ff4a76a63f103bf458afa165a7344d9df1c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/857c6fe73e102c441dd0a73bdc87621acdbf03b1"
+        },
+        "date": 1782737523606,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 49.69,
+            "range": "18.5 ms",
+            "unit": "ms",
+            "extra": "median: 49.69 ms\nmin: 38.37 ms\nmax: 112.63 ms\nruns: 50"
           }
         ]
       }
