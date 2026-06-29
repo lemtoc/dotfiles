@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782694850790,
+  "lastUpdate": 1782696701808,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2265,6 +2265,37 @@ window.BENCHMARK_DATA = {
             "range": "2.75 ms",
             "unit": "ms",
             "extra": "median: 81.62 ms\nmin: 73.66 ms\nmax: 88.97 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "6ad4d4f1335c20da6081c23443f95b77c87044da",
+          "message": "chore(shell): show mise env status\n\n- Enable `status.show_env` in the mise configuration so the active environment is visible in shell status output.\n\nCo-authored-by: Codex GPT-5 GPT-5.4-Mini <codex@openai.com>",
+          "timestamp": "2026-06-29T10:28:10+09:00",
+          "tree_id": "eb4f55689d10bf3821f472f8444cb7dbd5ba6c74",
+          "url": "https://github.com/lemtoc/dotfiles/commit/6ad4d4f1335c20da6081c23443f95b77c87044da"
+        },
+        "date": 1782696700481,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 75.15,
+            "range": "9.95 ms",
+            "unit": "ms",
+            "extra": "median: 75.15 ms\nmin: 69.37 ms\nmax: 136.49 ms\nruns: 50"
           }
         ]
       }
