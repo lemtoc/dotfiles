@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782575874643,
+  "lastUpdate": 1782694850790,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2234,6 +2234,37 @@ window.BENCHMARK_DATA = {
             "range": "9.3 ms",
             "unit": "ms",
             "extra": "median: 79.23 ms\nmin: 69.54 ms\nmax: 119.11 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "120bc5a8cb672f53af5f5b107abdb1fc58734156",
+          "message": "chore(nix): bump home-manager flake input\n\n- Update the home-manager and nixpkgs lock entries to the latest recorded revisions.\n- Refresh the corresponding `lastModified` and `narHash` values in `flake.lock`.\n\nCo-authored-by: Codex GPT-5.4-Mini <codex@openai.com>",
+          "timestamp": "2026-06-29T09:56:50+09:00",
+          "tree_id": "475ae2315163280ad831a29c2c759af7dabaf416",
+          "url": "https://github.com/lemtoc/dotfiles/commit/120bc5a8cb672f53af5f5b107abdb1fc58734156"
+        },
+        "date": 1782694848781,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 81.62,
+            "range": "2.75 ms",
+            "unit": "ms",
+            "extra": "median: 81.62 ms\nmin: 73.66 ms\nmax: 88.97 ms\nruns: 50"
           }
         ]
       }
