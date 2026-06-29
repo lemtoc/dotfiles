@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782737525607,
+  "lastUpdate": 1782738947042,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2327,6 +2327,37 @@ window.BENCHMARK_DATA = {
             "range": "18.5 ms",
             "unit": "ms",
             "extra": "median: 49.69 ms\nmin: 38.37 ms\nmax: 112.63 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "dd234de3c743089044f0900f08c54b77bc586196",
+          "message": "fix(codex): use profile-derived shell path\n\n- Remove the hardcoded PATH override from the Codex config.\n- Rely on experimental_use_profile so Codex inherits the shell profile environment.\n- Keep mise and tool resolution in the shell profile instead of duplicating it in config.toml.\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-06-29T22:11:35+09:00",
+          "tree_id": "8b71bfd87644fbb310b842df421de6c511eec321",
+          "url": "https://github.com/lemtoc/dotfiles/commit/dd234de3c743089044f0900f08c54b77bc586196"
+        },
+        "date": 1782738944765,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 85.47,
+            "range": "14.86 ms",
+            "unit": "ms",
+            "extra": "median: 85.47 ms\nmin: 60.5 ms\nmax: 128.29 ms\nruns: 50"
           }
         ]
       }
