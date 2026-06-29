@@ -32,6 +32,9 @@ in
         github = {
           credential_command = "gh auth token";
         };
+        status = {
+          show_env = true;
+        };
       };
       tools = {
         bun = "latest";
