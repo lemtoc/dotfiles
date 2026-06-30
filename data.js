@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782774272092,
+  "lastUpdate": 1782863749148,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2420,6 +2420,37 @@ window.BENCHMARK_DATA = {
             "range": "4.69 ms",
             "unit": "ms",
             "extra": "median: 57.26 ms\nmin: 51.37 ms\nmax: 75.89 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "68ec3e21d9bf3ff96364ddf41c301df5cd12cc96",
+          "message": "chore(nix): bump flake inputs\n\n- update home-manager rev to 2a37d71b\n- update nixpkgs rev to 7a1a6477\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
+          "timestamp": "2026-07-01T08:50:54+09:00",
+          "tree_id": "d5254eadd0491233569a522ac23e0dff9756033f",
+          "url": "https://github.com/lemtoc/dotfiles/commit/68ec3e21d9bf3ff96364ddf41c301df5cd12cc96"
+        },
+        "date": 1782863746943,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 50.91,
+            "range": "4.89 ms",
+            "unit": "ms",
+            "extra": "median: 50.91 ms\nmin: 49.22 ms\nmax: 64.9 ms\nruns: 50"
           }
         ]
       }
