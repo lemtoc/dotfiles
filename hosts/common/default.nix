@@ -26,19 +26,18 @@
   system.primaryUser = username;
   system.stateVersion = 6;
 
-  # Keep fallback zsh startup lean; fish is the configured login shell.
+  # Keep nix-darwin's global zsh startup lean; Home Manager owns interactive zsh.
   programs.zsh.enableGlobalCompInit = false;
   programs.zsh.enableBashCompletion = false;
   programs.zsh.promptInit = "";
-  programs.fish.enable = true;
-  environment.shells = [ pkgs.fish ];
+  environment.shells = [ pkgs.zsh ];
 
   system.activationScripts.postActivation.text = lib.mkAfter ''
     currentShell=$(dscl . -read /Users/${username} UserShell 2>/dev/null || true)
     currentShell="''${currentShell#UserShell: }"
-    targetShell="/run/current-system/sw/bin/fish"
+    targetShell="/run/current-system/sw/bin/zsh"
     if [ "$currentShell" != "$targetShell" ]; then
-      echo "setting ${username}'s login shell to fish..." >&2
+      echo "setting ${username}'s login shell to zsh..." >&2
       dscl . -create /Users/${username} UserShell "$targetShell"
     fi
   '';
@@ -46,6 +45,6 @@
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 }

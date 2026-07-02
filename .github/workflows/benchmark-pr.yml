@@ -1,4 +1,4 @@
-name: Fish Startup Benchmark (PR)
+name: Zsh Startup Benchmark (PR)
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   benchmark:
-    name: Fish Startup Time
+    name: Zsh Startup Time
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: Comment benchmark result on PR
         uses: benchmark-action/github-action-benchmark@v1
         with:
-          name: Fish Startup Time
+          name: Zsh Startup Time
           tool: customSmallerIsBetter
           output-file-path: benchmark-result.json
           benchmark-data-dir-path: .

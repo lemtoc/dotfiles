@@ -55,6 +55,12 @@ snippets:
     context:
       lbuffer: "^git "
 
+  - name: git ci
+    keyword: ci
+    snippet: commit
+    context:
+      lbuffer: "^git "
+
   - name: git push-f
     keyword: push-f
     snippet: push --force-with-lease
@@ -97,6 +103,14 @@ snippets:
   - name: cc
     keyword: cc
     snippet: claude
+
+  - name: cci
+    keyword: cci
+    snippet: codex:commit
+
+  - name: ccpr
+    keyword: ccpr
+    snippet: codex:create-pr
 
   - name: cs
     keyword: cs

@@ -71,9 +71,30 @@ toggle-env() {
   fi
 }
 
+codex-exec-fast() {
+  codex exec \
+    -m gpt-5.4-mini \
+    -c 'model_reasoning_effort="low"' \
+    -c 'web_search="disabled"' \
+    --disable image_generation \
+    "$@"
+}
+
+codex:commit() {
+  codex-exec-fast 'Use the `commit` skill.'
+}
+
+codex:create-pr() {
+  codex-exec-fast 'Use the `create-pr` skill.'
+}
+
 # interactive-only aliases
 [[ -o interactive ]] && alias cd='z'
 [[ -o interactive ]] && alias cdi='zi'
+
+if (( $+commands[awsctx] )); then
+  source <(awsctx activate zsh --aws-wrapper)
+fi
 
 # git-wt (cache, regenerate when .zshrc symlink target changes)
 git_wt_cache="${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/git-wt.zsh"

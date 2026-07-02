@@ -25,7 +25,6 @@ in
   programs.mise = {
     enable = true;
     package = miseBin;
-    enableFishIntegration = true;
-    enableZshIntegration = false;
+    enableZshIntegration = false; # handled via cache_eval + zsh-defer in zsh.nix
   };
 }

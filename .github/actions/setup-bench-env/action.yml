@@ -1,5 +1,5 @@
 name: Setup Benchmark Environment
-description: Install Nix, build home-manager generation, and set up fish shell environment for benchmarking
+description: Install Nix, build home-manager generation, and set up zsh shell environment for benchmarking
 
 outputs:
   hm_gen:
@@ -29,7 +29,7 @@ runs:
         # - /etc/zprofile: remove path_helper (slow PATH construction)
         # - /etc/zshrc: remove compinit/promptinit (nix-darwin sets enableGlobalCompInit=false)
         # - /etc/zshenv: keep Nix daemon setup for PATH
-        # See hosts/common/default.nix:19-23
+        # See hosts/common/default.nix for the matching nix-darwin zsh settings.
         sudo sh -c '
           echo "" > /etc/zprofile
           echo "" > /etc/zshrc
@@ -38,6 +38,11 @@ runs:
         # Create /Users/t1190078 for HISTFILE (home-manager hardcodes home.homeDirectory)
         sudo mkdir -p /Users/t1190078
         sudo chown "$(whoami)" /Users/t1190078
+
+        # Symlink user-level zsh dotfiles
+        ln -sf "$HM_GEN/home-files/.zshrc" ~/.zshrc
+        ln -sf "$HM_GEN/home-files/.zshenv" ~/.zshenv
+        ln -sf "$HM_GEN/home-files/.zprofile" ~/.zprofile
 
         # Symlink .config directories
         mkdir -p ~/.config
@@ -51,9 +56,14 @@ runs:
         export PATH="$HM_GEN/home-path/bin:$PATH"
         echo "$HM_GEN/home-path/bin" >> "$GITHUB_PATH"
 
+        # Pre-populate sheldon cache (first run clones plugins via git)
+        mkdir -p ~/.cache/sheldon
+        sheldon lock
+        sheldon source > ~/.cache/sheldon/sheldon.zsh
+        readlink ~/.config/sheldon/plugins.toml > ~/.cache/sheldon/sheldon.zsh.lock
+
     # Warm the mise cache BEFORE benchmarking so we measure realistic
-    # warm-start behaviour. Otherwise `mise hook-env` (run from fish's
-    # activation hook on every startup) resolves the dynamic `latest`/`lts`
+    # warm-start behaviour. Otherwise shell activation can resolve dynamic `latest`/`lts`
     # tool versions over the GitHub API inside the measured region, adding
     # 100s of ms of nondeterministic noise that trips the 150% alert.
     # `mise install` lays down the tools so hook-env never touches the

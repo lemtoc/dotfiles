@@ -1,5 +1,5 @@
 name: Run Benchmark
-description: Run fish startup benchmark with hyperfine and convert results
+description: Run zsh startup benchmark with hyperfine and convert results
 
 outputs:
   result-path:
@@ -16,7 +16,7 @@ runs:
           --warmup 10 \
           --runs 50 \
           --export-json bench-result.json \
-          'fish -i -c exit'
+          'zsh -i -c exit'
 
     - name: Convert to benchmark format
       shell: bash

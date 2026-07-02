@@ -79,7 +79,7 @@
   "tailwind-fold.autoFold": false,
   "tailwind-fold.unfoldedTextOpacity": 0.7,
   "terminal.external.osxExec": "Warp.app",
-  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.env.osx": {
     "Q_NEW_SESSION": "1"
   },
