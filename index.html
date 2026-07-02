@@ -1,280 +1,591 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shell Benchmarks</title>
     <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f8fa;
+        --panel: #ffffff;
+        --text: #24292f;
+        --muted: #57606a;
+        --border: #d0d7de;
+        --blue: #0969da;
+        --green: #1a7f37;
+        --yellow: #9a6700;
+        --red: #cf222e;
+        --purple: #8250df;
+        --teal: #1b7c83;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       html {
-        font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-        -webkit-font-smoothing: antialiased;
-        background-color: #fff;
+        background: var(--bg);
+        color: var(--text);
+        font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         font-size: 16px;
+        -webkit-font-smoothing: antialiased;
       }
+
       body {
-        color: #4a4a4a;
-        margin: 8px;
-        font-size: 1em;
-        font-weight: 400;
+        margin: 0;
       }
-      header {
-        margin-bottom: 8px;
-        display: flex;
-        flex-direction: column;
-      }
-      main {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
+
       a {
-        color: #3273dc;
-        cursor: pointer;
+        color: var(--blue);
         text-decoration: none;
       }
+
       a:hover {
-        color: #000;
+        text-decoration: underline;
       }
+
       button {
-        color: #fff;
-        background-color: #3298dc;
-        border-color: transparent;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--text);
         cursor: pointer;
-        text-align: center;
+        font: inherit;
+        padding: 8px 12px;
       }
+
       button:hover {
-        background-color: #2793da;
-        flex: none;
+        border-color: var(--blue);
+        color: var(--blue);
       }
-      .spacer {
-        flex: auto;
+
+      .page {
+        margin: 0 auto;
+        max-width: 1280px;
+        padding: 24px;
       }
-      .small {
-        font-size: 0.75rem;
+
+      .site-header,
+      .site-footer,
+      .section {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 8px;
       }
-      footer {
+
+      .site-header {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 20px;
+      }
+
+      .eyebrow {
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.05;
+        margin-top: 4px;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        line-height: 1.25;
+      }
+
+      h3 {
+        font-size: 1rem;
+        line-height: 1.25;
+      }
+
+      .meta {
+        align-self: start;
+        color: var(--muted);
+        display: grid;
+        font-size: 0.9rem;
+        gap: 4px;
+        justify-items: end;
+      }
+
+      .summary-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         margin-top: 16px;
+      }
+
+      .metric-card {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 14px;
+      }
+
+      .metric-card strong {
+        display: block;
+        font-size: 1.7rem;
+        line-height: 1;
+        margin-top: 8px;
+      }
+
+      .metric-card span,
+      .metric-card small {
+        color: var(--muted);
+      }
+
+      .metric-card.good strong {
+        color: var(--green);
+      }
+
+      .metric-card.warn strong {
+        color: var(--yellow);
+      }
+
+      .metric-card.bad strong {
+        color: var(--red);
+      }
+
+      main {
+        display: grid;
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+
+      .section-header {
+        align-items: end;
         display: flex;
-        align-items: center;
+        gap: 16px;
+        justify-content: space-between;
+        margin-bottom: 14px;
       }
-      .header-label {
-        margin-right: 4px;
+
+      .section-description {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 4px;
       }
-      .benchmark-set {
-        margin: 8px 0;
+
+      .chart-wrap {
+        min-height: 360px;
+        position: relative;
+      }
+
+      .chart-wrap canvas {
+        max-height: 420px;
         width: 100%;
-        display: flex;
-        flex-direction: column;
       }
-      .benchmark-title {
-        font-size: 3rem;
-        font-weight: 600;
-        word-break: break-word;
-        text-align: center;
+
+      .split {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       }
-      .benchmark-graphs {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+
+      .empty-state {
         align-items: center;
-        flex-wrap: wrap;
-        width: 100%;
+        color: var(--muted);
+        display: flex;
+        min-height: 180px;
       }
-      .benchmark-chart {
-        max-width: 1000px;
+
+      .site-footer {
+        align-items: center;
+        color: var(--muted);
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        margin-top: 16px;
+        padding: 14px 18px;
+      }
+
+      @media (max-width: 920px) {
+        .site-header,
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .meta {
+          justify-items: start;
+        }
+
+        .summary-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          padding: 12px;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header,
+        .site-footer {
+          align-items: start;
+          flex-direction: column;
+        }
       }
     </style>
-    <title>Benchmarks</title>
   </head>
 
   <body>
-    <header id="header">
-      <div class="header-item">
-        <strong class="header-label">Last Update:</strong>
-        <span id="last-update"></span>
-      </div>
-      <div class="header-item">
-        <strong class="header-label">Repository:</strong>
-        <a id="repository-link" rel="noopener"></a>
-      </div>
-    </header>
-    <main id="main"></main>
-    <footer>
-      <button id="dl-button">Download data as JSON</button>
-      <div class="spacer"></div>
-      <div class="small">Powered by <a rel="noopener" href="https://github.com/marketplace/actions/continuous-benchmark">github-action-benchmark</a></div>
-    </footer>
+    <div class="page">
+      <header class="site-header">
+        <div>
+          <div class="eyebrow">zsh-bench</div>
+          <h1>Shell Benchmarks</h1>
+          <div id="summary" class="summary-grid"></div>
+        </div>
+        <div class="meta">
+          <div><strong>Last Update:</strong> <span id="last-update"></span></div>
+          <div><strong>Repository:</strong> <a id="repository-link" rel="noopener"></a></div>
+        </div>
+      </header>
+
+      <main id="main"></main>
+
+      <footer class="site-footer">
+        <button id="dl-button" type="button">Download data as JSON</button>
+        <span>Powered by <a rel="noopener" href="https://github.com/marketplace/actions/continuous-benchmark">github-action-benchmark</a></span>
+      </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
     <script src="data.js"></script>
-    <script id="main-script">
+    <script>
       'use strict';
+
       (function() {
-        // Colors from https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
-        const toolColors = {
-          cargo: '#dea584',
-          go: '#00add8',
-          benchmarkjs: '#f1e05a',
-          benchmarkluau: '#000080',
-          pytest: '#3572a5',
-          googlecpp: '#f34b7d',
-          catch2: '#f34b7d',
-          julia: '#a270ba',
-          jmh: '#b07219',
-          benchmarkdotnet: '#178600',
-          customBiggerIsBetter: '#38ff38',
-          customSmallerIsBetter: '#ff3838',
-          _: '#333333'
+        const metricOrder = [
+          'first prompt lag',
+          'first command lag',
+          'command lag',
+          'input lag',
+        ];
+
+        const metricDetails = {
+          'first prompt lag': {
+            label: 'First Prompt',
+            target: 50,
+            color: '#0969da',
+            description: 'Terminal open to visible prompt',
+          },
+          'first command lag': {
+            label: 'First Command',
+            target: 150,
+            color: '#8250df',
+            description: 'Terminal open to first command execution',
+          },
+          'command lag': {
+            label: 'Command Lag',
+            target: 10,
+            color: '#cf222e',
+            description: 'Enter key to next prompt',
+          },
+          'input lag': {
+            label: 'Input Lag',
+            target: 20,
+            color: '#1b7c83',
+            description: 'Key press to visible character',
+          },
+          'exit time': {
+            label: 'Exit Time',
+            target: null,
+            color: '#57606a',
+            description: 'Legacy zsh -lic exit style timing',
+          },
         };
 
-        function init() {
-          function collectBenchesPerTestCase(entries) {
-            const map = new Map();
-            for (const entry of entries) {
-              const {commit, date, tool, benches} = entry;
-              for (const bench of benches) {
-                const result = { commit, date, tool, bench };
-                const arr = map.get(bench.name);
-                if (arr === undefined) {
-                  map.set(bench.name, [result]);
-                } else {
-                  arr.push(result);
-                }
+        function formatMs(value) {
+          return Number.isFinite(value) ? `${value.toFixed(1)} ms` : 'n/a';
+        }
+
+        function collectBenches(entries) {
+          const map = new Map();
+          for (const entry of entries || []) {
+            for (const bench of entry.benches || []) {
+              const item = {
+                commit: entry.commit,
+                date: entry.date,
+                tool: entry.tool,
+                bench,
+              };
+              if (!map.has(bench.name)) {
+                map.set(bench.name, []);
               }
+              map.get(bench.name).push(item);
             }
-            return map;
+          }
+          return map;
+        }
+
+        function latestValue(series) {
+          return series && series.length > 0 ? series[series.length - 1].bench.value : null;
+        }
+
+        function statusFor(value, target) {
+          if (!Number.isFinite(value) || !target) {
+            return '';
+          }
+          if (value <= target) {
+            return 'good';
+          }
+          if (value <= target * 2) {
+            return 'warn';
+          }
+          return 'bad';
+        }
+
+        function makeDataset(metricName, series) {
+          const detail = metricDetails[metricName] || {};
+          return {
+            label: detail.label || metricName,
+            data: series.map(item => item.bench.value),
+            borderColor: detail.color || '#57606a',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointRadius: 2,
+            pointHoverRadius: 5,
+            lineTension: 0.18,
+            fill: false,
+          };
+        }
+
+        function chartOptions(unit, seriesByMetric) {
+          return {
+            maintainAspectRatio: false,
+            legend: {
+              position: 'bottom',
+            },
+            scales: {
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'commit',
+                  },
+                  ticks: {
+                    autoSkip: true,
+                    maxRotation: 45,
+                    minRotation: 0,
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: unit,
+                  },
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                afterTitle: items => {
+                  const item = items[0];
+                  const metricName = Object.keys(seriesByMetric)[item.datasetIndex];
+                  const row = seriesByMetric[metricName][item.index];
+                  return '\n' + row.commit.message.split('\n')[0] + '\n\n' + row.commit.timestamp + ' committed by @' + row.commit.committer.username + '\n';
+                },
+                label: item => {
+                  const metricName = Object.keys(seriesByMetric)[item.datasetIndex];
+                  const row = seriesByMetric[metricName][item.index];
+                  const range = row.bench.range ? ` (${row.bench.range})` : '';
+                  return `${item.yLabel} ${row.bench.unit}${range}`;
+                },
+                afterLabel: item => {
+                  const metricName = Object.keys(seriesByMetric)[item.datasetIndex];
+                  const extra = seriesByMetric[metricName][item.index].bench.extra;
+                  return extra ? '\n' + extra : '';
+                },
+              },
+            },
+            onClick: (_event, activeElems) => {
+              if (activeElems.length === 0) {
+                return;
+              }
+              const elem = activeElems[0];
+              const metricName = Object.keys(seriesByMetric)[elem._datasetIndex];
+              const row = seriesByMetric[metricName][elem._index];
+              window.open(row.commit.url, '_blank');
+            },
+          };
+        }
+
+        function section(title, description) {
+          const element = document.createElement('section');
+          element.className = 'section';
+
+          const header = document.createElement('div');
+          header.className = 'section-header';
+          element.appendChild(header);
+
+          const text = document.createElement('div');
+          header.appendChild(text);
+
+          const heading = document.createElement('h2');
+          heading.textContent = title;
+          text.appendChild(heading);
+
+          if (description) {
+            const paragraph = document.createElement('p');
+            paragraph.className = 'section-description';
+            paragraph.textContent = description;
+            text.appendChild(paragraph);
           }
 
-          const data = window.BENCHMARK_DATA;
+          return element;
+        }
 
-          // Render header
+        function renderEmpty(parent, message) {
+          const empty = document.createElement('div');
+          empty.className = 'empty-state';
+          empty.textContent = message;
+          parent.appendChild(empty);
+        }
+
+        function renderChart(parent, metricMap, metricNames) {
+          const available = metricNames.filter(name => metricMap.has(name));
+          if (available.length === 0) {
+            renderEmpty(parent, 'Waiting for the first zsh-bench run.');
+            return;
+          }
+
+          const chartArea = document.createElement('div');
+          chartArea.className = 'chart-wrap';
+          parent.appendChild(chartArea);
+
+          const canvas = document.createElement('canvas');
+          chartArea.appendChild(canvas);
+
+          const primarySeries = metricMap.get(available[0]);
+          const labels = primarySeries.map(row => row.commit.id.slice(0, 7));
+          const seriesByMetric = Object.fromEntries(available.map(name => [name, metricMap.get(name)]));
+
+          new Chart(canvas, {
+            type: 'line',
+            data: {
+              labels,
+              datasets: available.map(name => makeDataset(name, metricMap.get(name))),
+            },
+            options: chartOptions(primarySeries[0].bench.unit, seriesByMetric),
+          });
+        }
+
+        function renderSummary(metricMap) {
+          const summary = document.getElementById('summary');
+          summary.textContent = '';
+
+          for (const name of metricOrder) {
+            const detail = metricDetails[name];
+            const value = latestValue(metricMap.get(name));
+            const card = document.createElement('div');
+            card.className = `metric-card ${statusFor(value, detail.target)}`;
+
+            const label = document.createElement('span');
+            label.textContent = detail.label;
+            card.appendChild(label);
+
+            const strong = document.createElement('strong');
+            strong.textContent = formatMs(value);
+            card.appendChild(strong);
+
+            const small = document.createElement('small');
+            small.textContent = `${detail.description}; target ${detail.target} ms`;
+            card.appendChild(small);
+
+            summary.appendChild(card);
+          }
+        }
+
+        function renderLegacy(main, data) {
+          const legacyNames = Object.keys(data.entries).filter(name => name !== 'Zsh Interactive Latency');
+          if (legacyNames.length === 0) {
+            return;
+          }
+
+          const wrapper = section('Legacy Exit Benchmarks', 'Historical zsh/fish exit timings are kept separate from zsh-bench latency metrics.');
+          const split = document.createElement('div');
+          split.className = 'split';
+          wrapper.appendChild(split);
+
+          for (const name of legacyNames) {
+            const metricMap = collectBenches(data.entries[name]);
+            const names = Array.from(metricMap.keys());
+            const block = document.createElement('div');
+            split.appendChild(block);
+
+            const heading = document.createElement('h3');
+            heading.textContent = name;
+            block.appendChild(heading);
+
+            renderChart(block, metricMap, names);
+          }
+
+          main.appendChild(wrapper);
+        }
+
+        function render() {
+          const data = window.BENCHMARK_DATA;
+          const interactiveEntries = data.entries['Zsh Interactive Latency'] || [];
+          const interactiveMap = collectBenches(interactiveEntries);
+
           document.getElementById('last-update').textContent = new Date(data.lastUpdate).toString();
           const repoLink = document.getElementById('repository-link');
           repoLink.href = data.repoUrl;
           repoLink.textContent = data.repoUrl;
 
-          // Render footer
           document.getElementById('dl-button').onclick = () => {
-            const dataUrl = 'data:,' + JSON.stringify(data, null, 2);
+            const dataUrl = 'data:,' + encodeURIComponent(JSON.stringify(data, null, 2));
             const a = document.createElement('a');
             a.href = dataUrl;
             a.download = 'benchmark_data.json';
             a.click();
           };
 
-          // Prepare data points for charts
-          return Object.keys(data.entries).map(name => ({
-            name,
-            dataSet: collectBenchesPerTestCase(data.entries[name]),
-          }));
-        }
-
-        function renderAllChars(dataSets) {
-
-          function renderGraph(parent, name, dataset) {
-            const canvas = document.createElement('canvas');
-            canvas.className = 'benchmark-chart';
-            parent.appendChild(canvas);
-
-            const color = toolColors[dataset.length > 0 ? dataset[0].tool : '_'];
-            const data = {
-              labels: dataset.map(d => d.commit.id.slice(0, 7)),
-              datasets: [
-                {
-                  label: name,
-                  data: dataset.map(d => d.bench.value),
-                  borderColor: color,
-                  backgroundColor: color + '60', // Add alpha for #rrggbbaa
-                }
-              ],
-            };
-            const options = {
-              scales: {
-                xAxes: [
-                  {
-                    scaleLabel: {
-                      display: true,
-                      labelString: 'commit',
-                    },
-                  }
-                ],
-                yAxes: [
-                  {
-                    scaleLabel: {
-                      display: true,
-                      labelString: dataset.length > 0 ? dataset[0].bench.unit : '',
-                    },
-                    ticks: {
-                      beginAtZero: true,
-                    }
-                  }
-                ],
-              },
-              tooltips: {
-                callbacks: {
-                  afterTitle: items => {
-                    const {index} = items[0];
-                    const data = dataset[index];
-                    return '\n' + data.commit.message.split('\n')[0] + '\n\n' + data.commit.timestamp + ' committed by @' + data.commit.committer.username + '\n';
-                  },
-                  label: item => {
-                    let label = item.value;
-                    const { range, unit } = dataset[item.index].bench;
-                    label += ' ' + unit;
-                    if (range) {
-                      label += ' (' + range + ')';
-                    }
-                    return label;
-                  },
-                  afterLabel: item => {
-                    const { extra } = dataset[item.index].bench;
-                    return extra ? '\n' + extra : '';
-                  }
-                }
-              },
-              onClick: (_mouseEvent, activeElems) => {
-                if (activeElems.length === 0) {
-                  return;
-                }
-                // XXX: Undocumented. How can we know the index?
-                const index = activeElems[0]._index;
-                const url = dataset[index].commit.url;
-                window.open(url, '_blank');
-              },
-            };
-
-            new Chart(canvas, {
-              type: 'line',
-              data,
-              options,
-            });
-          }
-
-          function renderBenchSet(name, benchSet, main) {
-            const setElem = document.createElement('div');
-            setElem.className = 'benchmark-set';
-            main.appendChild(setElem);
-
-            const nameElem = document.createElement('h1');
-            nameElem.className = 'benchmark-title';
-            nameElem.textContent = name;
-            setElem.appendChild(nameElem);
-
-            const graphsElem = document.createElement('div');
-            graphsElem.className = 'benchmark-graphs';
-            setElem.appendChild(graphsElem);
-
-            for (const [benchName, benches] of benchSet.entries()) {
-              renderGraph(graphsElem, benchName, benches)
-            }
-          }
+          renderSummary(interactiveMap);
 
           const main = document.getElementById('main');
-          for (const {name, dataSet} of dataSets) {
-            renderBenchSet(name, dataSet, main);
-          }
+          main.textContent = '';
+
+          const primary = section('Interactive Latency', 'Primary zsh-bench metrics. Lower is better.');
+          renderChart(primary, interactiveMap, metricOrder);
+          main.appendChild(primary);
+
+          const exit = section('Exit Time', 'Still recorded for continuity, but not used as the main interactive performance signal.');
+          renderChart(exit, interactiveMap, ['exit time']);
+          main.appendChild(exit);
+
+          renderLegacy(main, data);
         }
 
-        renderAllChars(init()); // Start
+        render();
       })();
     </script>
   </body>
