@@ -76,3 +76,10 @@ runs:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         mise install || mise ls --current
+
+    # Pre-generate the zsh startup caches that are normally built by cache_eval
+    # or deferred lazy hooks. This keeps hyperfine from mixing warm runs with
+    # occasional first-generation cache work.
+    - name: Warm zsh startup cache
+      shell: bash
+      run: bash .github/scripts/warm-zsh-startup-cache.sh
