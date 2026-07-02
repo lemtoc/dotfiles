@@ -97,11 +97,13 @@ if (( $+commands[awsctx] )); then
 fi
 
 # git-wt (cache, regenerate when .zshrc symlink target changes)
-git_wt_cache="${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/git-wt.zsh"
-if [[ ! -r "$git_wt_cache" || "$(readlink ~/.zshrc)" != "$(cat "${git_wt_cache}.lock" 2>/dev/null)" ]]; then
-  mkdir -p "${git_wt_cache:h}"
-  git wt --init zsh > "$git_wt_cache"
-  readlink ~/.zshrc > "${git_wt_cache}.lock"
+if (( ${+commands[git-wt]} )); then
+  git_wt_cache="${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/git-wt.zsh"
+  if [[ ! -r "$git_wt_cache" || "$(readlink ~/.zshrc)" != "$(cat "${git_wt_cache}.lock" 2>/dev/null)" ]]; then
+    mkdir -p "${git_wt_cache:h}"
+    git wt --init zsh > "$git_wt_cache"
+    readlink ~/.zshrc > "${git_wt_cache}.lock"
+  fi
+  source "$git_wt_cache"
+  unset git_wt_cache
 fi
-source "$git_wt_cache"
-unset git_wt_cache

@@ -57,7 +57,7 @@ while IFS= read -r command_string; do
   warm_cache_eval "$command_string"
 done < <(sed -nE 's/^[[:space:]]*(zsh-defer[[:space:]]+)?cache_eval "([^"]+)".*$/\2/p' "$zshrc")
 
-if [[ -r "$zsh_lazy" ]] && command -v git >/dev/null 2>&1; then
+if [[ -r "$zsh_lazy" ]] && command -v git >/dev/null 2>&1 && command -v git-wt >/dev/null 2>&1; then
   git_wt_cache="$cache_home/sheldon/git-wt.zsh"
   mkdir -p "$(dirname "$git_wt_cache")"
   if [[ ! -s "$git_wt_cache" || "$(readlink "$zshrc")" != "$(cat "${git_wt_cache}.lock" 2>/dev/null)" ]]; then
@@ -65,4 +65,6 @@ if [[ -r "$zsh_lazy" ]] && command -v git >/dev/null 2>&1; then
     git wt --init zsh > "$git_wt_cache"
     readlink "$zshrc" > "${git_wt_cache}.lock"
   fi
+elif [[ -r "$zsh_lazy" ]]; then
+  echo "skipping git-wt zsh cache: git-wt is unavailable"
 fi
