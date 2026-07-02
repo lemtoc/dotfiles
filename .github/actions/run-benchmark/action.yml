@@ -1,5 +1,5 @@
 name: Run Benchmark
-description: Run zsh startup benchmark with hyperfine and convert results
+description: Run interactive zsh benchmark with zsh-bench and convert results
 
 outputs:
   result-path:
@@ -9,15 +9,18 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Install zsh-bench
+      shell: bash
+      run: bash .github/scripts/install-zsh-bench.sh "$RUNNER_TEMP/zsh-bench"
+
     - name: Run benchmark
       shell: bash
       run: |
-        hyperfine \
-          --warmup 10 \
-          --runs 50 \
-          --export-json bench-result.json \
-          'zsh -i -c exit'
+        "$RUNNER_TEMP/zsh-bench/zsh-bench" \
+          --raw \
+          --iters "${ZSH_BENCH_ITERS:-16}" \
+          > zsh-bench-result.txt
 
     - name: Convert to benchmark format
       shell: bash
-      run: bash .github/scripts/convert-hyperfine.sh bench-result.json benchmark-result.json
+      run: bash .github/scripts/convert-zsh-bench.sh zsh-bench-result.txt benchmark-result.json

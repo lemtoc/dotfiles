@@ -68,7 +68,7 @@ runs:
     # 100s of ms of nondeterministic noise that trips the 150% alert.
     # `mise install` lays down the tools so hook-env never touches the
     # network; if install fails we still warm the version cache via `ls`.
-    # This runs outside the hyperfine measurement, so its latency is free.
+    # This runs outside the zsh-bench measurement, so its latency is free.
     - name: Warm mise cache
       shell: bash
       env:
@@ -78,7 +78,7 @@ runs:
         mise install || mise ls --current
 
     # Pre-generate the zsh startup caches that are normally built by cache_eval
-    # or deferred lazy hooks. This keeps hyperfine from mixing warm runs with
+    # or deferred lazy hooks. This keeps zsh-bench from mixing warm runs with
     # occasional first-generation cache work.
     - name: Warm zsh startup cache
       shell: bash
