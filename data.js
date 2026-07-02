@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782971175775,
+  "lastUpdate": 1782984344870,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2482,6 +2482,67 @@ window.BENCHMARK_DATA = {
             "range": "4.89 ms",
             "unit": "ms",
             "extra": "median: 50.91 ms\nmin: 49.22 ms\nmax: 64.9 ms\nruns: 50"
+          }
+        ]
+      }
+    ],
+    "Zsh Interactive Latency": [
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "6d45cb8533faa8029a8a2239ee8d53b1ad55aa7e",
+          "message": "fix(ci): skip unavailable git-wt cache hook\n\n- Skip git-wt cache prewarming when the git-wt helper is absent\n- Guard the zsh lazy git-wt hook so runners without the Homebrew package still start\n- Keep local git-wt cache generation enabled when the helper exists\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-02T18:21:34+09:00",
+          "tree_id": "0dcc00a6fbd6e7fa1295385ecb0d21ddaaab6e2b",
+          "url": "https://github.com/lemtoc/dotfiles/commit/6d45cb8533faa8029a8a2239ee8d53b1ad55aa7e"
+        },
+        "date": 1782984342795,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 126.61,
+            "range": "32.91 ms",
+            "unit": "ms",
+            "extra": "median: 126.61 ms\nmin: 99.07 ms\nmax: 224.15 ms\nstddev: 32.91 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 126.87,
+            "range": "32.98 ms",
+            "unit": "ms",
+            "extra": "median: 126.87 ms\nmin: 99.67 ms\nmax: 224.92 ms\nstddev: 32.98 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 66.07,
+            "range": "7.31 ms",
+            "unit": "ms",
+            "extra": "median: 66.07 ms\nmin: 52.02 ms\nmax: 83.39 ms\nstddev: 7.31 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 69.34,
+            "range": "13.7 ms",
+            "unit": "ms",
+            "extra": "median: 69.34 ms\nmin: 50.8 ms\nmax: 95.66 ms\nstddev: 13.7 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 55.06,
+            "range": "11.91 ms",
+            "unit": "ms",
+            "extra": "median: 55.06 ms\nmin: 40.6 ms\nmax: 91.06 ms\nstddev: 11.91 ms\nruns: 16"
           }
         ]
       }
