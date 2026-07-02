@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782863749148,
+  "lastUpdate": 1782971175775,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -1395,6 +1395,37 @@ window.BENCHMARK_DATA = {
             "range": "5.11 ms",
             "unit": "ms",
             "extra": "median: 42.68 ms\nmin: 39.83 ms\nmax: 63.59 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "8cfccf76df69ec84f0677a5d3b4d4cd86634d0de",
+          "message": "feat(shell): restore zsh as default shell\n\n- Switch nix-darwin and Home Manager shell wiring from fish to zsh\n- Port zsh snippets and Codex helper commands from fish\n- Update shell benchmark workflows and editor defaults for zsh\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-02T14:23:12+09:00",
+          "tree_id": "47cdd921b40eb38060ccccf2c866a63927b9bacc",
+          "url": "https://github.com/lemtoc/dotfiles/commit/8cfccf76df69ec84f0677a5d3b4d4cd86634d0de"
+        },
+        "date": 1782971173950,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 77.48,
+            "range": "15.98 ms",
+            "unit": "ms",
+            "extra": "median: 77.48 ms\nmin: 47.47 ms\nmax: 122.02 ms\nruns: 50"
           }
         ]
       }
