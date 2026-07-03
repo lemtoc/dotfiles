@@ -125,16 +125,21 @@
       .summary-grid {
         display: grid;
         gap: 12px;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
         margin-top: 16px;
       }
 
       .summary-note {
         color: var(--muted);
         font-size: 0.88rem;
+        grid-column: 1 / -1;
         line-height: 1.5;
-        margin-top: 12px;
-        max-width: 860px;
+        margin-top: 0;
+      }
+
+      .summary-note-line {
+        display: block;
       }
 
       .metric-card {
@@ -237,19 +242,11 @@
         .meta {
           justify-items: start;
         }
-
-        .summary-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
       }
 
       @media (max-width: 560px) {
         .page {
           padding: 12px;
-        }
-
-        .summary-grid {
-          grid-template-columns: 1fr;
         }
 
         .section-header,
@@ -267,20 +264,23 @@
         <div>
           <div class="eyebrow">zsh-bench</div>
           <h1>Shell Benchmarks</h1>
-          <div id="summary" class="summary-grid"></div>
-          <p class="summary-note">
-            Summary targets follow
-            <a rel="noopener" href="https://github.com/romkatv/zsh-bench#how-fast-is-fast">zsh-bench human-bench thresholds</a>.
-            Colors are normalized by each target: green &le; 50%, yellow &le; 100%, orange &le; 200%,
-            red &gt; 200%.
-            <a rel="noopener" href="https://github.com/romkatv/zsh-bench#what-it-measures">Exit Time has no perceptual threshold</a>
-            and is shown as a neutral reference.
-          </p>
         </div>
         <div class="meta">
           <div><strong>Last Update:</strong> <span id="last-update"></span></div>
           <div><strong>Repository:</strong> <a id="repository-link" rel="noopener"></a></div>
         </div>
+        <div id="summary" class="summary-grid"></div>
+        <p class="summary-note">
+          <span class="summary-note-line">
+            Summary targets follow
+            <a rel="noopener" href="https://github.com/romkatv/zsh-bench#how-fast-is-fast">zsh-bench human-bench thresholds</a>.
+            Colors are normalized by each target: green &le; 50%, yellow &le; 100%, orange &le; 200%, red &gt; 200%.
+          </span>
+          <span class="summary-note-line">
+            <a rel="noopener" href="https://github.com/romkatv/zsh-bench#what-it-measures">Exit Time has no perceptual threshold</a>
+            and is shown as a neutral reference.
+          </span>
+        </p>
       </header>
 
       <main id="main"></main>
