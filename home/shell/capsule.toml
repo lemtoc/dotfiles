@@ -1,13 +1,13 @@
 layout = "two-line"
 
 [character]
-glyph = "$"
-success_style = { fg = "green", bold = false }
+glyph = "%"
+success_style = { fg = "default", bold = false }
 error_style = { fg = "red", bold = false }
 
 [character.vicmd]
-glyph = "$"
-style = { fg = "green", bold = false }
+glyph = "%"
+style = { fg = "default", bold = false }
 
 [directory]
 style = { fg = "green", bold = false }
@@ -19,11 +19,11 @@ indicator_style = { fg = "green", bold = false }
 
 [time]
 disabled = false
-format = "HH:MM"
+format = "HH:MM:SS"
 connector = ""
-slot = "line2"
+slot = "line1"
 side = "right"
-style = { fg = "yellow", bold = true }
+style = { fg = "default", bold = false }
 
 [cmd_duration]
 threshold_ms = 2000
