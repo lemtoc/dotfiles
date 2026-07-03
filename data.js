@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783069511644,
+  "lastUpdate": 1783079914700,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2779,6 +2779,65 @@ window.BENCHMARK_DATA = {
             "range": "1.89 ms",
             "unit": "ms",
             "extra": "median: 30.42 ms\nmin: 29.92 ms\nmax: 36.07 ms\nstddev: 1.89 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "95db417d3fbbe84b9f66dbbb9729e7f32b7a5127",
+          "message": "feat(shell): keep capsule time on line1 right\n\n- Pin Capsule to the prefix-aware line1 right prompt renderer\n- Move prompt time back to line1 right with seconds and default color\n- Keep the prompt character as a default-colored percent sign\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T20:57:39+09:00",
+          "tree_id": "e970a9beba790dbf67535ea3af0cde6653a9e082",
+          "url": "https://github.com/lemtoc/dotfiles/commit/95db417d3fbbe84b9f66dbbb9729e7f32b7a5127"
+        },
+        "date": 1783079913655,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 43.41,
+            "range": "7.21 ms",
+            "unit": "ms",
+            "extra": "median: 43.41 ms\nmin: 40.9 ms\nmax: 67.04 ms\nstddev: 7.21 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.66,
+            "range": "7.3 ms",
+            "unit": "ms",
+            "extra": "median: 43.66 ms\nmin: 41.21 ms\nmax: 67.24 ms\nstddev: 7.3 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.35,
+            "range": "0.34 ms",
+            "unit": "ms",
+            "extra": "median: 5.35 ms\nmin: 5.11 ms\nmax: 6.34 ms\nstddev: 0.34 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.32,
+            "range": "22.2 ms",
+            "unit": "ms",
+            "extra": "median: 2.32 ms\nmin: 1.1 ms\nmax: 54.96 ms\nstddev: 22.2 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 30.7,
+            "range": "10.07 ms",
+            "unit": "ms",
+            "extra": "median: 30.7 ms\nmin: 29.5 ms\nmax: 72.42 ms\nstddev: 10.07 ms\nruns: 16"
           }
         ]
       }
