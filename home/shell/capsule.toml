@@ -1,7 +1,28 @@
+layout = "two-line"
+
+[character]
+glyph = "$"
+success_style = { fg = "green", bold = false }
+error_style = { fg = "red", bold = false }
+
+[character.vicmd]
+glyph = "$"
+style = { fg = "green", bold = false }
+
+[directory]
+style = { fg = "green", bold = false }
+read_only_style = { fg = "red", bold = false }
+
+[git]
+connector = ""
+indicator_style = { fg = "green", bold = false }
+
 [time]
 disabled = false
 format = "HH:MM"
-connector = "at"
+connector = ""
+slot = "line2"
+side = "right"
 style = { fg = "yellow", bold = true }
 
 [cmd_duration]

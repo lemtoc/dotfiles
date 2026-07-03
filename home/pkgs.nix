@@ -7,6 +7,7 @@
     # Language runtimes & package managers
     # node is provided by mise (programs.mise) — keep nodejs OUT of nix
     go
+    fish
     pnpm
     yarn
     bun
