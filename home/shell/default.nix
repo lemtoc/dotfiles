@@ -2,7 +2,7 @@
 {
   imports = [
     ./zsh.nix
-    ./starship.nix
+    ./capsule.nix
     ./zoxide.nix
     ./direnv.nix
     ./mise.nix

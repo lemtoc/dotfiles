@@ -1,0 +1,103 @@
+[time]
+disabled = false
+format = "HH:MM"
+connector = "at"
+style = { fg = "yellow", bold = true }
+
+[cmd_duration]
+threshold_ms = 2000
+connector = "took"
+style = { fg = "yellow", bold = true }
+
+[[module]]
+name = "aws"
+slot = "line1"
+when.env = ["AWS_PROFILE"]
+format = "{profile}"
+icon = "aws:"
+connector = "via"
+style = { fg = "yellow", bold = true }
+
+[[module.source]]
+name = "profile"
+env = "AWS_PROFILE"
+
+[[module]]
+name = "bun"
+slot = "line1"
+when.files = ["bun.lock", "bun.lockb", "bunfig.toml"]
+format = "v{version}"
+icon = "\uE76F"
+connector = "via"
+style = { fg = "red" }
+arbitration = { group = "node.js", priority = 10 }
+
+[[module.source]]
+name = "version"
+file = ".bun-version"
+
+[[module.source]]
+name = "version"
+command = ["bun", "--version"]
+regex = '(\d[\d.]*)'
+
+[[module]]
+name = "node"
+slot = "line1"
+when.files = ["package.json"]
+format = "v{version}"
+icon = "\uE718"
+connector = "via"
+style = { fg = "green" }
+arbitration = { group = "node.js", priority = 20 }
+
+[[module.source]]
+name = "version"
+file = ".node-version"
+
+[[module.source]]
+name = "version"
+command = ["node", "--version"]
+regex = 'v?(\d[\d.]*)'
+
+[[module]]
+name = "rust"
+slot = "line1"
+when.files = ["Cargo.toml"]
+format = "v{version}"
+icon = "\uF1617"
+connector = "via"
+style = { fg = "red" }
+
+[[module.source]]
+name = "version"
+command = ["rustc", "--version"]
+regex = 'rustc\s+(\S+)'
+
+[[module]]
+name = "go"
+slot = "line1"
+when.files = ["go.mod"]
+format = "v{version}"
+icon = "\uE627"
+connector = "via"
+style = { fg = "cyan" }
+
+[[module.source]]
+name = "version"
+command = ["go", "version"]
+regex = 'go(\d[\d.]*)'
+
+[[module]]
+name = "python"
+slot = "line1"
+when.files = ["pyproject.toml", "setup.py"]
+format = "v{version}"
+icon = "\uE235"
+connector = "via"
+style = { fg = "yellow" }
+
+[[module.source]]
+name = "version"
+command = ["python3", "--version"]
+regex = 'Python\s+(\S+)'

@@ -1,10 +1,20 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
-  starshipBin = lib.getExe config.programs.starship.package;
+  capsulePackage = import ./capsule-package.nix { inherit inputs pkgs; };
+  capsuleBin = lib.getExe capsulePackage;
   zoxideBin = lib.getExe config.programs.zoxide.package;
   fzfBin = lib.getExe config.programs.fzf.package;
   direnvBin = lib.getExe config.programs.direnv.package;
   miseBin = lib.getExe config.programs.mise.package;
+  # Keep deferred work from invoking precmd/reset-prompt/redraw. Capsule owns
+  # prompt refresh, and zsh-defer's default prompt hooks can trigger redraw loops.
+  zshDeferIdle = "zsh-defer -m -p -r";
 in
 {
   xdg.configFile = {
@@ -20,16 +30,16 @@ in
       shell = "zsh";
 
       templates = {
-        defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer -t 0.0001 source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}";
+        defer = "{{ hooks?.pre | nl }}{% for file in files %}${zshDeferIdle} -t 0.0001 source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}";
       };
 
       plugins = {
         "00-zsh-defer" = {
           github = "romkatv/zsh-defer";
           hooks.post = ''
-            zsh-defer source ~/.config/zsh/lazy.zsh
-            zsh-defer -t 0.001 autoload -Uz compinit
-            zsh-defer -t 0.001 compinit
+            ${zshDeferIdle} source ~/.config/zsh/lazy.zsh
+            ${zshDeferIdle} -t 0.001 autoload -Uz compinit
+            ${zshDeferIdle} -t 0.001 compinit
           '';
         };
 
@@ -37,11 +47,11 @@ in
           github = "yuki-yano/zeno.zsh";
           apply = [ "defer" ];
           hooks.post = ''
-            zsh-defer bindkey ' ' zeno-auto-snippet
-            zsh-defer bindkey '^m' zeno-auto-snippet-and-accept-line
-            zsh-defer bindkey '^i' zeno-completion
-            zsh-defer bindkey '^r' zeno-history-selection
-            zsh-defer bindkey '^x^s' zeno-insert-snippet
+            ${zshDeferIdle} bindkey ' ' zeno-auto-snippet
+            ${zshDeferIdle} bindkey '^m' zeno-auto-snippet-and-accept-line
+            ${zshDeferIdle} bindkey '^i' zeno-completion
+            ${zshDeferIdle} bindkey '^r' zeno-history-selection
+            ${zshDeferIdle} bindkey '^x^s' zeno-insert-snippet
           '';
         };
 
@@ -127,19 +137,19 @@ in
       # automatic cache keys — when a tool is updated via `nix run .#switch`, the path changes
       # and the cache is regenerated.
       (lib.mkOrder 900 ''
-        cache_eval "${starshipBin} init zsh"
-        zsh-defer cache_eval "${zoxideBin} init zsh"
-        zsh-defer cache_eval "${fzfBin} --zsh"
-        zsh-defer cache_eval "${direnvBin} hook zsh"
-        zsh-defer cache_eval "${miseBin} activate zsh"
+        cache_eval "${capsuleBin} init zsh --local"
+        ${zshDeferIdle} cache_eval "${zoxideBin} init zsh"
+        ${zshDeferIdle} cache_eval "${fzfBin} --zsh"
+        ${zshDeferIdle} cache_eval "${direnvBin} hook zsh"
+        ${zshDeferIdle} cache_eval "${miseBin} activate zsh"
         if (( $+commands[muu] )); then
-          zsh-defer cache_eval "COMPLETE=zsh muu"
+          ${zshDeferIdle} cache_eval "COMPLETE=zsh muu"
         fi
       '')
 
       # deferred cleanup: unfunction source override after all deferred operations
       (lib.mkOrder 1500 ''
-        zsh-defer zsh-defer unfunction source
+        ${zshDeferIdle} zsh-defer unfunction source
       '')
     ];
   };
