@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783079914700,
+  "lastUpdate": 1783081176720,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2838,6 +2838,65 @@ window.BENCHMARK_DATA = {
             "range": "10.07 ms",
             "unit": "ms",
             "extra": "median: 30.7 ms\nmin: 29.5 ms\nmax: 72.42 ms\nstddev: 10.07 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "761ab609edea255390a06110a7a3dd1391745bdd",
+          "message": "feat(shell): refine capsule aws prompt\n\n- Move the AWS prompt module after runtime tool modules\n- Use the same AWS Nerd Font glyph as the previous Starship prompt\n- Pin Capsule to the custom module ordering fix\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T21:17:02+09:00",
+          "tree_id": "5a45bcb2b8337b3949ffbfff79fd728f01d08cb9",
+          "url": "https://github.com/lemtoc/dotfiles/commit/761ab609edea255390a06110a7a3dd1391745bdd"
+        },
+        "date": 1783081175644,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 44.35,
+            "range": "5.89 ms",
+            "unit": "ms",
+            "extra": "median: 44.35 ms\nmin: 40.57 ms\nmax: 66.18 ms\nstddev: 5.89 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 44.54,
+            "range": "5.91 ms",
+            "unit": "ms",
+            "extra": "median: 44.54 ms\nmin: 40.81 ms\nmax: 66.51 ms\nstddev: 5.91 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.53,
+            "range": "0.42 ms",
+            "unit": "ms",
+            "extra": "median: 5.53 ms\nmin: 5.12 ms\nmax: 6.66 ms\nstddev: 0.42 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.16,
+            "range": "17.98 ms",
+            "unit": "ms",
+            "extra": "median: 1.16 ms\nmin: 0.62 ms\nmax: 58.72 ms\nstddev: 17.98 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 31.69,
+            "range": "2.39 ms",
+            "unit": "ms",
+            "extra": "median: 31.69 ms\nmin: 30.16 ms\nmax: 39.53 ms\nstddev: 2.39 ms\nruns: 16"
           }
         ]
       }
