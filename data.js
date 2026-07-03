@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783039661096,
+  "lastUpdate": 1783065240262,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2661,6 +2661,65 @@ window.BENCHMARK_DATA = {
             "range": "1.61 ms",
             "unit": "ms",
             "extra": "median: 33.9 ms\nmin: 32.94 ms\nmax: 40.13 ms\nstddev: 1.61 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "1956f6343803639c5a303d9a9fe14ab66776678d",
+          "message": "fix(shell): update capsule prompt integration\n\n- Update Capsule to remove the zsh prompt leading blank line and compact directory paths\n- Pass the local corporate CA bundle to the self-hosted benchmark job environment\n- Keep benchmark checkout working when the runner service does not inherit shell CA variables\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T16:52:48+09:00",
+          "tree_id": "f40cd60e3841fab24f88e22c69df4647f478e3e4",
+          "url": "https://github.com/lemtoc/dotfiles/commit/1956f6343803639c5a303d9a9fe14ab66776678d"
+        },
+        "date": 1783065238768,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.33,
+            "range": "6.35 ms",
+            "unit": "ms",
+            "extra": "median: 46.33 ms\nmin: 42.22 ms\nmax: 63.52 ms\nstddev: 6.35 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.52,
+            "range": "6.4 ms",
+            "unit": "ms",
+            "extra": "median: 46.52 ms\nmin: 42.43 ms\nmax: 63.74 ms\nstddev: 6.4 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.35,
+            "range": "0.2 ms",
+            "unit": "ms",
+            "extra": "median: 5.35 ms\nmin: 5.12 ms\nmax: 5.78 ms\nstddev: 0.2 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.4,
+            "range": "17.64 ms",
+            "unit": "ms",
+            "extra": "median: 1.4 ms\nmin: 0.99 ms\nmax: 56.18 ms\nstddev: 17.64 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.16,
+            "range": "1.58 ms",
+            "unit": "ms",
+            "extra": "median: 32.16 ms\nmin: 30.67 ms\nmax: 35.65 ms\nstddev: 1.58 ms\nruns: 16"
           }
         ]
       }
