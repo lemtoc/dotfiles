@@ -15,7 +15,7 @@ read_only_style = { fg = "red", bold = false }
 
 [git]
 connector = ""
-indicator_style = { fg = "green", bold = false }
+indicator_style = { fg = "magenta", bold = true }
 
 [time]
 disabled = false
@@ -114,8 +114,7 @@ regex = 'Python\s+(\S+)'
 name = "aws"
 slot = "line1"
 when.env = ["AWS_PROFILE"]
-format = "{profile}"
-icon = ""
+format = "@aws {profile}"
 style = { fg = "yellow", bold = true }
 
 [[module.source]]
