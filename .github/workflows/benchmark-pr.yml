@@ -22,8 +22,8 @@ jobs:
       - uses: ./.github/actions/setup-bench-env
         id: env
 
-      - name: Disable git commit signing
-        run: git config --global commit.gpgsign false
+      - name: Disable git commit signing in workspace
+        run: git config --local commit.gpgsign false
 
       - uses: ./.github/actions/run-benchmark
 
@@ -42,3 +42,10 @@ jobs:
           comment-always: true
           fail-on-alert: true
           summary-always: true
+
+      - name: Clean benchmark temporary files
+        if: always()
+        shell: bash
+        run: |
+          rm -rf "$RUNNER_TEMP/zsh-bench"
+          rm -f zsh-bench-result.txt benchmark-result.json
