@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783065240262,
+  "lastUpdate": 1783069511644,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2720,6 +2720,65 @@ window.BENCHMARK_DATA = {
             "range": "1.58 ms",
             "unit": "ms",
             "extra": "median: 32.16 ms\nmin: 30.67 ms\nmax: 35.65 ms\nstddev: 1.58 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "769b55d7c850fd019d19055693472bab1377f476",
+          "message": "feat(shell): right-align capsule prompt time\n\n- Update capsule-src to the fork commit that supports right prompt placement\n- Move capsule time to line2/right and keep the left prompt focused on status and character\n- Add fish as an installed shell package for fallback use\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T18:04:01+09:00",
+          "tree_id": "25da0312b3d333401da5948434bb733768cf7a02",
+          "url": "https://github.com/lemtoc/dotfiles/commit/769b55d7c850fd019d19055693472bab1377f476"
+        },
+        "date": 1783069510141,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 43.44,
+            "range": "4.35 ms",
+            "unit": "ms",
+            "extra": "median: 43.44 ms\nmin: 41.43 ms\nmax: 60.83 ms\nstddev: 4.35 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.69,
+            "range": "4.35 ms",
+            "unit": "ms",
+            "extra": "median: 43.69 ms\nmin: 41.62 ms\nmax: 61.02 ms\nstddev: 4.35 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.5,
+            "range": "0.43 ms",
+            "unit": "ms",
+            "extra": "median: 5.5 ms\nmin: 5.15 ms\nmax: 6.61 ms\nstddev: 0.43 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.75,
+            "range": "18.23 ms",
+            "unit": "ms",
+            "extra": "median: 1.75 ms\nmin: 1.05 ms\nmax: 58.7 ms\nstddev: 18.23 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 30.42,
+            "range": "1.89 ms",
+            "unit": "ms",
+            "extra": "median: 30.42 ms\nmin: 29.92 ms\nmax: 36.07 ms\nstddev: 1.89 ms\nruns: 16"
           }
         ]
       }
