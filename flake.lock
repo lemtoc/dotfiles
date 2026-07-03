@@ -3,11 +3,11 @@
     "capsule-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1783080887,
-        "narHash": "sha256-KDR5Zrc9XT55hGEBpiYpo0QtnAkBo05ng3jPLry6aJg=",
+        "lastModified": 1783082776,
+        "narHash": "sha256-tNT6AdoS+aCP4vbMbACyPUmS30ewW64l91kdAt7n+pU=",
         "ref": "feat/local-coproc",
-        "rev": "6a762095c489c52d35acc90e01ceb7400127de62",
-        "revCount": 470,
+        "rev": "eef4bbde7934a406de5d584a2bb0ca02c9cca6a9",
+        "revCount": 471,
         "type": "git",
         "url": "https://github.com/lemtoc/capsule.git"
       },

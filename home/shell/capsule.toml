@@ -27,8 +27,9 @@ style = { fg = "default", bold = false }
 
 [cmd_duration]
 threshold_ms = 2000
-connector = "took"
-style = { fg = "yellow", bold = true }
+connector = ""
+prefix = "+"
+style = { fg = "default", bold = false }
 
 [[module]]
 name = "bun"
