@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782985295674,
+  "lastUpdate": 1783039661096,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2602,6 +2602,65 @@ window.BENCHMARK_DATA = {
             "range": "6.24 ms",
             "unit": "ms",
             "extra": "median: 41.54 ms\nmin: 39.72 ms\nmax: 66 ms\nstddev: 6.24 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "1f02e78632d4e9281d19424347ca9bf3f28bade9",
+          "message": "feat(ci): use self-hosted zsh benchmark runner\n\n- Run the main zsh benchmark on the self-hosted local-bench runner\n- Keep the PR benchmark on macos-latest and scope git signing config to the workspace\n- Add actionlint configuration for the local-bench label and clean benchmark temp files\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T09:43:48+09:00",
+          "tree_id": "ec9606af90604bb96b22e3b1a5993ce06c882c3b",
+          "url": "https://github.com/lemtoc/dotfiles/commit/1f02e78632d4e9281d19424347ca9bf3f28bade9"
+        },
+        "date": 1783039659441,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 90.33,
+            "range": "5.98 ms",
+            "unit": "ms",
+            "extra": "median: 90.33 ms\nmin: 86.41 ms\nmax: 107.23 ms\nstddev: 5.98 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 90.52,
+            "range": "6.01 ms",
+            "unit": "ms",
+            "extra": "median: 90.52 ms\nmin: 86.6 ms\nmax: 107.55 ms\nstddev: 6.01 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 50.85,
+            "range": "2.36 ms",
+            "unit": "ms",
+            "extra": "median: 50.85 ms\nmin: 46.55 ms\nmax: 53.35 ms\nstddev: 2.36 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 55.58,
+            "range": "1.84 ms",
+            "unit": "ms",
+            "extra": "median: 55.58 ms\nmin: 50.83 ms\nmax: 57.55 ms\nstddev: 1.84 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 33.9,
+            "range": "1.61 ms",
+            "unit": "ms",
+            "extra": "median: 33.9 ms\nmin: 32.94 ms\nmax: 40.13 ms\nstddev: 1.61 ms\nruns: 16"
           }
         ]
       }
