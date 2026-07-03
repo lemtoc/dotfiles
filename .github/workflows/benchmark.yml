@@ -18,6 +18,10 @@ jobs:
     name: Zsh Interactive Latency
     runs-on: [self-hosted, local-bench]
     timeout-minutes: 30
+    env:
+      CURL_CA_BUNDLE: /Users/t1190078/.local/share/ca-certificates/corp.pem
+      GIT_SSL_CAINFO: /Users/t1190078/.local/share/ca-certificates/corp.pem
+      NODE_EXTRA_CA_CERTS: /Users/t1190078/.local/share/ca-certificates/corp.pem
     steps:
       - uses: actions/checkout@v6
 
