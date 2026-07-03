@@ -15,6 +15,7 @@
         --blue: #0969da;
         --green: #1a7f37;
         --yellow: #9a6700;
+        --orange: #bc4c00;
         --red: #cf222e;
         --purple: #8250df;
         --teal: #1b7c83;
@@ -124,8 +125,16 @@
       .summary-grid {
         display: grid;
         gap: 12px;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         margin-top: 16px;
+      }
+
+      .summary-note {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin-top: 12px;
+        max-width: 860px;
       }
 
       .metric-card {
@@ -151,6 +160,10 @@
       }
 
       .metric-card.warn strong {
+        color: var(--orange);
+      }
+
+      .metric-card.ok strong {
         color: var(--yellow);
       }
 
@@ -255,6 +268,14 @@
           <div class="eyebrow">zsh-bench</div>
           <h1>Shell Benchmarks</h1>
           <div id="summary" class="summary-grid"></div>
+          <p class="summary-note">
+            Summary targets follow
+            <a rel="noopener" href="https://github.com/romkatv/zsh-bench#how-fast-is-fast">zsh-bench human-bench thresholds</a>.
+            Colors are normalized by each target: green &le; 50%, yellow &le; 100%, orange &le; 200%,
+            red &gt; 200%.
+            <a rel="noopener" href="https://github.com/romkatv/zsh-bench#what-it-measures">Exit Time has no perceptual threshold</a>
+            and is shown as a neutral reference.
+          </p>
         </div>
         <div class="meta">
           <div><strong>Last Update:</strong> <span id="last-update"></span></div>
@@ -281,6 +302,11 @@
           'first command lag',
           'command lag',
           'input lag',
+        ];
+
+        const summaryMetricOrder = [
+          ...metricOrder,
+          'exit time',
         ];
 
         const metricDetails = {
@@ -312,12 +338,12 @@
             label: 'Exit Time',
             target: null,
             color: '#57606a',
-            description: 'Legacy zsh -lic exit style timing',
+            description: 'zsh -lic exit reference timing',
           },
         };
 
-        function formatMs(value) {
-          return Number.isFinite(value) ? `${value.toFixed(1)} ms` : 'n/a';
+        function formatMs(value, digits = 1) {
+          return Number.isFinite(value) ? `${value.toFixed(digits)} ms` : 'n/a';
         }
 
         function collectBenches(entries) {
@@ -347,8 +373,11 @@
           if (!Number.isFinite(value) || !target) {
             return '';
           }
-          if (value <= target) {
+          if (value <= target * 0.5) {
             return 'good';
+          }
+          if (value <= target) {
+            return 'ok';
           }
           if (value <= target * 2) {
             return 'warn';
@@ -502,22 +531,25 @@
           const summary = document.getElementById('summary');
           summary.textContent = '';
 
-          for (const name of metricOrder) {
+          for (const name of summaryMetricOrder) {
             const detail = metricDetails[name];
             const value = latestValue(metricMap.get(name));
             const card = document.createElement('div');
-            card.className = `metric-card ${statusFor(value, detail.target)}`;
+            const status = statusFor(value, detail.target);
+            card.className = status ? `metric-card ${status}` : 'metric-card';
 
             const label = document.createElement('span');
             label.textContent = detail.label;
             card.appendChild(label);
 
             const strong = document.createElement('strong');
-            strong.textContent = formatMs(value);
+            strong.textContent = formatMs(value, 2);
             card.appendChild(strong);
 
             const small = document.createElement('small');
-            small.textContent = `${detail.description}; target ${detail.target} ms`;
+            small.textContent = detail.target
+              ? `${detail.description}; ${detail.targetLabel || 'target'} ${detail.target} ms`
+              : `${detail.description}; reference only`;
             card.appendChild(small);
 
             summary.appendChild(card);
