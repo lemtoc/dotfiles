@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783081176720,
+  "lastUpdate": 1783082114987,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2897,6 +2897,65 @@ window.BENCHMARK_DATA = {
             "range": "2.39 ms",
             "unit": "ms",
             "extra": "median: 31.69 ms\nmin: 30.16 ms\nmax: 39.53 ms\nstddev: 2.39 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "2db21af6f007bb2dac3f41a13b3d7d74265e8bb1",
+          "message": "feat(shell): refine capsule prompt labels\n\n- Replace the AWS Nerd Font icon with an @aws prompt label\n- Move AWS profile rendering into the module format string\n- Change git status indicators from green to magenta styling\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T21:26:47+09:00",
+          "tree_id": "821a9cea4f110c99b0d47eef791bbd4b954bca8c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/2db21af6f007bb2dac3f41a13b3d7d74265e8bb1"
+        },
+        "date": 1783082113938,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 42.44,
+            "range": "5.16 ms",
+            "unit": "ms",
+            "extra": "median: 42.44 ms\nmin: 41.37 ms\nmax: 63.49 ms\nstddev: 5.16 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 42.62,
+            "range": "5.19 ms",
+            "unit": "ms",
+            "extra": "median: 42.62 ms\nmin: 41.67 ms\nmax: 63.82 ms\nstddev: 5.19 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.32,
+            "range": "0.35 ms",
+            "unit": "ms",
+            "extra": "median: 5.32 ms\nmin: 5.08 ms\nmax: 6.54 ms\nstddev: 0.35 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.1,
+            "range": "0.45 ms",
+            "unit": "ms",
+            "extra": "median: 1.1 ms\nmin: 0.83 ms\nmax: 2.6 ms\nstddev: 0.45 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 29.78,
+            "range": "3.33 ms",
+            "unit": "ms",
+            "extra": "median: 29.78 ms\nmin: 29.06 ms\nmax: 40.12 ms\nstddev: 3.33 ms\nruns: 16"
           }
         ]
       }
