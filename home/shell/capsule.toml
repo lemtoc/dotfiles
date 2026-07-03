@@ -31,19 +31,6 @@ connector = "took"
 style = { fg = "yellow", bold = true }
 
 [[module]]
-name = "aws"
-slot = "line1"
-when.env = ["AWS_PROFILE"]
-format = "{profile}"
-icon = "aws:"
-connector = "via"
-style = { fg = "yellow", bold = true }
-
-[[module.source]]
-name = "profile"
-env = "AWS_PROFILE"
-
-[[module]]
 name = "bun"
 slot = "line1"
 when.files = ["bun.lock", "bun.lockb", "bunfig.toml"]
@@ -122,3 +109,15 @@ style = { fg = "yellow" }
 name = "version"
 command = ["python3", "--version"]
 regex = 'Python\s+(\S+)'
+
+[[module]]
+name = "aws"
+slot = "line1"
+when.env = ["AWS_PROFILE"]
+format = "{profile}"
+icon = ""
+style = { fg = "yellow", bold = true }
+
+[[module.source]]
+name = "profile"
+env = "AWS_PROFILE"
