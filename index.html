@@ -274,6 +274,8 @@
           <span class="summary-note-line">
             Summary targets follow
             <a rel="noopener" href="https://github.com/romkatv/zsh-bench#how-fast-is-fast">zsh-bench human-bench thresholds</a>.
+          </span>
+          <span class="summary-note-line">
             Colors are normalized by each target: green &le; 50%, yellow &le; 100%, orange &le; 200%, red &gt; 200%.
           </span>
           <span class="summary-note-line">
@@ -387,6 +389,12 @@
             return 'warn';
           }
           return 'bad';
+        }
+
+        function targetDescription(metricNames) {
+          return metricNames
+            .map(name => `${metricDetails[name].label} ${metricDetails[name].target} ms`)
+            .join(', ');
         }
 
         function makeDataset(metricName, series) {
@@ -630,11 +638,17 @@
           const main = document.getElementById('main');
           main.textContent = '';
 
-          const startup = section('Startup Latency', 'Terminal open to prompt readiness and first command execution. Lower is better.');
+          const startup = section(
+            'Startup Latency',
+            `Terminal open to prompt readiness and first command execution. Targets: ${targetDescription(startupMetricOrder)}.`,
+          );
           renderChart(startup, interactiveMap, startupMetricOrder, { suggestedMax: 150 });
           main.appendChild(startup);
 
-          const interactive = section('Interactive Latency', 'Recent prompt and keypress responsiveness after startup. Lower is better.');
+          const interactive = section(
+            'Interactive Latency',
+            `Recent prompt and keypress responsiveness after startup. Targets: ${targetDescription(interactiveMetricOrder)}.`,
+          );
           renderChart(interactive, interactiveMap, interactiveMetricOrder, { maxPoints: 12 });
           main.appendChild(interactive);
 
