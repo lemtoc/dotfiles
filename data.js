@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783134632742,
+  "lastUpdate": 1783153887704,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3426,6 +3426,65 @@ window.BENCHMARK_DATA = {
             "range": "3.22 ms",
             "unit": "ms",
             "extra": "median: 31.34 ms\nmin: 29.98 ms\nmax: 43.8 ms\nstddev: 3.22 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "040834c78e299e0ce2053049b14ce5229f2d61e7",
+          "message": "fix(shell): suppress cmux scrollback restore\n\n- Clear cmux restore scrollback temp files before shell integration replays them\n- Keep the guard scoped to cmux-provided integration environments\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T17:30:29+09:00",
+          "tree_id": "fe903fc6f3bb9e5414bcb29fa353f650d68fd4c9",
+          "url": "https://github.com/lemtoc/dotfiles/commit/040834c78e299e0ce2053049b14ce5229f2d61e7"
+        },
+        "date": 1783153886668,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 43.79,
+            "range": "6.25 ms",
+            "unit": "ms",
+            "extra": "median: 43.79 ms\nmin: 41.26 ms\nmax: 68.68 ms\nstddev: 6.25 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 44,
+            "range": "6.27 ms",
+            "unit": "ms",
+            "extra": "median: 44 ms\nmin: 41.45 ms\nmax: 68.98 ms\nstddev: 6.27 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.52,
+            "range": "0.35 ms",
+            "unit": "ms",
+            "extra": "median: 5.52 ms\nmin: 5.12 ms\nmax: 6.62 ms\nstddev: 0.35 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.28,
+            "range": "12.68 ms",
+            "unit": "ms",
+            "extra": "median: 1.28 ms\nmin: 0.94 ms\nmax: 53.7 ms\nstddev: 12.68 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 30.93,
+            "range": "3.62 ms",
+            "unit": "ms",
+            "extra": "median: 30.93 ms\nmin: 28.94 ms\nmax: 44.25 ms\nstddev: 3.62 ms\nruns: 16"
           }
         ]
       }
