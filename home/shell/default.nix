@@ -12,6 +12,15 @@
 
   # Hardcoded output of `brew shellenv` to avoid spawning brew binary (~15ms).
   # The output is constant on Apple Silicon, so safe to inline.
+  programs.zsh.envExtra = ''
+    # cmux restores scrollback by replaying a temp file during shell bootstrap.
+    # Drop that replay so a restored terminal starts at the live prompt.
+    if [[ -n "''${CMUX_RESTORE_SCROLLBACK_FILE:-}" && -n "''${CMUX_SHELL_INTEGRATION_DIR:-}" ]]; then
+      /bin/rm -f -- "$CMUX_RESTORE_SCROLLBACK_FILE" >/dev/null 2>&1 || true
+      unset CMUX_RESTORE_SCROLLBACK_FILE
+    fi
+  '';
+
   programs.zsh.profileExtra = ''
     export HOMEBREW_PREFIX="/opt/homebrew"
     export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
