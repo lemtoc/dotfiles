@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783128137828,
+  "lastUpdate": 1783134632742,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3367,6 +3367,65 @@ window.BENCHMARK_DATA = {
             "range": "1.85 ms",
             "unit": "ms",
             "extra": "median: 31.08 ms\nmin: 30.1 ms\nmax: 36.67 ms\nstddev: 1.85 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "246760a8409cb37e78fd4e272d8ef4a3e5e59f2f",
+          "message": "fix(ci): fail zsh benchmark on red thresholds\n\n- Add a zsh-bench threshold check that matches the dashboard red status rules\n- Stop using github-action-benchmark relative alerts as the CI failure condition\n- Apply the same red-threshold check to main and PR benchmark workflows\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T12:09:36+09:00",
+          "tree_id": "ba1c1c22e1ccc25791162653ef86f4d6d26e9b39",
+          "url": "https://github.com/lemtoc/dotfiles/commit/246760a8409cb37e78fd4e272d8ef4a3e5e59f2f"
+        },
+        "date": 1783134631237,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 42.92,
+            "range": "4.91 ms",
+            "unit": "ms",
+            "extra": "median: 42.92 ms\nmin: 39.21 ms\nmax: 61.7 ms\nstddev: 4.91 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.24,
+            "range": "4.92 ms",
+            "unit": "ms",
+            "extra": "median: 43.24 ms\nmin: 39.42 ms\nmax: 62.04 ms\nstddev: 4.92 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.17,
+            "range": "0.25 ms",
+            "unit": "ms",
+            "extra": "median: 5.17 ms\nmin: 4.96 ms\nmax: 5.79 ms\nstddev: 0.25 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.33,
+            "range": "11.86 ms",
+            "unit": "ms",
+            "extra": "median: 1.33 ms\nmin: 1.09 ms\nmax: 50.57 ms\nstddev: 11.86 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 31.34,
+            "range": "3.22 ms",
+            "unit": "ms",
+            "extra": "median: 31.34 ms\nmin: 29.98 ms\nmax: 43.8 ms\nstddev: 3.22 ms\nruns: 16"
           }
         ]
       }
