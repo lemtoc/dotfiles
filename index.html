@@ -297,15 +297,19 @@
       'use strict';
 
       (function() {
-        const metricOrder = [
+        const startupMetricOrder = [
           'first prompt lag',
           'first command lag',
+        ];
+
+        const interactiveMetricOrder = [
           'command lag',
           'input lag',
         ];
 
         const summaryMetricOrder = [
-          ...metricOrder,
+          ...startupMetricOrder,
+          ...interactiveMetricOrder,
           'exit time',
         ];
 
@@ -400,7 +404,27 @@
           };
         }
 
-        function chartOptions(unit, seriesByMetric) {
+        function displaySeries(series, config = {}) {
+          if (!series) {
+            return [];
+          }
+
+          if (Number.isFinite(config.maxPoints) && config.maxPoints > 0) {
+            return series.slice(-config.maxPoints);
+          }
+
+          return series;
+        }
+
+        function chartOptions(unit, seriesByMetric, config = {}) {
+          const yTicks = {
+            beginAtZero: true,
+          };
+
+          if (Number.isFinite(config.suggestedMax)) {
+            yTicks.suggestedMax = config.suggestedMax;
+          }
+
           return {
             maintainAspectRatio: false,
             legend: {
@@ -426,9 +450,7 @@
                     display: true,
                     labelString: unit,
                   },
-                  ticks: {
-                    beginAtZero: true,
-                  },
+                  ticks: yTicks,
                 },
               ],
             },
@@ -499,8 +521,8 @@
           parent.appendChild(empty);
         }
 
-        function renderChart(parent, metricMap, metricNames) {
-          const available = metricNames.filter(name => metricMap.has(name));
+        function renderChart(parent, metricMap, metricNames, config = {}) {
+          const available = metricNames.filter(name => displaySeries(metricMap.get(name), config).length > 0);
           if (available.length === 0) {
             renderEmpty(parent, 'Waiting for the first zsh-bench run.');
             return;
@@ -513,17 +535,19 @@
           const canvas = document.createElement('canvas');
           chartArea.appendChild(canvas);
 
-          const primarySeries = metricMap.get(available[0]);
+          const seriesByMetric = Object.fromEntries(
+            available.map(name => [name, displaySeries(metricMap.get(name), config)]),
+          );
+          const primarySeries = seriesByMetric[available[0]];
           const labels = primarySeries.map(row => row.commit.id.slice(0, 7));
-          const seriesByMetric = Object.fromEntries(available.map(name => [name, metricMap.get(name)]));
 
           new Chart(canvas, {
             type: 'line',
             data: {
               labels,
-              datasets: available.map(name => makeDataset(name, metricMap.get(name))),
+              datasets: available.map(name => makeDataset(name, seriesByMetric[name])),
             },
-            options: chartOptions(primarySeries[0].bench.unit, seriesByMetric),
+            options: chartOptions(primarySeries[0].bench.unit, seriesByMetric, config),
           });
         }
 
@@ -606,9 +630,13 @@
           const main = document.getElementById('main');
           main.textContent = '';
 
-          const primary = section('Interactive Latency', 'Primary zsh-bench metrics. Lower is better.');
-          renderChart(primary, interactiveMap, metricOrder);
-          main.appendChild(primary);
+          const startup = section('Startup Latency', 'Terminal open to prompt readiness and first command execution. Lower is better.');
+          renderChart(startup, interactiveMap, startupMetricOrder, { suggestedMax: 150 });
+          main.appendChild(startup);
+
+          const interactive = section('Interactive Latency', 'Recent prompt and keypress responsiveness after startup. Lower is better.');
+          renderChart(interactive, interactiveMap, interactiveMetricOrder, { maxPoints: 12 });
+          main.appendChild(interactive);
 
           const exit = section('Exit Time', 'Still recorded for continuity, but not used as the main interactive performance signal.');
           renderChart(exit, interactiveMap, ['exit time']);
