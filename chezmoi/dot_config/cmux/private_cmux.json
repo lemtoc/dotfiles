@@ -1,0 +1,28 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion" : 1,
+  "shortcuts" : {
+    "bindings" : {
+      "openBrowser" : {
+        "first" : {
+          "command" : true,
+          "control" : false,
+          "key" : "t",
+          "keyCode" : 17,
+          "option" : false,
+          "shift" : true
+        }
+      },
+      "reopenClosedBrowserPanel" : {
+        "first" : {
+          "command" : true,
+          "control" : true,
+          "key" : "t",
+          "keyCode" : 17,
+          "option" : false,
+          "shift" : false
+        }
+      }
+    }
+  }
+}

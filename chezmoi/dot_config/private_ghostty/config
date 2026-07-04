@@ -1,0 +1,2 @@
+# cmux reads this Ghostty-compatible config for terminal behavior.
+keybind = super+k=text:\x0c
