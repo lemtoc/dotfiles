@@ -58,12 +58,13 @@ jobs:
           benchmark-data-dir-path: .
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
-          alert-threshold: "150%"
-          comment-on-alert: true
           comment-always: true
-          fail-on-alert: true
+          fail-on-alert: false
           summary-always: true
-          alert-comment-cc-users: "@lemtoc"
+
+      - name: Fail on red zsh-bench metrics
+        shell: bash
+        run: bash .github/scripts/check-zsh-bench-thresholds.sh benchmark-result.json
 
       - name: Clean benchmark temporary files
         if: always()
