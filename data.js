@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783128088656,
+  "lastUpdate": 1783128137828,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3310,6 +3310,63 @@ window.BENCHMARK_DATA = {
             "range": "2.82 ms",
             "unit": "ms",
             "extra": "median: 32.66 ms\nmin: 30.22 ms\nmax: 42.28 ms\nstddev: 2.82 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "lemtoc",
+            "username": "lemtoc",
+            "email": "83203852+lemtoc@users.noreply.github.com"
+          },
+          "committer": {
+            "name": "lemtoc",
+            "username": "lemtoc",
+            "email": "83203852+lemtoc@users.noreply.github.com"
+          },
+          "id": "9e60dbdfc35581ce0876c6b77ee70926b92b4d26",
+          "message": "fix(cmux): send ctrl-l for command-k\n\n- Manage cmux JSON and settings files through chezmoi\n- Add a Ghostty-compatible keybind so Command-K sends Ctrl-L to the shell\n- Keep existing cmux browser shortcut overrides under version control\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T00:57:28Z",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9e60dbdfc35581ce0876c6b77ee70926b92b4d26"
+        },
+        "date": 1783128136687,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.33,
+            "range": "5.87 ms",
+            "unit": "ms",
+            "extra": "median: 46.33 ms\nmin: 41.71 ms\nmax: 60.79 ms\nstddev: 5.87 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.53,
+            "range": "5.87 ms",
+            "unit": "ms",
+            "extra": "median: 46.53 ms\nmin: 41.91 ms\nmax: 61.06 ms\nstddev: 5.87 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.46,
+            "range": "0.4 ms",
+            "unit": "ms",
+            "extra": "median: 5.46 ms\nmin: 5.1 ms\nmax: 6.54 ms\nstddev: 0.4 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.17,
+            "range": "22.37 ms",
+            "unit": "ms",
+            "extra": "median: 2.17 ms\nmin: 1.15 ms\nmax: 55.44 ms\nstddev: 22.37 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 31.08,
+            "range": "1.85 ms",
+            "unit": "ms",
+            "extra": "median: 31.08 ms\nmin: 30.1 ms\nmax: 36.67 ms\nstddev: 1.85 ms\nruns: 16"
           }
         ]
       }
