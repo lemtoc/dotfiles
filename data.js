@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783127511292,
+  "lastUpdate": 1783127646197,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3133,6 +3133,65 @@ window.BENCHMARK_DATA = {
             "range": "1.29 ms",
             "unit": "ms",
             "extra": "median: 40.68 ms\nmin: 39.4 ms\nmax: 44.89 ms\nstddev: 1.29 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "65b4378d6ee39529474087a5e345606505a8f0ba",
+          "message": "feat(shell): add tirith command guard\n\n- Add tirith to Home Manager packages and keep Homebrew from installing a duplicate formula\n- Initialize tirith synchronously in zsh so command checks are active before interactive use\n- Reuse cache_eval for the generated zsh hook while keeping the security hook non-deferred\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T10:10:39+09:00",
+          "tree_id": "c7488c932c9eb4031d8318ef68d6c4bc9b11f16c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/65b4378d6ee39529474087a5e345606505a8f0ba"
+        },
+        "date": 1783127645104,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 52.47,
+            "range": "4.3 ms",
+            "unit": "ms",
+            "extra": "median: 52.47 ms\nmin: 50.45 ms\nmax: 69.37 ms\nstddev: 4.3 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 85.26,
+            "range": "5.19 ms",
+            "unit": "ms",
+            "extra": "median: 85.26 ms\nmin: 79.97 ms\nmax: 100.63 ms\nstddev: 5.19 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.25,
+            "range": "0.36 ms",
+            "unit": "ms",
+            "extra": "median: 5.25 ms\nmin: 4.86 ms\nmax: 6.45 ms\nstddev: 0.36 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.09,
+            "range": "0.49 ms",
+            "unit": "ms",
+            "extra": "median: 1.09 ms\nmin: 0.67 ms\nmax: 2.6 ms\nstddev: 0.49 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 39.73,
+            "range": "1.78 ms",
+            "unit": "ms",
+            "extra": "median: 39.73 ms\nmin: 38.45 ms\nmax: 44.75 ms\nstddev: 1.78 ms\nruns: 16"
           }
         ]
       }
