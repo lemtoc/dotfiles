@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783082114987,
+  "lastUpdate": 1783126955859,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -2956,6 +2956,65 @@ window.BENCHMARK_DATA = {
             "range": "3.33 ms",
             "unit": "ms",
             "extra": "median: 29.78 ms\nmin: 29.06 ms\nmax: 40.12 ms\nstddev: 3.33 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "914da6b282483ca8fc1820c48bd3c70ad097fa4c",
+          "message": "feat(shell): compact command duration prompt\n\n- Configure Capsule command duration output as a compact +duration label\n- Render command duration with default foreground and no bold styling\n- Pin Capsule to the command duration prefix support commit\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-03T21:49:24+09:00",
+          "tree_id": "2fd20bc564bf00012bf758aa70b49b22674ae165",
+          "url": "https://github.com/lemtoc/dotfiles/commit/914da6b282483ca8fc1820c48bd3c70ad097fa4c"
+        },
+        "date": 1783126954798,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 42.95,
+            "range": "5.81 ms",
+            "unit": "ms",
+            "extra": "median: 42.95 ms\nmin: 37.27 ms\nmax: 65.8 ms\nstddev: 5.81 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.16,
+            "range": "5.82 ms",
+            "unit": "ms",
+            "extra": "median: 43.16 ms\nmin: 37.47 ms\nmax: 66.01 ms\nstddev: 5.82 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.17,
+            "range": "0.16 ms",
+            "unit": "ms",
+            "extra": "median: 5.17 ms\nmin: 5.04 ms\nmax: 5.66 ms\nstddev: 0.16 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.24,
+            "range": "0.43 ms",
+            "unit": "ms",
+            "extra": "median: 1.24 ms\nmin: 1.04 ms\nmax: 2.92 ms\nstddev: 0.43 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 30.11,
+            "range": "1.19 ms",
+            "unit": "ms",
+            "extra": "median: 30.11 ms\nmin: 29.13 ms\nmax: 34.26 ms\nstddev: 1.19 ms\nruns: 16"
           }
         ]
       }
