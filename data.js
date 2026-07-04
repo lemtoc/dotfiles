@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783126955859,
+  "lastUpdate": 1783127039212,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3015,6 +3015,65 @@ window.BENCHMARK_DATA = {
             "range": "1.19 ms",
             "unit": "ms",
             "extra": "median: 30.11 ms\nmin: 29.13 ms\nmax: 34.26 ms\nstddev: 1.19 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "9e60dbdfc35581ce0876c6b77ee70926b92b4d26",
+          "message": "fix(cmux): send ctrl-l for command-k\n\n- Manage cmux JSON and settings files through chezmoi\n- Add a Ghostty-compatible keybind so Command-K sends Ctrl-L to the shell\n- Keep existing cmux browser shortcut overrides under version control\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T09:57:28+09:00",
+          "tree_id": "22bfbc98f1f4db893d459eddb524d15cd77bc493",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9e60dbdfc35581ce0876c6b77ee70926b92b4d26"
+        },
+        "date": 1783127038132,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 43.27,
+            "range": "5.38 ms",
+            "unit": "ms",
+            "extra": "median: 43.27 ms\nmin: 41.53 ms\nmax: 64.21 ms\nstddev: 5.38 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.46,
+            "range": "5.39 ms",
+            "unit": "ms",
+            "extra": "median: 43.46 ms\nmin: 41.84 ms\nmax: 64.47 ms\nstddev: 5.39 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.24,
+            "range": "0.2 ms",
+            "unit": "ms",
+            "extra": "median: 5.24 ms\nmin: 4.93 ms\nmax: 5.64 ms\nstddev: 0.2 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.12,
+            "range": "12.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.12 ms\nmin: 0.76 ms\nmax: 50.96 ms\nstddev: 12.03 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 29.82,
+            "range": "2.19 ms",
+            "unit": "ms",
+            "extra": "median: 29.82 ms\nmin: 28.63 ms\nmax: 38.19 ms\nstddev: 2.19 ms\nruns: 16"
           }
         ]
       }
