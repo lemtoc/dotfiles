@@ -13,6 +13,7 @@ in
       DENO_CERT = customCert;
       NODE_EXTRA_CA_CERTS = customCert;
       GIT_SSL_CAINFO = customCert;
+      CARGO_HTTP_CAINFO = customCert;
       AWS_CA_BUNDLE = customCert;
     };
   };
