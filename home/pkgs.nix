@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # zoxide, eza, fzf, direnv are managed by programs.* modules (home/shell/*.nix)
-  # capsule is managed by home/shell/capsule.nix
+  # nova is managed by home/shell/nova.nix
   # gh is managed by programs.gh (home/gh.nix)
   home.packages = with pkgs; [
     # Language runtimes & package managers

@@ -6,13 +6,13 @@
   ...
 }:
 let
-  capsulePackage = import ./capsule-package.nix { inherit inputs pkgs; };
-  capsuleBin = lib.getExe capsulePackage;
+  novaPackage = inputs.nova.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  novaBin = lib.getExe novaPackage;
   zoxideBin = lib.getExe config.programs.zoxide.package;
   fzfBin = lib.getExe config.programs.fzf.package;
   direnvBin = lib.getExe config.programs.direnv.package;
   miseBin = lib.getExe config.programs.mise.package;
-  # Keep deferred work from invoking precmd/reset-prompt/redraw. Capsule owns
+  # Keep deferred work from invoking precmd/reset-prompt/redraw. Nova owns
   # prompt refresh, and zsh-defer's default prompt hooks can trigger redraw loops.
   zshDeferIdle = "zsh-defer -m -p -r";
 in
@@ -137,7 +137,7 @@ in
       # automatic cache keys — when a tool is updated via `nix run .#switch`, the path changes
       # and the cache is regenerated.
       (lib.mkOrder 900 ''
-        cache_eval "${capsuleBin} init zsh --local"
+        cache_eval "${novaBin} init zsh"
         ${zshDeferIdle} cache_eval "${zoxideBin} init zsh"
         ${zshDeferIdle} cache_eval "${fzfBin} --zsh"
         ${zshDeferIdle} cache_eval "${direnvBin} hook zsh"

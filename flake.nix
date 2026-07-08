@@ -10,9 +10,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    capsule-src = {
-      url = "git+https://github.com/lemtoc/capsule.git?ref=feat/local-coproc";
-      flake = false;
+    nova = {
+      url = "github:lemtoc-labs/nova";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
