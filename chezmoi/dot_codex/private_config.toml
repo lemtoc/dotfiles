@@ -48,21 +48,21 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_nod
 NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/t1190078/.codex"
 CODEX_HOME = "/Users/t1190078/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "60e4902788f207f88fd09344dfeafe07769488bdb2924bbb12b322c3b9d2b999"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "97669f77b3ca7114a2df05d55646416ea34b28100c07213ef9f643803449ef2f"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.623.101652"
+BROWSER_USE_CODEX_APP_VERSION = "26.623.141536"
 CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-04T00:08:06Z"
+last_updated = "2026-07-08T01:51:40Z"
 source_type = "local"
 source = "/Users/t1190078/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-06-21T03:22:11Z"
+last_updated = "2026-07-06T15:41:07Z"
 source_type = "local"
 source = "/Users/t1190078/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -237,6 +237,9 @@ enabled = true
 [plugins."browser@openai-bundled"]
 enabled = true
 
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
 [projects."/Users/t1190078/.dotfiles"]
 trust_level = "trusted"
 
@@ -286,6 +289,9 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/t1190078/Documents/Codex/2026-06-25/cod"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/nova"]
 trust_level = "trusted"
 
 [tui.model_availability_nux]

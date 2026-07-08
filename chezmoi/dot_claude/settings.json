@@ -1,4 +1,10 @@
 {
+  "cleanupPeriodDays": 365,
+  "env": {
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "ENABLE_LSP_TOOL": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
@@ -12,8 +18,15 @@
       "Bash(gh run view:*)",
       "Bash(mcp__ide__getDiagnostics)"
     ],
-    "deny": ["Bash(rm -rf ~/.*:*)"],
-    "ask": ["Bash(git commit:*)", "Bash(git push:*)", "Bash(gh pr create:*)", "Bash(rm:*)"],
+    "deny": [
+      "Bash(rm -rf ~/.*:*)"
+    ],
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(rm:*)"
+    ],
     "defaultMode": "acceptEdits"
   },
   "hooks": {
@@ -55,14 +68,8 @@
     "hono-skill@hono-skill": true,
     "swift-lsp@claude-plugins-official": true
   },
-  "cleanupPeriodDays": 365,
+  "outputStyle": "Explanatory",
   "language": "Japanese",
-  "env": {
-    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
-    "CLAUDE_CODE_NO_FLICKER": "1",
-    "ENABLE_LSP_TOOL": "1"
-  },
   "effortLevel": "high",
-  "showThinkingSummaries": true,
-  "outputStyle": "Explanatory"
+  "showThinkingSummaries": true
 }
