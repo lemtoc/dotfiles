@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783153887704,
+  "lastUpdate": 1783478868564,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3485,6 +3485,65 @@ window.BENCHMARK_DATA = {
             "range": "3.62 ms",
             "unit": "ms",
             "extra": "median: 30.93 ms\nmin: 28.94 ms\nmax: 44.25 ms\nstddev: 3.62 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "a9d49ce3f71571faa111a9ed64821f7ff0384600",
+          "message": "fix(shell): harden sheldon source cache\n\n- Write generated sheldon source output to a temporary file before replacing the cache\n- Fall back to synchronous zsh-defer execution when the plugin cache is unavailable\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-08T11:36:53+09:00",
+          "tree_id": "38235cbd0218cfda5fdfeb57a2af2693cf8f322e",
+          "url": "https://github.com/lemtoc/dotfiles/commit/a9d49ce3f71571faa111a9ed64821f7ff0384600"
+        },
+        "date": 1783478867350,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 48.58,
+            "range": "11.12 ms",
+            "unit": "ms",
+            "extra": "median: 48.58 ms\nmin: 42.74 ms\nmax: 91.89 ms\nstddev: 11.12 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 48.94,
+            "range": "11.14 ms",
+            "unit": "ms",
+            "extra": "median: 48.94 ms\nmin: 43.1 ms\nmax: 92.3 ms\nstddev: 11.14 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.83,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 0.83 ms\nmin: 0.74 ms\nmax: 0.91 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.33,
+            "range": "24.64 ms",
+            "unit": "ms",
+            "extra": "median: 2.33 ms\nmin: 0.81 ms\nmax: 61.87 ms\nstddev: 24.64 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 40.47,
+            "range": "3.67 ms",
+            "unit": "ms",
+            "extra": "median: 40.47 ms\nmin: 35.5 ms\nmax: 48.52 ms\nstddev: 3.67 ms\nruns: 16"
           }
         ]
       }
