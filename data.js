@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783478868564,
+  "lastUpdate": 1783478917508,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3544,6 +3544,65 @@ window.BENCHMARK_DATA = {
             "range": "3.67 ms",
             "unit": "ms",
             "extra": "median: 40.47 ms\nmin: 35.5 ms\nmax: 48.52 ms\nstddev: 3.67 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "3f09eb4a1fa81f548aad56c41d400f668b354f89",
+          "message": "feat(git): pin Git 2.55.0\n\n- Override the Home Manager Git package with the upstream Git 2.55.0 source\n- Update flake inputs for nixpkgs, home-manager, and nix-darwin\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-08T11:42:32+09:00",
+          "tree_id": "f55c3ea9c5ed8fc2461acd071f69756459ea8d8d",
+          "url": "https://github.com/lemtoc/dotfiles/commit/3f09eb4a1fa81f548aad56c41d400f668b354f89"
+        },
+        "date": 1783478916424,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.34,
+            "range": "6.19 ms",
+            "unit": "ms",
+            "extra": "median: 45.34 ms\nmin: 42.68 ms\nmax: 69.48 ms\nstddev: 6.19 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 45.67,
+            "range": "6.19 ms",
+            "unit": "ms",
+            "extra": "median: 45.67 ms\nmin: 43.02 ms\nmax: 69.81 ms\nstddev: 6.19 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.8,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 0.8 ms\nmin: 0.74 ms\nmax: 0.87 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.56,
+            "range": "25.49 ms",
+            "unit": "ms",
+            "extra": "median: 2.56 ms\nmin: 1.47 ms\nmax: 59.25 ms\nstddev: 25.49 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.07,
+            "range": "1.6 ms",
+            "unit": "ms",
+            "extra": "median: 36.07 ms\nmin: 34.79 ms\nmax: 40.31 ms\nstddev: 1.6 ms\nruns: 16"
           }
         ]
       }
