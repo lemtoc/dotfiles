@@ -45,6 +45,7 @@ in
 
         "01-zeno" = {
           github = "yuki-yano/zeno.zsh";
+          use = [ "zeno.zsh" ];
           apply = [ "defer" ];
           hooks.post = ''
             ${zshDeferIdle} bindkey ' ' zeno-auto-snippet

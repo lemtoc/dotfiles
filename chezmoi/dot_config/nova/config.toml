@@ -172,3 +172,6 @@ main = ">_"
 # `characters.vi_command` wins in vi command mode. `vicmd` is accepted as a
 # compatibility alias.
 vi_command = "<_"
+
+[async]
+initial_wait_ms = 0

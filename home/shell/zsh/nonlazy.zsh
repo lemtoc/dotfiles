@@ -32,6 +32,9 @@ zstyle ':completion:*:*:*:*:*' menu select
 # This avoids the zeno → fzf → expand-or-complete → FSH → recursion loop.
 zle -C _zeno_safe_complete .expand-or-complete _main_complete
 export ZENO_COMPLETION_FALLBACK=_zeno_safe_complete
+# Avoid running `deno cache` on every deferred zeno load. Run it manually after
+# updating zeno if dependencies change.
+export ZENO_DISABLE_EXECUTE_CACHE_COMMAND=1
 
 # make word deletion stop at path separators
 WORDCHARS=""
