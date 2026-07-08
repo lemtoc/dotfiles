@@ -121,14 +121,38 @@ in
       (lib.mkOrder 800 ''
         sheldon_cache="''${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/sheldon.zsh"
         sheldon_toml="''${XDG_CONFIG_HOME:-$HOME/.config}/sheldon/plugins.toml"
-        if [[ ! -r "$sheldon_cache" || "$(readlink "$sheldon_toml")" != "$(cat "''${sheldon_cache}.lock" 2>/dev/null)" ]]; then
+        sheldon_toml_target="$(readlink "$sheldon_toml" 2>/dev/null || print -r -- "$sheldon_toml")"
+        if [[ ! -s "$sheldon_cache" || "$sheldon_toml_target" != "$(cat "''${sheldon_cache}.lock" 2>/dev/null)" ]]; then
           mkdir -p "''${sheldon_cache:h}"
-          sheldon lock
-          sheldon source > "$sheldon_cache"
-          readlink "$sheldon_toml" > "''${sheldon_cache}.lock"
+          sheldon_cache_tmp="''${sheldon_cache}.$$"
+          if sheldon lock && sheldon source > "$sheldon_cache_tmp" && [[ -s "$sheldon_cache_tmp" ]]; then
+            mv -f "$sheldon_cache_tmp" "$sheldon_cache"
+            print -r -- "$sheldon_toml_target" > "''${sheldon_cache}.lock"
+            rm -f "''${sheldon_cache}.zwc"
+          else
+            rm -f "$sheldon_cache_tmp"
+          fi
         fi
-        source "$sheldon_cache"
-        unset sheldon_cache sheldon_toml
+        if [[ -s "$sheldon_cache" ]]; then
+          source "$sheldon_cache"
+        fi
+        if ! (( $+functions[zsh-defer] )); then
+          zsh-defer() {
+            emulate -L zsh
+            while [[ "$1" == -* ]]; do
+              case "$1" in
+                -t)
+                  shift 2
+                  ;;
+                *)
+                  shift
+                  ;;
+              esac
+            done
+            (( $# > 0 )) && "$@"
+          }
+        fi
+        unset sheldon_cache sheldon_toml sheldon_toml_target sheldon_cache_tmp
       '')
 
       # Tool integrations via cache_eval instead of enableZshIntegration.
