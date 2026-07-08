@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783478917508,
+  "lastUpdate": 1783487156406,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3603,6 +3603,65 @@ window.BENCHMARK_DATA = {
             "range": "1.6 ms",
             "unit": "ms",
             "extra": "median: 36.07 ms\nmin: 34.79 ms\nmax: 40.31 ms\nstddev: 1.6 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "4b027358ef30bd0813483149e300c7cb3b8570bf",
+          "message": "chore(config): refresh app settings\n\n- Refresh Codex app browser client and bundled marketplace metadata from the local app update\n- Enable the template-creator runtime plugin and trust the local nova workspace\n- Re-add regenerated Claude settings formatting without carrying the invalid model escape sequence\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-08T14:04:59+09:00",
+          "tree_id": "f89d43226742995ddcb80def9a646c2ca399f44b",
+          "url": "https://github.com/lemtoc/dotfiles/commit/4b027358ef30bd0813483149e300c7cb3b8570bf"
+        },
+        "date": 1783487155377,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.33,
+            "range": "6.84 ms",
+            "unit": "ms",
+            "extra": "median: 45.33 ms\nmin: 41.01 ms\nmax: 71.32 ms\nstddev: 6.84 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 45.78,
+            "range": "6.84 ms",
+            "unit": "ms",
+            "extra": "median: 45.78 ms\nmin: 41.36 ms\nmax: 71.74 ms\nstddev: 6.84 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.8,
+            "range": "0.07 ms",
+            "unit": "ms",
+            "extra": "median: 0.8 ms\nmin: 0.76 ms\nmax: 1.04 ms\nstddev: 0.07 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.61,
+            "range": "6.91 ms",
+            "unit": "ms",
+            "extra": "median: 2.61 ms\nmin: 1.02 ms\nmax: 18.05 ms\nstddev: 6.91 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.28,
+            "range": "6.29 ms",
+            "unit": "ms",
+            "extra": "median: 37.28 ms\nmin: 35.88 ms\nmax: 62.82 ms\nstddev: 6.29 ms\nruns: 16"
           }
         ]
       }
