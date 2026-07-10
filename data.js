@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783487156406,
+  "lastUpdate": 1783659053471,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3662,6 +3662,65 @@ window.BENCHMARK_DATA = {
             "range": "6.29 ms",
             "unit": "ms",
             "extra": "median: 37.28 ms\nmin: 35.88 ms\nmax: 62.82 ms\nstddev: 6.29 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "4902ffb1e79ad78c4aa0e0e6ae197202039b7f0b",
+          "message": "feat(shell): list directory after changing directories\n\n- list the current directory after changing away from home\n- keep the existing home-directory behavior unchanged\n\nCo-authored-by: Codex GPT-5.6 Luna Xhigh <noreply@openai.com>",
+          "timestamp": "2026-07-10T13:44:56+09:00",
+          "tree_id": "c5ebfa27c8977d64d814ce42c56241ed206c241c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/4902ffb1e79ad78c4aa0e0e6ae197202039b7f0b"
+        },
+        "date": 1783659052371,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 44.3,
+            "range": "4.65 ms",
+            "unit": "ms",
+            "extra": "median: 44.3 ms\nmin: 40.92 ms\nmax: 62.1 ms\nstddev: 4.65 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 44.74,
+            "range": "4.64 ms",
+            "unit": "ms",
+            "extra": "median: 44.74 ms\nmin: 41.34 ms\nmax: 62.47 ms\nstddev: 4.64 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.9,
+            "range": "0.02 ms",
+            "unit": "ms",
+            "extra": "median: 0.9 ms\nmin: 0.86 ms\nmax: 0.93 ms\nstddev: 0.02 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.55,
+            "range": "6.5 ms",
+            "unit": "ms",
+            "extra": "median: 2.55 ms\nmin: 1.96 ms\nmax: 22.67 ms\nstddev: 6.5 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.03,
+            "range": "0.97 ms",
+            "unit": "ms",
+            "extra": "median: 36.03 ms\nmin: 34.62 ms\nmax: 38.07 ms\nstddev: 0.97 ms\nruns: 16"
           }
         ]
       }
