@@ -28,7 +28,10 @@ description: Create a git commit following the Conventional Commits specificatio
 - Do not insert blank lines between bullet points.
 - Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
 - Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
-- Before `git commit`, determine the configured `commit_attribution` value from the active Codex config. When it is non-empty, append `Co-authored-by: <commit_attribution>` as the final trailer.
+- Immediately before `git commit`, run `rg '^(model|model_reasoning_effort) =' ~/.codex/config.toml` and read the current values.
+- Format the model for display: uppercase the product prefix, keep the prefix and numeric version hyphenated, then replace later hyphens with spaces and capitalize each word. For example, `gpt-5.6-terra` becomes `GPT-5.6 Terra` and `gpt-5.6-sol` becomes `GPT-5.6 Sol`.
+- Format the reasoning effort by replacing hyphens or underscores with spaces and capitalizing each word. For example, `xhigh` becomes `Xhigh` and `ultra` becomes `Ultra`.
+- Append `Co-authored-by: Codex <formatted model> <formatted reasoning effort> <noreply@openai.com>` as the final trailer. Omit the reasoning effort and its preceding space when it is absent. Examples: `Co-authored-by: Codex GPT-5.6 Terra Xhigh <noreply@openai.com>` and `Co-authored-by: Codex GPT-5.6 Sol Ultra <noreply@openai.com>`.
 
 ## Command Notes
 
