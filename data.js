@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783659053471,
+  "lastUpdate": 1783667813342,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3721,6 +3721,65 @@ window.BENCHMARK_DATA = {
             "range": "0.97 ms",
             "unit": "ms",
             "extra": "median: 36.03 ms\nmin: 34.62 ms\nmax: 38.07 ms\nstddev: 0.97 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "52fd232bb3a4124c0d07d3693de1f8405dc975fd",
+          "message": "chore(codex): track generated project trust\n\n- retain trusted directories created for Codex research threads\n- keep generated project settings synchronized with chezmoi\n\nCo-authored-by: Codex GPT-5.6 Sol Xhigh <noreply@openai.com>",
+          "timestamp": "2026-07-10T16:14:55+09:00",
+          "tree_id": "a577d3cb9b77218f69dfbcfb99d49a8c8f048bb2",
+          "url": "https://github.com/lemtoc/dotfiles/commit/52fd232bb3a4124c0d07d3693de1f8405dc975fd"
+        },
+        "date": 1783667812246,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.92,
+            "range": "5.32 ms",
+            "unit": "ms",
+            "extra": "median: 45.92 ms\nmin: 43.53 ms\nmax: 66.99 ms\nstddev: 5.32 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.36,
+            "range": "5.31 ms",
+            "unit": "ms",
+            "extra": "median: 46.36 ms\nmin: 43.91 ms\nmax: 67.39 ms\nstddev: 5.31 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.88,
+            "range": "0.13 ms",
+            "unit": "ms",
+            "extra": "median: 0.88 ms\nmin: 0.79 ms\nmax: 1.38 ms\nstddev: 0.13 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 14.28,
+            "range": "6.28 ms",
+            "unit": "ms",
+            "extra": "median: 14.28 ms\nmin: 1.67 ms\nmax: 19.68 ms\nstddev: 6.28 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.77,
+            "range": "4.18 ms",
+            "unit": "ms",
+            "extra": "median: 36.77 ms\nmin: 34.75 ms\nmax: 51.34 ms\nstddev: 4.18 ms\nruns: 16"
           }
         ]
       }
