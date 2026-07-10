@@ -28,10 +28,9 @@ description: Create a git commit following the Conventional Commits specificatio
 - Do not insert blank lines between bullet points.
 - Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
 - Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
-- Immediately before `git commit`, run `rg '^(model|model_reasoning_effort) =' ~/.codex/config.toml` and read the current values.
-- Format the model for display: uppercase the product prefix, keep the prefix and numeric version hyphenated, then replace later hyphens with spaces and capitalize each word. For example, `gpt-5.6-terra` becomes `GPT-5.6 Terra` and `gpt-5.6-sol` becomes `GPT-5.6 Sol`.
-- Format the reasoning effort by replacing hyphens or underscores with spaces and capitalizing each word. For example, `xhigh` becomes `Xhigh` and `ultra` becomes `Ultra`.
-- Append `Co-authored-by: Codex <formatted model> <formatted reasoning effort> <noreply@openai.com>` as the final trailer. Omit the reasoning effort and its preceding space when it is absent. Examples: `Co-authored-by: Codex GPT-5.6 Terra Xhigh <noreply@openai.com>` and `Co-authored-by: Codex GPT-5.6 Sol Ultra <noreply@openai.com>`.
+- Immediately before `git commit`, run `bash "$HOME/.agents/skills/commit/scripts/current-codex-attribution.sh"` and append its single-line output as the final trailer.
+- The helper reads the latest `turn_context` for the current `CODEX_THREAD_ID` from the session JSONL, formats the model and reasoning effort, and falls back to `~/.codex/config.toml` only when no matching session is available.
+- Do not use `commit_attribution` directly. The helper's output is a best-effort snapshot of the current thread and is preferable to the shared default when agents run concurrently.
 
 ## Command Notes
 
