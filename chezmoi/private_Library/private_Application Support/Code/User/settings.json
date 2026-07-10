@@ -87,5 +87,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.layoutControl.enabled": false,
   "workbench.startupEditor": "none",
-  "workbench.tree.indent": 24
+  "workbench.tree.indent": 24,
+  "js/ts.experimental.useTsgo": true
 }
