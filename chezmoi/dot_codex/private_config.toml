@@ -4,13 +4,12 @@ notify = [
   "/Users/t1190078/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
   "turn-ended",
 ]
-model = "gpt-5.5"
+model = "gpt-5.6-terra"
 model_reasoning_effort = "xhigh"
 service_tier = "priority"
 approval_policy = "on-request"
 approvals_reviewer = "guardian_subagent"
 personality = "pragmatic"
-commit_attribution = "Codex GPT-5.5 <noreply@openai.com>"
 
 [shell_environment_policy]
 experimental_use_profile = true
@@ -39,25 +38,35 @@ args = [
 
 [mcp_servers.node_repl]
 args = []
-command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
-NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
-NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/t1190078/.codex"
 CODEX_HOME = "/Users/t1190078/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "97669f77b3ca7114a2df05d55646416ea34b28100c07213ef9f643803449ef2f"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,c8b7e809d7cf9e20a57123b2530d476ccec9a01a6230a7b2b924fea7d94d7f4a"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.623.141536"
-CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+BROWSER_USE_CODEX_APP_VERSION = "26.707.31428"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-08T01:51:40Z"
+last_updated = "2026-07-10T00:40:57Z"
 source_type = "local"
 source = "/Users/t1190078/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -186,7 +195,7 @@ composerEnterBehavior = "enter"
 git-branch-prefix = "e.g. feat/,fix/,docs/,refactor/,chore/"
 keepRemoteControlAwakeWhilePluggedIn = true
 show-context-window-usage = true
-dock-icon-preference = "app-default"
+dock-icon-preference = "codex-system"
 followUpQueueMode = "queue"
 
 [desktop.appearanceLightChromeTheme]
@@ -240,6 +249,12 @@ enabled = true
 enabled = true
 
 [plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
 enabled = true
 
 [projects."/Users/t1190078/.dotfiles"]
