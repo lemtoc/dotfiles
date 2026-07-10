@@ -177,6 +177,37 @@ window.BENCHMARK_DATA = {
           "tree_id": "ba7a78cffd93ad083ca9259281e9853200bad240",
           "url": "https://github.com/mfyuu/dotfiles/commit/b14e393815e97ed1dc237298563a36efcc3a3843"
         },
+        "date": 1772164144711,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 62.68,
+            "range": "16.96 ms",
+            "unit": "ms",
+            "extra": "median: 62.68 ms\nmin: 31.53 ms\nmax: 102.27 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "k.suzuki",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "b14e393815e97ed1dc237298563a36efcc3a3843",
+          "message": "feat: migrate repo path from ~/dev/dotfiles to ~/.dotfiles (#9)",
+          "timestamp": "2026-02-27T12:45:50+09:00",
+          "tree_id": "ba7a78cffd93ad083ca9259281e9853200bad240",
+          "url": "https://github.com/mfyuu/dotfiles/commit/b14e393815e97ed1dc237298563a36efcc3a3843"
+        },
         "date": 1772164923617,
         "tool": "customSmallerIsBetter",
         "benches": [
@@ -186,6 +217,68 @@ window.BENCHMARK_DATA = {
             "range": "3.72 ms",
             "unit": "ms",
             "extra": "median: 38.92 ms\nmin: 37.64 ms\nmax: 53.62 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "a59e5da0dd8724790100c4fc78fe2f9998fa9a79",
+          "message": "refactor(claude): update PR verification to focus on manual checks\n\n- change Verification section from CI checklist to acceptance criteria\n- remove auto-verified items (tests, lint, type checks) from template\n- add guidance for repository-specific verification sections\n- update parallel-review and review-merge to use `bunx ulid`",
+          "timestamp": "2026-03-06T12:17:42+09:00",
+          "tree_id": "0b7ba0303d45ee33a0279d583ff90821220a62bc",
+          "url": "https://github.com/mfyuu/dotfiles/commit/a59e5da0dd8724790100c4fc78fe2f9998fa9a79"
+        },
+        "date": 1772767260481,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 54.02,
+            "range": "10.94 ms",
+            "unit": "ms",
+            "extra": "median: 54.02 ms\nmin: 42.15 ms\nmax: 82.69 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "a59e5da0dd8724790100c4fc78fe2f9998fa9a79",
+          "message": "refactor(claude): update PR verification to focus on manual checks\n\n- change Verification section from CI checklist to acceptance criteria\n- remove auto-verified items (tests, lint, type checks) from template\n- add guidance for repository-specific verification sections\n- update parallel-review and review-merge to use `bunx ulid`",
+          "timestamp": "2026-03-06T12:17:42+09:00",
+          "tree_id": "0b7ba0303d45ee33a0279d583ff90821220a62bc",
+          "url": "https://github.com/mfyuu/dotfiles/commit/a59e5da0dd8724790100c4fc78fe2f9998fa9a79"
+        },
+        "date": 1772767802120,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 62.51,
+            "range": "27.72 ms",
+            "unit": "ms",
+            "extra": "median: 62.51 ms\nmin: 22.18 ms\nmax: 158.48 ms\nruns: 50"
           }
         ]
       },
@@ -527,6 +620,37 @@ window.BENCHMARK_DATA = {
             "range": "16.85 ms",
             "unit": "ms",
             "extra": "median: 49.47 ms\nmin: 40.06 ms\nmax: 89.27 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "committer": {
+            "email": "83203852+mfyuu@users.noreply.github.com",
+            "name": "mfyuu",
+            "username": "mfyuu"
+          },
+          "distinct": true,
+          "id": "09fa97635f7cc9a80b4034404e529f4fd2f088b6",
+          "message": "chore: update flake dependencies\n\n- bump home-manager to 7ba4ee4228ed36123c7cb75d50524b43514ef992\n- bump nixpkgs to 456e8a9468b9d46bd8c9524425026c00745bc4d2",
+          "timestamp": "2026-04-09T21:12:23+09:00",
+          "tree_id": "959a0f74423049a45e35caccb9e7b631facb899c",
+          "url": "https://github.com/mfyuu/dotfiles/commit/09fa97635f7cc9a80b4034404e529f4fd2f088b6"
+        },
+        "date": 1775737013752,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 81.99,
+            "range": "12.21 ms",
+            "unit": "ms",
+            "extra": "median: 81.99 ms\nmin: 62.18 ms\nmax: 112.91 ms\nruns: 50"
           }
         ]
       },
@@ -1023,6 +1147,37 @@ window.BENCHMARK_DATA = {
             "range": "32.18 ms",
             "unit": "ms",
             "extra": "median: 65.2 ms\nmin: 32.47 ms\nmax: 208.31 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "007ec2856e6afb9b1116e48f0c2126e0cda9db0b",
+          "message": "refactor(nix): parameterize username via specialArgs per host\n\n- add `username` arg to `mkDarwinConfig` and thread through `specialArgs`\n- add `home-manager.extraSpecialArgs` to propagate `username` into home modules\n- replace hardcoded `t1190078` with `${username}` in common/default.nix and M4Pro config\n- declare M4Pro username as `t1190078`, M4Air as `lemtoc` in flake.nix",
+          "timestamp": "2026-05-22T17:32:32+09:00",
+          "tree_id": "bff6340c092f93e4665454cb0c43773e6f96a7c3",
+          "url": "https://github.com/lemtoc/dotfiles/commit/007ec2856e6afb9b1116e48f0c2126e0cda9db0b"
+        },
+        "date": 1779438960695,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "zsh -i -c exit",
+            "value": 74.87,
+            "range": "19.47 ms",
+            "unit": "ms",
+            "extra": "median: 74.87 ms\nmin: 38.81 ms\nmax: 139.78 ms\nruns: 50"
           }
         ]
       },
@@ -2225,6 +2380,37 @@ window.BENCHMARK_DATA = {
           "tree_id": "8b71bfd87644fbb310b842df421de6c511eec321",
           "url": "https://github.com/lemtoc/dotfiles/commit/dd234de3c743089044f0900f08c54b77bc586196"
         },
+        "date": 1782738944765,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fish -i -c exit",
+            "value": 85.47,
+            "range": "14.86 ms",
+            "unit": "ms",
+            "extra": "median: 85.47 ms\nmin: 60.5 ms\nmax: 128.29 ms\nruns: 50"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "dd234de3c743089044f0900f08c54b77bc586196",
+          "message": "fix(codex): use profile-derived shell path\n\n- Remove the hardcoded PATH override from the Codex config.\n- Rely on experimental_use_profile so Codex inherits the shell profile environment.\n- Keep mise and tool resolution in the shell profile instead of duplicating it in config.toml.\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-06-29T22:11:35+09:00",
+          "tree_id": "8b71bfd87644fbb310b842df421de6c511eec321",
+          "url": "https://github.com/lemtoc/dotfiles/commit/dd234de3c743089044f0900f08c54b77bc586196"
+        },
         "date": 1782739777943,
         "tool": "customSmallerIsBetter",
         "benches": [
@@ -2845,6 +3031,124 @@ window.BENCHMARK_DATA = {
             "username": "lemtoc"
           },
           "distinct": true,
+          "id": "9e60dbdfc35581ce0876c6b77ee70926b92b4d26",
+          "message": "fix(cmux): send ctrl-l for command-k\n\n- Manage cmux JSON and settings files through chezmoi\n- Add a Ghostty-compatible keybind so Command-K sends Ctrl-L to the shell\n- Keep existing cmux browser shortcut overrides under version control\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T09:57:28+09:00",
+          "tree_id": "22bfbc98f1f4db893d459eddb524d15cd77bc493",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9e60dbdfc35581ce0876c6b77ee70926b92b4d26"
+        },
+        "date": 1783127038132,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 43.27,
+            "range": "5.38 ms",
+            "unit": "ms",
+            "extra": "median: 43.27 ms\nmin: 41.53 ms\nmax: 64.21 ms\nstddev: 5.38 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 43.46,
+            "range": "5.39 ms",
+            "unit": "ms",
+            "extra": "median: 43.46 ms\nmin: 41.84 ms\nmax: 64.47 ms\nstddev: 5.39 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.24,
+            "range": "0.2 ms",
+            "unit": "ms",
+            "extra": "median: 5.24 ms\nmin: 4.93 ms\nmax: 5.64 ms\nstddev: 0.2 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.12,
+            "range": "12.03 ms",
+            "unit": "ms",
+            "extra": "median: 1.12 ms\nmin: 0.76 ms\nmax: 50.96 ms\nstddev: 12.03 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 29.82,
+            "range": "2.19 ms",
+            "unit": "ms",
+            "extra": "median: 29.82 ms\nmin: 28.63 ms\nmax: 38.19 ms\nstddev: 2.19 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "65b4378d6ee39529474087a5e345606505a8f0ba",
+          "message": "feat(shell): add tirith command guard\n\n- Add tirith to Home Manager packages and keep Homebrew from installing a duplicate formula\n- Initialize tirith synchronously in zsh so command checks are active before interactive use\n- Reuse cache_eval for the generated zsh hook while keeping the security hook non-deferred\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T10:10:39+09:00",
+          "tree_id": "c7488c932c9eb4031d8318ef68d6c4bc9b11f16c",
+          "url": "https://github.com/lemtoc/dotfiles/commit/65b4378d6ee39529474087a5e345606505a8f0ba"
+        },
+        "date": 1783127510279,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 54.01,
+            "range": "6.45 ms",
+            "unit": "ms",
+            "extra": "median: 54.01 ms\nmin: 52.13 ms\nmax: 79.19 ms\nstddev: 6.45 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 90.17,
+            "range": "13 ms",
+            "unit": "ms",
+            "extra": "median: 90.17 ms\nmin: 82.14 ms\nmax: 132.82 ms\nstddev: 13 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.23,
+            "range": "0.28 ms",
+            "unit": "ms",
+            "extra": "median: 5.23 ms\nmin: 4.99 ms\nmax: 5.97 ms\nstddev: 0.28 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.3,
+            "range": "12.53 ms",
+            "unit": "ms",
+            "extra": "median: 1.3 ms\nmin: 0.86 ms\nmax: 53.26 ms\nstddev: 12.53 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 40.68,
+            "range": "1.29 ms",
+            "unit": "ms",
+            "extra": "median: 40.68 ms\nmin: 39.4 ms\nmax: 44.89 ms\nstddev: 1.29 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
           "id": "65b4378d6ee39529474087a5e345606505a8f0ba",
           "message": "feat(shell): add tirith command guard\n\n- Add tirith to Home Manager packages and keep Homebrew from installing a duplicate formula\n- Initialize tirith synchronously in zsh so command checks are active before interactive use\n- Reuse cache_eval for the generated zsh hook while keeping the security hook non-deferred\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
           "timestamp": "2026-07-04T10:10:39+09:00",
@@ -2888,6 +3192,124 @@ window.BENCHMARK_DATA = {
             "range": "1.78 ms",
             "unit": "ms",
             "extra": "median: 39.73 ms\nmin: 38.45 ms\nmax: 44.75 ms\nstddev: 1.78 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "9e60dbdfc35581ce0876c6b77ee70926b92b4d26",
+          "message": "fix(cmux): send ctrl-l for command-k\n\n- Manage cmux JSON and settings files through chezmoi\n- Add a Ghostty-compatible keybind so Command-K sends Ctrl-L to the shell\n- Keep existing cmux browser shortcut overrides under version control\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T09:57:28+09:00",
+          "tree_id": "22bfbc98f1f4db893d459eddb524d15cd77bc493",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9e60dbdfc35581ce0876c6b77ee70926b92b4d26"
+        },
+        "date": 1783127760159,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 52.19,
+            "range": "6.05 ms",
+            "unit": "ms",
+            "extra": "median: 52.19 ms\nmin: 50.67 ms\nmax: 76.85 ms\nstddev: 6.05 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 84.48,
+            "range": "7.19 ms",
+            "unit": "ms",
+            "extra": "median: 84.48 ms\nmin: 79.44 ms\nmax: 109.86 ms\nstddev: 7.19 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.42,
+            "range": "0.16 ms",
+            "unit": "ms",
+            "extra": "median: 5.42 ms\nmin: 4.92 ms\nmax: 5.6 ms\nstddev: 0.16 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.07,
+            "range": "0.43 ms",
+            "unit": "ms",
+            "extra": "median: 1.07 ms\nmin: 0.5 ms\nmax: 2.6 ms\nstddev: 0.43 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 39.67,
+            "range": "0.6 ms",
+            "unit": "ms",
+            "extra": "median: 39.67 ms\nmin: 38.79 ms\nmax: 41.14 ms\nstddev: 0.6 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "9e60dbdfc35581ce0876c6b77ee70926b92b4d26",
+          "message": "fix(cmux): send ctrl-l for command-k\n\n- Manage cmux JSON and settings files through chezmoi\n- Add a Ghostty-compatible keybind so Command-K sends Ctrl-L to the shell\n- Keep existing cmux browser shortcut overrides under version control\n\nCo-authored-by: Codex GPT-5.5 <noreply@openai.com>",
+          "timestamp": "2026-07-04T09:57:28+09:00",
+          "tree_id": "22bfbc98f1f4db893d459eddb524d15cd77bc493",
+          "url": "https://github.com/lemtoc/dotfiles/commit/9e60dbdfc35581ce0876c6b77ee70926b92b4d26"
+        },
+        "date": 1783128087572,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 44.7,
+            "range": "7.19 ms",
+            "unit": "ms",
+            "extra": "median: 44.7 ms\nmin: 35.51 ms\nmax: 69.48 ms\nstddev: 7.19 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 44.88,
+            "range": "7.19 ms",
+            "unit": "ms",
+            "extra": "median: 44.88 ms\nmin: 35.7 ms\nmax: 69.68 ms\nstddev: 7.19 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 5.43,
+            "range": "0.38 ms",
+            "unit": "ms",
+            "extra": "median: 5.43 ms\nmin: 5.02 ms\nmax: 6.48 ms\nstddev: 0.38 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 1.81,
+            "range": "24.27 ms",
+            "unit": "ms",
+            "extra": "median: 1.81 ms\nmin: 0.64 ms\nmax: 57.26 ms\nstddev: 24.27 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 32.66,
+            "range": "2.82 ms",
+            "unit": "ms",
+            "extra": "median: 32.66 ms\nmin: 30.22 ms\nmax: 42.28 ms\nstddev: 2.82 ms\nruns: 16"
           }
         ]
       },
@@ -3299,6 +3721,65 @@ window.BENCHMARK_DATA = {
             "range": "0.97 ms",
             "unit": "ms",
             "extra": "median: 36.03 ms\nmin: 34.62 ms\nmax: 38.07 ms\nstddev: 0.97 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "52fd232bb3a4124c0d07d3693de1f8405dc975fd",
+          "message": "chore(codex): track generated project trust\n\n- retain trusted directories created for Codex research threads\n- keep generated project settings synchronized with chezmoi\n\nCo-authored-by: Codex GPT-5.6 Sol Xhigh <noreply@openai.com>",
+          "timestamp": "2026-07-10T16:14:55+09:00",
+          "tree_id": "a577d3cb9b77218f69dfbcfb99d49a8c8f048bb2",
+          "url": "https://github.com/lemtoc/dotfiles/commit/52fd232bb3a4124c0d07d3693de1f8405dc975fd"
+        },
+        "date": 1783667812246,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.92,
+            "range": "5.32 ms",
+            "unit": "ms",
+            "extra": "median: 45.92 ms\nmin: 43.53 ms\nmax: 66.99 ms\nstddev: 5.32 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.36,
+            "range": "5.31 ms",
+            "unit": "ms",
+            "extra": "median: 46.36 ms\nmin: 43.91 ms\nmax: 67.39 ms\nstddev: 5.31 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.88,
+            "range": "0.13 ms",
+            "unit": "ms",
+            "extra": "median: 0.88 ms\nmin: 0.79 ms\nmax: 1.38 ms\nstddev: 0.13 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 14.28,
+            "range": "6.28 ms",
+            "unit": "ms",
+            "extra": "median: 14.28 ms\nmin: 1.67 ms\nmax: 19.68 ms\nstddev: 6.28 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.77,
+            "range": "4.18 ms",
+            "unit": "ms",
+            "extra": "median: 36.77 ms\nmin: 34.75 ms\nmax: 51.34 ms\nstddev: 4.18 ms\nruns: 16"
           }
         ]
       },
