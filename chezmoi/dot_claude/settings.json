@@ -71,5 +71,7 @@
   "outputStyle": "Explanatory",
   "language": "Japanese",
   "effortLevel": "high",
-  "showThinkingSummaries": true
+  "advisorModel": "fable",
+  "showThinkingSummaries": true,
+  "model": "claude-fable-5[1m]"
 }
