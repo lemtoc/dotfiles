@@ -114,8 +114,8 @@ git-commit-instructions = """
 - Separate the final body bullet from the `Co-authored-by` trailer with exactly one blank line.
 - Be specific about what changed. Avoid vague wording like "minor fix" or "review comments".
 - Immediately before `git commit`, run `bash "$HOME/.agents/skills/commit/scripts/current-codex-attribution.sh"` and append its single-line output as the final trailer.
-- The helper reads the latest `turn_context` for the current `CODEX_THREAD_ID` from the session JSONL, formats the model and reasoning effort, and falls back to `~/.codex/config.toml` only when no matching session is available.
-- Do not use `commit_attribution` directly. The helper's output is a best-effort snapshot of the current thread and is preferable to the shared default when agents run concurrently.
+- The helper reads the latest `turn_context` for the current `CODEX_THREAD_ID` from the session JSONL and formats its model and reasoning effort.
+- If the helper exits non-zero, stop and report its provenance warning. Do not commit or substitute values from `commit_attribution` or `~/.codex/config.toml`.
 
 ## Command Notes
 

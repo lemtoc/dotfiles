@@ -6,57 +6,40 @@ codex_home="${CODEX_HOME:-$HOME/.codex}"
 model=""
 effort=""
 
-if [[ -n "${CODEX_THREAD_ID:-}" ]] && command -v rg >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
-  session_file="$(
-    {
-      rg --files "$codex_home/sessions" 2>/dev/null |
-        rg "${CODEX_THREAD_ID}\.jsonl$" |
-        tail -n 1
-    } || true
-  )"
-
-  if [[ -n "$session_file" ]]; then
-    session_values="$(
-      {
-        jq -r '
-          select(.type == "turn_context")
-          | [.payload.model // "", (.payload.effort // .payload.collaboration_mode.settings.reasoning_effort // "")]
-          | @tsv
-        ' "$session_file" |
-        tail -n 1
-      } || true
-    )"
-
-    if [[ -n "$session_values" ]]; then
-      IFS=$'\t' read -r model effort <<< "$session_values"
-    fi
-  fi
-fi
-
-if [[ -z "$model" ]]; then
-  config_file="$codex_home/config.toml"
-  if [[ -r "$config_file" ]]; then
-    model="$(
-      {
-        rg '^model = ' "$config_file" |
-          tail -n 1 |
-          sed -E 's/^model = "([^"]*)".*$/\1/'
-      } || true
-    )"
-    effort="$(
-      {
-        rg '^model_reasoning_effort = ' "$config_file" |
-          tail -n 1 |
-          sed -E 's/^model_reasoning_effort = "([^"]*)".*$/\1/'
-      } || true
-    )"
-  fi
-fi
-
-if [[ -z "$model" ]]; then
-  printf 'Unable to resolve the current Codex model.\n' >&2
+fail_provenance() {
+  printf 'Unable to confirm Codex provenance: %s. Commit aborted.\n' "$1" >&2
   exit 1
-fi
+}
+
+[[ -n "${CODEX_THREAD_ID:-}" ]] || fail_provenance 'CODEX_THREAD_ID is not set'
+command -v rg >/dev/null 2>&1 || fail_provenance 'rg is not available'
+command -v jq >/dev/null 2>&1 || fail_provenance 'jq is not available'
+
+session_file="$(
+  {
+    rg --files "$codex_home/sessions" 2>/dev/null |
+      rg "${CODEX_THREAD_ID}\.jsonl$" |
+      tail -n 1
+  } || true
+)"
+
+[[ -n "$session_file" ]] || fail_provenance 'the current session JSONL was not found'
+
+session_values="$(
+  {
+    jq -r '
+      select(.type == "turn_context")
+      | [.payload.model // "", (.payload.effort // .payload.collaboration_mode.settings.reasoning_effort // "")]
+      | @tsv
+    ' "$session_file" |
+    tail -n 1
+  } || true
+)"
+
+[[ -n "$session_values" ]] || fail_provenance 'the current session has no turn_context record'
+
+IFS=$'\t' read -r model effort <<< "$session_values"
+[[ -n "$model" ]] || fail_provenance 'the latest turn_context has no model'
 
 title_case() {
   printf '%s\n' "$1" |
