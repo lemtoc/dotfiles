@@ -34,6 +34,12 @@ bindkey "^[[A" _history-beginning-search-backward-end
 bindkey "^[[B" _history-beginning-search-forward-end
 
 # custom functions
+chpwd() {
+  if [[ $PWD != $HOME ]]; then
+    ls
+  fi
+}
+
 tp() {
   if [ -z "$1" ]; then
     printf "Command: \e[90mtp\e[0m\n"
