@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1783993801305,
+  "lastUpdate": 1784310175636,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -3957,6 +3957,65 @@ window.BENCHMARK_DATA = {
             "range": "2.25 ms",
             "unit": "ms",
             "extra": "median: 35.34 ms\nmin: 34.33 ms\nmax: 42.01 ms\nstddev: 2.25 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "0e1490fd7e598f78daefe44a61e0667aa6331ca4",
+          "message": "feat(codex): add RunCat usage metrics hook\n\n- Generate Codex model, context, and rate-limit metrics from lifecycle events\n- Embed a provider-scoped monochrome SVG icon and write snapshots atomically\n- Register the Stop hook and manage the complete setup with chezmoi\n\nCo-authored-by: Codex GPT-5.6 Sol Ultra <noreply@openai.com>",
+          "timestamp": "2026-07-18T02:41:44+09:00",
+          "tree_id": "a7f11fa47b1708dc40e3221f573a57bc7d47acf9",
+          "url": "https://github.com/lemtoc/dotfiles/commit/0e1490fd7e598f78daefe44a61e0667aa6331ca4"
+        },
+        "date": 1784310174454,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.93,
+            "range": "7.82 ms",
+            "unit": "ms",
+            "extra": "median: 46.93 ms\nmin: 41.29 ms\nmax: 76.98 ms\nstddev: 7.82 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 47.31,
+            "range": "7.82 ms",
+            "unit": "ms",
+            "extra": "median: 47.31 ms\nmin: 41.69 ms\nmax: 77.4 ms\nstddev: 7.82 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.84,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 0.84 ms\nmin: 0.8 ms\nmax: 1.04 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.79,
+            "range": "6.31 ms",
+            "unit": "ms",
+            "extra": "median: 2.79 ms\nmin: 1.18 ms\nmax: 16.74 ms\nstddev: 6.31 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.65,
+            "range": "2.71 ms",
+            "unit": "ms",
+            "extra": "median: 37.65 ms\nmin: 35.75 ms\nmax: 44.04 ms\nstddev: 2.71 ms\nruns: 16"
           }
         ]
       }
