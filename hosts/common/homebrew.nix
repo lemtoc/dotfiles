@@ -61,6 +61,7 @@ in
       "visual-studio-code"
       "zed"
       "zoom"
+      "codexbar"
       "manaflow-ai/cmux/cmux"
       "productdevbook/tap/portkiller"
     ];
