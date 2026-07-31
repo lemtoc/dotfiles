@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785285237406,
+  "lastUpdate": 1785502669555,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4193,6 +4193,65 @@ window.BENCHMARK_DATA = {
             "range": "4.28 ms",
             "unit": "ms",
             "extra": "median: 37.42 ms\nmin: 34.82 ms\nmax: 48.89 ms\nstddev: 4.28 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "d4b8ca2c24d9f12f6591ef9171b9585320994caa",
+          "message": "chore(skills): move github-review-thread-reply to dot_agents\n\n- relocate skill from chezmoi/dot_codex/skills to chezmoi/dot_agents/skills\n- rename SKILL.md and agents/openai.yaml paths accordingly\n- align skill location with the dot_agents directory structure",
+          "timestamp": "2026-07-31T21:56:47+09:00",
+          "tree_id": "bf9ba21d00b448633ebc33de15de28bbc09aa763",
+          "url": "https://github.com/lemtoc/dotfiles/commit/d4b8ca2c24d9f12f6591ef9171b9585320994caa"
+        },
+        "date": 1785502668433,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.95,
+            "range": "5.61 ms",
+            "unit": "ms",
+            "extra": "median: 46.95 ms\nmin: 42.92 ms\nmax: 66.41 ms\nstddev: 5.61 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 47.31,
+            "range": "5.62 ms",
+            "unit": "ms",
+            "extra": "median: 47.31 ms\nmin: 43.33 ms\nmax: 66.8 ms\nstddev: 5.62 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.88,
+            "range": "0.06 ms",
+            "unit": "ms",
+            "extra": "median: 0.88 ms\nmin: 0.82 ms\nmax: 1.04 ms\nstddev: 0.06 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 8.55,
+            "range": "6.49 ms",
+            "unit": "ms",
+            "extra": "median: 8.55 ms\nmin: 1.06 ms\nmax: 18.8 ms\nstddev: 6.49 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 39.14,
+            "range": "2.37 ms",
+            "unit": "ms",
+            "extra": "median: 39.14 ms\nmin: 36.53 ms\nmax: 45.02 ms\nstddev: 2.37 ms\nruns: 16"
           }
         ]
       }
