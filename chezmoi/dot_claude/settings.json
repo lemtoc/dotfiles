@@ -66,12 +66,12 @@
     "serena@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "hono-skill@hono-skill": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
   },
   "outputStyle": "Explanatory",
   "language": "Japanese",
   "effortLevel": "high",
-  "advisorModel": "fable",
-  "showThinkingSummaries": true,
-  "model": "claude-fable-5[1m]"
+  "advisorModel": "opus",
+  "showThinkingSummaries": true
 }
