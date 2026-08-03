@@ -1,10 +1,20 @@
-- Always resolve any type errors and linting errors displayed in the console.
-- Avoid using `any`.
-- Minimize the use of type casting with `as`.
-- Prefer non-destructive operations over destructive ones when working with arrays and objects.
-- Use `const` instead of `let` as a general rule, since `let` can lead to unnecessary reassignment.
-- Check package.json, find and run commands for linting and type error detection, and ensure there are no errors.
-  - In many cases, type detection is `typecheck`, and linting is `lint` or `lint-types`.
-  - If both `lint` and `lint-types` exist, please run only `lint-types`.
-- Never consider a task complete until all diagnostic errors are resolved.
-- When creating a pull request, please check if there is a PR template in the repository and follow it if available.
+## Tool use
+
+- In Code Mode, within each bounded stage, run independent, functions.exec-available tool calls concurrently in one functions.exec call. Use `await Promise.allSettled([...])` when partial results are useful, and inspect every result; use `await Promise.all([...])` only when any failure should abort the batch. Keep dependencies, waits/resumes, approvals, conflicting or interdependent mutations, and adaptive investigations sequential.
+- Use `request_user_input` in Default Mode when available for consequential, bounded choices that affect the next action or result. Do not use it for routine confirmations, informational questions, or genuinely open-ended clarification. If unavailable, ask normally.
+- When using `request_user_input`, put the recommended choice first and suffix its label with `(Recommended)`. Provide concrete choices and ensure the final choice allows free-form input. The tool supplies this option automatically; do not add an `Other` option manually.
+
+## Code quality
+
+- Avoid `any` and minimize type assertions with `as`.
+- Prefer non-destructive operations for arrays and objects.
+- Prefer `const` over `let` unless reassignment is required.
+
+## Verification
+
+- Before completing a task, inspect `package.json`, find and run the repository's typecheck and lint commands, and resolve all reported type, lint, and diagnostic errors.
+- If both `lint` and `lint-types` exist, run only `lint-types`.
+
+## Pull requests
+
+- Before creating a pull request, check for and follow any repository PR template.
