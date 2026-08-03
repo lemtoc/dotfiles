@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785502669555,
+  "lastUpdate": 1785733633066,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4252,6 +4252,65 @@ window.BENCHMARK_DATA = {
             "range": "2.37 ms",
             "unit": "ms",
             "extra": "median: 39.14 ms\nmin: 36.53 ms\nmax: 45.02 ms\nstddev: 2.37 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "867eb5291a995645b439e1625f6f53a62123a929",
+          "message": "chore(codex): update private_config.toml settings\n\nCo-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>",
+          "timestamp": "2026-08-03T14:06:21+09:00",
+          "tree_id": "d5d2fa4f639ef3e979897b59613cf63d0912ce52",
+          "url": "https://github.com/lemtoc/dotfiles/commit/867eb5291a995645b439e1625f6f53a62123a929"
+        },
+        "date": 1785733631915,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.22,
+            "range": "8.88 ms",
+            "unit": "ms",
+            "extra": "median: 46.22 ms\nmin: 39.26 ms\nmax: 73.61 ms\nstddev: 8.88 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.59,
+            "range": "8.89 ms",
+            "unit": "ms",
+            "extra": "median: 46.59 ms\nmin: 39.65 ms\nmax: 73.99 ms\nstddev: 8.89 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.9,
+            "range": "0.1 ms",
+            "unit": "ms",
+            "extra": "median: 0.9 ms\nmin: 0.8 ms\nmax: 1.22 ms\nstddev: 0.1 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 6.5,
+            "range": "6.68 ms",
+            "unit": "ms",
+            "extra": "median: 6.5 ms\nmin: 1.11 ms\nmax: 18.01 ms\nstddev: 6.68 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.1,
+            "range": "2.91 ms",
+            "unit": "ms",
+            "extra": "median: 36.1 ms\nmin: 34.58 ms\nmax: 46.32 ms\nstddev: 2.91 ms\nruns: 16"
           }
         ]
       }
