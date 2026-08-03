@@ -4,15 +4,20 @@ notify = [
   "/Users/t1190078/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
   "turn-ended",
 ]
-model = "gpt-5.6-terra"
-model_reasoning_effort = "xhigh"
+model = "gpt-5.6-sol"
 service_tier = "priority"
 approval_policy = "on-request"
 approvals_reviewer = "guardian_subagent"
 personality = "pragmatic"
+model_reasoning_effort = "max"
 
 [shell_environment_policy]
 experimental_use_profile = true
+
+[shell_environment_policy.set]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "028a14b6eaa6d98dac2aae00764345ab9f244801ed8493d42b9af3be5575006e,f204d340535055781952b10ed396de20b842f00a19e430852f7e121ad1ce91f6"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/t1190078/.codex"
 
 [tools]
 web_search = true
@@ -47,13 +52,14 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_n
 NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/t1190078/.codex"
 CODEX_HOME = "/Users/t1190078/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,c8b7e809d7cf9e20a57123b2530d476ccec9a01a6230a7b2b924fea7d94d7f4a"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "028a14b6eaa6d98dac2aae00764345ab9f244801ed8493d42b9af3be5575006e,f204d340535055781952b10ed396de20b842f00a19e430852f7e121ad1ce91f6"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.707.31428"
+BROWSER_USE_CODEX_APP_VERSION = "26.727.51351"
+SKY_CUA_SERVICE_PATH = "/Users/t1190078/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.openaiDeveloperDocs]
@@ -66,18 +72,19 @@ cwd = "."
 enabled = false
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-10T00:40:57Z"
+last_updated = "2026-08-03T04:48:28Z"
 source_type = "local"
 source = "/Users/t1190078/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-06T15:41:07Z"
+last_updated = "2026-08-01T00:02:07Z"
 source_type = "local"
 source = "/Users/t1190078/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [features]
 js_repl = false
 codex_git_commit = true
+default_mode_request_user_input = true
 
 [desktop]
 usePointerCursors = true
@@ -197,6 +204,8 @@ keepRemoteControlAwakeWhilePluggedIn = true
 show-context-window-usage = true
 dock-icon-preference = "codex-system"
 followUpQueueMode = "queue"
+enabled-reasoning-efforts = ["low", "medium", "high", "xhigh", "ultra", "max"]
+conversationDetailMode = "STEPS_COMMANDS"
 
 [desktop.appearanceLightChromeTheme]
 accent = "#339cff"
@@ -245,9 +254,6 @@ enabled = true
 [plugins."pdf@openai-primary-runtime"]
 enabled = true
 
-[plugins."browser@openai-bundled"]
-enabled = true
-
 [plugins."template-creator@openai-primary-runtime"]
 enabled = true
 
@@ -255,6 +261,18 @@ enabled = true
 enabled = true
 
 [plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."figma@openai-curated"]
 enabled = true
 
 [projects."/Users/t1190078/.dotfiles"]
@@ -317,5 +335,60 @@ trust_level = "trusted"
 [projects."/Users/t1190078/Documents/Codex/2026-07-10/openai-codex-github-issue-discussion-gpt-2"]
 trust_level = "trusted"
 
+[projects."/Users/t1190078/Mounts/s3"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/slides/templates"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/cost-pilot/cost-pilot"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/.config/rclone"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-07-16/plugin-computer-use-openai-bundled-play"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/RunCatNeo"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/private/lemtoc"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/codex"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/haisou/haisou-kanri"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-07-21/n"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/haisou/internal-delivery-backend"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/work/haisou/internal-delivery"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/dev/oss/CodexBar"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-07-27/new-chat"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-08-03/request-user-input"]
+trust_level = "trusted"
+
+[projects."/Users/t1190078/Documents/Codex/2026-08-03/request-user-input-test"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 1
+"gpt-5.6-sol" = 4
+
+[hooks.state]
+
+[hooks.state."/Users/t1190078/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:73c1676bce56e5723db9242579430a620d6740cd7fb35bc3173c2133e0449d0a"
+enabled = true
