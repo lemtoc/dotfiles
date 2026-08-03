@@ -15,6 +15,22 @@ Use this skill when responding to review feedback on a GitHub pull request.
 4. If the reviewer is Amazon Q or the user requests it, begin every reply with `/q`. Use Japanese when the repository or user requests Japanese review communication.
 5. Verify that every intended thread has a reply URL. Report the thread-to-reply mapping and leave unrelated, resolved, or outdated threads untouched.
 
+## Reply body format
+
+- Begin each Amazon Q reply with `/q ` and keep the response attached to the specific thread.
+- Pass actual newline characters in the reply body. Never submit literal escaped sequences such as `\n`; when building a payload in JavaScript, use a multiline template literal or join lines with a single `"\n"` operation.
+- When the thread is addressed by a commit, append one blank line followed by the bare commit URL as the final line. Do not add labels such as `コミット:` or `Commit:`, Markdown link syntax, or backticks around the URL.
+- Use this shape:
+
+```text
+/q 対応内容を簡潔に説明する。
+追加の検証結果や補足。
+
+https://github.com/OWNER/REPO/commit/COMMIT_SHA
+```
+
+- If no code changed, omit the commit URL. If multiple commits are relevant, append one bare URL per line at the end, with no labels.
+
 ## Guardrails
 
 - Do not combine multiple inline comments into one top-level comment unless the user explicitly asks for a summary comment.
