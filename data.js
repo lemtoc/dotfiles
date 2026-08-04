@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785733633066,
+  "lastUpdate": 1785803268295,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4311,6 +4311,65 @@ window.BENCHMARK_DATA = {
             "range": "2.91 ms",
             "unit": "ms",
             "extra": "median: 36.1 ms\nmin: 34.58 ms\nmax: 46.32 ms\nstddev: 2.91 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "e4c28477ae43f72efbc0564c6676063517cc1d2c",
+          "message": "chore(flake): update flake.lock inputs\n\n- bump home-manager to rev bf9ce9f\n- bump nix-darwin to rev 15abb8c\n- bump nixpkgs to rev 104240a",
+          "timestamp": "2026-08-04T09:26:56+09:00",
+          "tree_id": "488e424e08261bff5972711f5480c205668d0eb3",
+          "url": "https://github.com/lemtoc/dotfiles/commit/e4c28477ae43f72efbc0564c6676063517cc1d2c"
+        },
+        "date": 1785803267229,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.36,
+            "range": "5.8 ms",
+            "unit": "ms",
+            "extra": "median: 45.36 ms\nmin: 41.58 ms\nmax: 66.14 ms\nstddev: 5.8 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 45.73,
+            "range": "5.81 ms",
+            "unit": "ms",
+            "extra": "median: 45.73 ms\nmin: 41.98 ms\nmax: 66.53 ms\nstddev: 5.81 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.92,
+            "range": "0.13 ms",
+            "unit": "ms",
+            "extra": "median: 0.92 ms\nmin: 0.82 ms\nmax: 1.39 ms\nstddev: 0.13 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.61,
+            "range": "7.37 ms",
+            "unit": "ms",
+            "extra": "median: 2.61 ms\nmin: 0.91 ms\nmax: 19.4 ms\nstddev: 7.37 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.75,
+            "range": "3 ms",
+            "unit": "ms",
+            "extra": "median: 37.75 ms\nmin: 34.92 ms\nmax: 44.2 ms\nstddev: 3 ms\nruns: 16"
           }
         ]
       }
