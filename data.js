@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1785803268295,
+  "lastUpdate": 1786003292391,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4370,6 +4370,65 @@ window.BENCHMARK_DATA = {
             "range": "3 ms",
             "unit": "ms",
             "extra": "median: 37.75 ms\nmin: 34.92 ms\nmax: 44.2 ms\nstddev: 3 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "af97ab6257b63cb2b6f6b497da98397025834019",
+          "message": "chore(homebrew): add stablyai/orca cask\n\n- add stablyai/orca/orca to the brew casks list",
+          "timestamp": "2026-08-06T17:00:30+09:00",
+          "tree_id": "907377b5572a4325a0c6daac65a8890d364534fa",
+          "url": "https://github.com/lemtoc/dotfiles/commit/af97ab6257b63cb2b6f6b497da98397025834019"
+        },
+        "date": 1786003291362,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.61,
+            "range": "4.58 ms",
+            "unit": "ms",
+            "extra": "median: 46.61 ms\nmin: 43.36 ms\nmax: 59.49 ms\nstddev: 4.58 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.96,
+            "range": "4.59 ms",
+            "unit": "ms",
+            "extra": "median: 46.96 ms\nmin: 43.81 ms\nmax: 59.88 ms\nstddev: 4.59 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.92,
+            "range": "0.04 ms",
+            "unit": "ms",
+            "extra": "median: 0.92 ms\nmin: 0.82 ms\nmax: 0.98 ms\nstddev: 0.04 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 16.44,
+            "range": "5.07 ms",
+            "unit": "ms",
+            "extra": "median: 16.44 ms\nmin: 1.6 ms\nmax: 18.65 ms\nstddev: 5.07 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 38.85,
+            "range": "8.92 ms",
+            "unit": "ms",
+            "extra": "median: 38.85 ms\nmin: 35.17 ms\nmax: 66.55 ms\nstddev: 8.92 ms\nruns: 16"
           }
         ]
       }
