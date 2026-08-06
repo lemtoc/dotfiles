@@ -64,6 +64,7 @@ in
       "codexbar"
       "manaflow-ai/cmux/cmux"
       "productdevbook/tap/portkiller"
+      "stablyai/orca/orca"
     ];
   };
 
