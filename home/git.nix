@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   gitVersion = "2.55.0";
 in
@@ -21,11 +21,14 @@ in
       };
     });
 
+    # 既定は 1Password の SSH agent。Secure Enclave に移行済みのホストは
+    # hosts/<hostname>/default.nix で key/signer を上書きする。
+    # 詳細は docs/secure-enclave-signing.md
     signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+zJB91Fifv36IetC+AhWcBE+a9poI/U+A6MlLfABoa";
+      key = lib.mkDefault "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+zJB91Fifv36IetC+AhWcBE+a9poI/U+A6MlLfABoa";
       signByDefault = true;
       format = "ssh";
-      signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      signer = lib.mkDefault "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     };
 
     settings = {
