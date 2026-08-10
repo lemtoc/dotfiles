@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786067515521,
+  "lastUpdate": 1786346300778,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4488,6 +4488,65 @@ window.BENCHMARK_DATA = {
             "range": "2.62 ms",
             "unit": "ms",
             "extra": "median: 37.1 ms\nmin: 35.01 ms\nmax: 44.58 ms\nstddev: 2.62 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "0c40901bf07a5afc0dbe55c8da38a42d4b5852e9",
+          "message": "docs(codex): add over-engineering and root-cause guidance to AGENTS.md\n\n- avoid speculative abstractions and generalization beyond task scope\n- require fixing root causes instead of applying quick workarounds",
+          "timestamp": "2026-08-10T16:17:30+09:00",
+          "tree_id": "558b93c44dc850d7058f5959e4ab7fa8b9899e94",
+          "url": "https://github.com/lemtoc/dotfiles/commit/0c40901bf07a5afc0dbe55c8da38a42d4b5852e9"
+        },
+        "date": 1786346299424,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 46.36,
+            "range": "6.73 ms",
+            "unit": "ms",
+            "extra": "median: 46.36 ms\nmin: 42.78 ms\nmax: 73.29 ms\nstddev: 6.73 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.71,
+            "range": "6.73 ms",
+            "unit": "ms",
+            "extra": "median: 46.71 ms\nmin: 43.11 ms\nmax: 73.66 ms\nstddev: 6.73 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.91,
+            "range": "0.39 ms",
+            "unit": "ms",
+            "extra": "median: 0.91 ms\nmin: 0.84 ms\nmax: 2.5 ms\nstddev: 0.39 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.55,
+            "range": "6.91 ms",
+            "unit": "ms",
+            "extra": "median: 2.55 ms\nmin: 1.71 ms\nmax: 17.82 ms\nstddev: 6.91 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 37.88,
+            "range": "3.25 ms",
+            "unit": "ms",
+            "extra": "median: 37.88 ms\nmin: 35.35 ms\nmax: 46.79 ms\nstddev: 3.25 ms\nruns: 16"
           }
         ]
       }
