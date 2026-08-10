@@ -9,6 +9,8 @@
 - Avoid `any` and minimize type assertions with `as`.
 - Prefer non-destructive operations for arrays and objects.
 - Prefer `const` over `let` unless reassignment is required.
+- Avoid speculative abstractions, configuration options, or generalization beyond what the current task requires. Prefer the simplest solution that satisfies the stated requirement over one that anticipates hypothetical future needs.
+- Fix the root cause, not the symptom. Avoid workarounds such as suppressing errors, catching and ignoring exceptions, or hardcoding special cases to make a failure disappear without resolving the underlying issue.
 
 ## Verification
 
