@@ -1,8 +1,30 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   gitVersion = "2.55.0";
+
+  userEmail = "83203852+lemtoc@users.noreply.github.com";
+
+  # ローカルで `git log --show-signature` を通すための信頼済み公開鍵。
+  # 鍵の実体は不要なので、そのホストに存在しない鍵も載せてよい。
+  # 過去のコミットを検証できなくなるため、移行しても古い鍵は消さないこと。
+  allowedSignerKeys = [
+    # 1Password (M4Air / 移行前の M4Pro)
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+zJB91Fifv36IetC+AhWcBE+a9poI/U+A6MlLfABoa"
+    # Secure Enclave (M4Pro) — docs/secure-enclave-signing.md
+    "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBE3fdVRsCoAJtcjjG+is4FILynjzM42+czwaeQfBiuP+8Kr/8YGe/zh/6pYG2v7ARKrywp+XHcv+d7Y1+E7wSOIAAAAEc3NoOg=="
+  ];
+  allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
 in
 {
+  home.file.".ssh/allowed_signers".text = lib.concatMapStrings (
+    key: "${userEmail} ${key}\n"
+  ) allowedSignerKeys;
+
   programs.git = {
     enable = true;
     package = pkgs.git.overrideAttrs (oldAttrs: {
@@ -34,8 +56,9 @@ in
     settings = {
       user = {
         name = "lemtoc";
-        email = "83203852+lemtoc@users.noreply.github.com";
+        email = userEmail;
       };
+      gpg.ssh.allowedSignersFile = allowedSignersFile;
       init.defaultBranch = "main";
       pull.ff = "only";
       push.autoSetupRemote = true;
