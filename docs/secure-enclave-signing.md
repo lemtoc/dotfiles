@@ -77,25 +77,75 @@ Verified のままになる。ただし削除後に初めて push するコミ�
 ## 新規セットアップ
 
 ```bash
-# 1. Secure Enclave に鍵を作る
+# 1. 既存の CTK identity が無いことを確認する
+#    ssh-keygen -K は identity を選べず、すべてを書き出す。既存 identity がある状態では
+#    同名ファイルの衝突や別 identity のハンドルを配置する危険があるため、ここで中止する。
+if ! CTK_IDENTITIES=$(sc_auth list-ctk-identities -t ssh); then
+  echo "CTK identity の一覧を取得できない" >&2
+  exit 1
+fi
+printf '%s\n' "$CTK_IDENTITIES"
+case $CTK_IDENTITIES in
+  "Key Type Public Key Hash"*) ;;
+  *)
+    echo "CTK identity の一覧が期待した形式ではないため中止する" >&2
+    exit 1
+    ;;
+esac
+CTK_IDENTITY_COUNT=$(
+  printf '%s\n' "$CTK_IDENTITIES" |
+    awk 'NR > 1 && NF { count++ } END { print count + 0 }'
+)
+if (( CTK_IDENTITY_COUNT != 0 )); then
+  echo "既存の CTK identity があるため、新規セットアップを中止する" >&2
+  exit 1
+fi
+
+# 2. Secure Enclave に鍵を作る
 #    -k p-256-ne : ECDSA P-256 / non-exportable (Secure Enclave は P-256 のみ対応)
 #    -t none     : 使用時認証なし。同じユーザー権限のプロセスは操作なしで署名できる
 #                  使用時認証が必要なら -t bio にして署名ごとに Touch ID を要求する
-sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none -N git-sign
+sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none -N git-sign || exit 1
 
-# 2. SSH 鍵ハンドルを書き出す (カレントディレクトリに生成されるので注意)
-cd "$(mktemp -d)"
-/usr/bin/ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N ""
-mv id_ecdsa_sk_rk     ~/.ssh/id_git_sign
-mv id_ecdsa_sk_rk.pub ~/.ssh/id_git_sign.pub
+# 3. 今作成した git-sign の SSH fingerprint を控える
+#    「現在の構成」の値を流用せず、直前の出力にある git-sign の値を転記する。
+sc_auth list-ctk-identities -t ssh || exit 1
+EXPECTED_FINGERPRINT='<git-sign identity の SHA256 fingerprint>'
+if [[ $EXPECTED_FINGERPRINT != SHA256:* ]]; then
+  echo "EXPECTED_FINGERPRINT はSHA256 fingerprintを指定すること" >&2
+  exit 1
+fi
 
-# 3. GitHub に Signing Key として登録する
+# 4. SSH 鍵ハンドルを書き出し、git-sign と一致した場合だけ配置する
+#    カレントディレクトリに生成されるので注意。入力を閉じ、上書きプロンプトは失敗させる。
+EXPORT_DIR=$(mktemp -d) || exit 1
+cd "$EXPORT_DIR" || exit 1
+if ! /usr/bin/ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N "" </dev/null; then
+  echo "鍵ハンドルを書き出せない。CTK identity の重複や同名ファイルの衝突を確認すること" >&2
+  exit 1
+fi
+if [[ ! -f id_ecdsa_sk_rk || ! -f id_ecdsa_sk_rk.pub ]]; then
+  echo "期待した ECDSA-SK 鍵ハンドルが生成されていない" >&2
+  exit 1
+fi
+EXPORTED_FINGERPRINT=$(
+  /usr/bin/ssh-keygen -lf id_ecdsa_sk_rk.pub | awk '{ print $2 }'
+)
+if [[ $EXPORTED_FINGERPRINT != "$EXPECTED_FINGERPRINT" ]]; then
+  printf 'fingerprint mismatch: expected=%s actual=%s\n' \
+    "$EXPECTED_FINGERPRINT" "$EXPORTED_FINGERPRINT" >&2
+  exit 1
+fi
+mv id_ecdsa_sk_rk     ~/.ssh/id_git_sign     || exit 1
+mv id_ecdsa_sk_rk.pub ~/.ssh/id_git_sign.pub || exit 1
+
+# 5. GitHub に Signing Key として登録する
 #    Authentication key の枠に入れても署名検証は有効にならない
 gh api -X POST /user/ssh_signing_keys \
   -f title="Secure Enclave ($(scutil --get LocalHostName), signing)" \
   -f key="$(cat ~/.ssh/id_git_sign.pub)"
 
-# 4. dotfiles に記録する値を表示する
+# 6. dotfiles に記録する値を表示する
 cat ~/.ssh/id_git_sign.pub
 /usr/bin/ssh-keygen -lf ~/.ssh/id_git_sign.pub
 sc_auth list-ctk-identities -t sha1 -e hex
@@ -106,7 +156,7 @@ sc_auth list-ctk-identities -t sha1 -e hex
 反映する。`home/git.nix` とこの文書を保存した後、Home Manager を適用する。
 
 ```bash
-# 5. dotfiles を反映する
+# 7. dotfiles を反映する
 nix run "$HOME/.dotfiles#switch"
 ```
 
@@ -211,10 +261,15 @@ fi
 printf '削除対象: %s\n' "$OLD_HASH"
 sc_auth delete-ctk-identity -h "$OLD_HASH"
 
-# 2. 「新規セットアップ」を最初からやり直す。GitHub への新鍵登録と
+# 2. 残存する CTK identity を確認する
+#    1件でも残る場合は「新規セットアップ」の preflight で停止する。
+#    必要な identity は削除せず、この手順を中止すること。
+sc_auth list-ctk-identities -t ssh
+
+# 3. 「新規セットアップ」を最初からやり直す。GitHub への新鍵登録と
 #    allowedSignerKeys への追記、Home Manager の反映まで実施する
 
-# 3. 新旧の GitHub signing key を確認する
+# 4. 新旧の GitHub signing key を確認する
 #    id=805051 は M4Air が現役利用している間は削除しない
 gh api /user/ssh_signing_keys --jq '.[] | "\(.id)\t\(.title)"'
 ```
