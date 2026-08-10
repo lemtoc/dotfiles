@@ -11,11 +11,13 @@ let
 
   # ローカルで `git log --show-signature` を通すための信頼済み公開鍵。
   # 鍵の実体は不要なので、そのホストに存在しない鍵も載せてよい。
-  # 過去のコミットを検証できなくなるため、移行しても古い鍵は消さないこと。
+  # 新しい鍵を作ったらここに追記する。ローカルで過去のコミットを検証するため、
+  # 退役鍵は削除せず、必要なら `valid-before` で有効期間を制限する。
+  # ローテーション手順は docs/secure-enclave-signing.md を参照。
   allowedSignerKeys = [
-    # 1Password (M4Air / 移行前の M4Pro)
+    # 1Password (M4Air / 移行前の M4Pro) — SHA256:G/X9g4PrQznsy2+Qx5MUbI7X1e3ZT1G6KT2CTMP3m3k
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+zJB91Fifv36IetC+AhWcBE+a9poI/U+A6MlLfABoa"
-    # Secure Enclave (M4Pro) — docs/secure-enclave-signing.md
+    # Secure Enclave (M4Pro) — SHA256:AsbsNi30tI7r4kUqNSHew9DI86raUYeHeYP3MLCjpck
     "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBE3fdVRsCoAJtcjjG+is4FILynjzM42+czwaeQfBiuP+8Kr/8YGe/zh/6pYG2v7ARKrywp+XHcv+d7Y1+E7wSOIAAAAEc3NoOg=="
   ];
   allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";

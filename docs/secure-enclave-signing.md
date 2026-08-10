@@ -13,6 +13,9 @@ Git のコミット署名鍵を macOS の Secure Enclave で管理する。1Pass
 - `ssh-keygen` に `SSH_SK_PROVIDER` で dylib を教えるだけなので、**常駐エージェントは不要**
   (Secretive のような GUI アプリも login item も要らない)。
 - `~/.ssh/id_git_sign` は鍵ハンドルであって秘密鍵ではない。秘密鍵は Secure Enclave から出せない。
+  ただし現在の `-t none` は使用時認証を行わないため、同じユーザー権限で動くプロセスは
+  ユーザー操作なしで署名を要求できる。Secure Enclave が防ぐのは秘密鍵の持ち出しであり、
+  ローカルプロセスによる鍵の使用ではない。
 
 ### 前提
 
@@ -26,52 +29,58 @@ Git のコミット署名鍵を macOS の Secure Enclave で管理する。1Pass
 
 | 項目 | 値 |
 |---|---|
-| ホスト | M4Pro のみ (M4Air は 1Password のまま) |
+| M4Pro の signer | Secure Enclave (`hosts/M4Pro/default.nix` で共有設定を上書き) |
+| M4Air の signer | 1Password (`home/git.nix` の共有既定値) |
 | identity label | `git-sign` |
-| public key hash (SHA1) | `D93C59C037113F3418EAAB2E4EA5277EB34DCE1B` |
-| SSH fingerprint | `SHA256:AsbsNi30tI7r4kUqNSHew9DI86raUYeHeYP3MLCjpck` |
+| private key protection | `none` (署名時の Touch ID なし) |
+| public key hash (SHA1) | `D93C59C037113F3418EAAB2E4EA5277EB34DCE1B` (現在の M4Pro の値) |
+| SSH fingerprint | `SHA256:AsbsNi30tI7r4kUqNSHew9DI86raUYeHeYP3MLCjpck` (現在の M4Pro の値) |
 | 証明書有効期限 | **2036/08/07** (作成時は 2027/08/10 = 1年。下記手順で10年に更新済み) |
-| GitHub signing key | id=1103015 `Secure Enclave (M4Pro, signing)` |
+| GitHub signing key | M4Pro: id=1103015 `Secure Enclave (M4Pro, signing)` / M4Air: id=805051 `1Password (signing)` |
+| allowed signers | `home/git.nix` の `allowedSignerKeys` から生成 |
 
-### 移行の進捗
+`~/.ssh/allowed_signers` は Home Manager が Nix store へのシンボリックリンクとして管理する。
+鍵を追加・変更するときはこのファイルを直接編集せず、`home/git.nix` を更新して rebuild する。
 
-| ステップ | 状態 |
-|---|---|
-| Secure Enclave に鍵作成 | 完了 |
-| `~/.ssh/id_git_sign{,.pub}` 配置 | 完了 |
-| GitHub に Signing Key 登録・`verified=true` 確認 | 完了 |
-| 証明書を10年に更新 (2036/08/07) | 完了 |
-| `home/git.nix` の切り替え | **未実施** (まだ `op-ssh-sign` を使っている) |
+### Git 側の設定
 
-### git 側の設定 (切り替え時)
-
-`ssh-keygen` に `SSH_SK_PROVIDER` を渡すラッパーが要る。git は `gpg.ssh.program` に
-環境変数を渡せないため。
-
-```sh
-#!/bin/sh
-export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
-exec /usr/bin/ssh-keygen "$@"
-```
+`ssh-keygen` に `SSH_SK_PROVIDER` を渡すラッパーが要る。Git は `gpg.ssh.program` に
+環境変数を渡せないため、`hosts/M4Pro/default.nix` の `sshSign` でラッパーを生成している。
 
 `user.signingkey` は 1Password 時代のリテラル公開鍵ではなく、**ハンドルファイルのパス**
 (`~/.ssh/id_git_sign`) を指定する。sk 鍵はハンドルが無いと署名できない。
 
 この鍵は M4Pro にしか存在しないので、`home/git.nix` (全ホスト共有) に直接書くと
-**M4Air が次の rebuild でコミット不能になる**。ホスト別に分けること。
+**M4Air が次の rebuild でコミット不能になる**。そのため共有設定は 1Password を
+`lib.mkDefault` のまま維持し、M4Pro のホスト設定だけで鍵と signer を上書きしている。
 
-### GitHub 側の不変条件
+### Signing key のローテーション
 
-**旧 signing key `id=805051` "1Password (signing)" (ssh-ed25519) は削除しないこと。**
-削除すると、その鍵で署名した過去のコミットがすべて Unverified に落ちる。
-鍵をローテーションした場合も同様に、古い登録は残したまま新しい鍵を追加する。
+GitHub の `id=805051` `1Password (signing)` は M4Air が現在も使う**現役鍵**なので、
+M4Air を移行するまでは削除しない。GitHub は一度 Verified にしたコミットの検証記録を
+repository network 内で永続化するため、登録鍵を後から削除しても、その記録がある過去コミットは
+Verified のままになる。ただし削除後に初めて push するコミットや、別の repository network で
+初めて検証するコミットには登録鍵が必要になる。
+
+ローカル検証は GitHub と異なり、毎回 `~/.ssh/allowed_signers` を参照する。鍵を作り直したら
+`home/git.nix` の `allowedSignerKeys` に新しい公開鍵を**追記**し、過去の署名を検証するために
+古い鍵も残す。鍵が全ホストで退役した後は、古い鍵の先頭に
+`valid-before="YYYYMMDDHHMMSSZ"` を付けると、切り替え前の署名だけを有効にできる。
+`allowedSignerKeys` では
+`"valid-before=\"YYYYMMDDHHMMSSZ\" ssh-ed25519 AAAA..."` のように引用符をエスケープする。
+
+参考:
+
+- [GitHub: Persistent commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification#persistent-commit-signature-verification)
+- [Git: `gpg.ssh.allowedSignersFile`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-gpgsshallowedSignersFile)
 
 ## 新規セットアップ
 
 ```bash
 # 1. Secure Enclave に鍵を作る
 #    -k p-256-ne : ECDSA P-256 / non-exportable (Secure Enclave は P-256 のみ対応)
-#    -t none     : Touch ID を要求しない (-t bio にするとコミットのたびに Touch ID)
+#    -t none     : 使用時認証なし。同じユーザー権限のプロセスは操作なしで署名できる
+#                  使用時認証が必要なら -t bio にして署名ごとに Touch ID を要求する
 sc_auth create-ctk-identity -l git-sign -k p-256-ne -t none -N git-sign
 
 # 2. SSH 鍵ハンドルを書き出す (カレントディレクトリに生成されるので注意)
@@ -85,10 +94,25 @@ mv id_ecdsa_sk_rk.pub ~/.ssh/id_git_sign.pub
 gh api -X POST /user/ssh_signing_keys \
   -f title="Secure Enclave ($(scutil --get LocalHostName), signing)" \
   -f key="$(cat ~/.ssh/id_git_sign.pub)"
+
+# 4. dotfiles に記録する値を表示する
+cat ~/.ssh/id_git_sign.pub
+/usr/bin/ssh-keygen -lf ~/.ssh/id_git_sign.pub
+sc_auth list-ctk-identities -t sha1 -e hex
 ```
 
-`-t none` でも署名には FIDO の user-presence フラグが立つため、`allowed_signers` に
-`no-touch-required` を付ける必要はない (付けると OpenSSH が `unknown key option` で落ちる)。
+公開鍵の出力を `home/git.nix` の `allowedSignerKeys` に追記する。過去コミットの検証に必要なので、
+既存の鍵は削除しない。併せて fingerprint、public key hash、GitHub key ID を上の「現在の構成」に
+反映する。`home/git.nix` とこの文書を保存した後、Home Manager を適用する。
+
+```bash
+# 5. dotfiles を反映する
+nix run "$HOME/.dotfiles#switch"
+```
+
+`-t none` でも署名には FIDO の user-presence フラグが立つが、provider が操作なしで付けるため、
+対話的な user presence の証明にはならない。`allowed_signers` に `no-touch-required` を付ける必要はなく、
+付けると OpenSSH が `unknown key option` で落ちる。
 
 作成直後の証明書は**有効期限が1年**しかないので、続けて「証明書の更新」を実行して
 10年に伸ばしておくこと。
@@ -119,13 +143,18 @@ SSH はこの証明書を使わない (生の公開鍵しか見ない) ので、
 
 ```bash
 # 1. 更新前の状態を控える (あとで fingerprint 不変を確認するため)
-sc_auth list-ctk-identities
+sc_auth list-ctk-identities -t sha1 -e hex
 sc_auth list-ctk-identities -t ssh
 
 # 2. CSR を作る
 #    -h に渡すのは list-ctk-identities のデフォルト表示 = SHA1 (40桁)。
 #    -t sha256 -e hex の値を渡すと "No identity found for hash" で落ちる。
-HASH=D93C59C037113F3418EAAB2E4EA5277EB34DCE1B
+#    直前の出力から CN=git-sign の identity に対応する値をコピーする。
+HASH='<git-sign identity の SHA1 40桁>'
+if [[ ! $HASH =~ ^[0-9A-Fa-f]{40}$ ]]; then
+  echo "HASH は40桁のSHA1を指定すること" >&2
+  exit 1
+fi
 cd "$(mktemp -d)"
 sc_auth create-ctk-csr -h "$HASH" -f renew.csr -N git-sign
 
@@ -172,11 +201,21 @@ GitHub への再登録が必要になる。
 #    identity が 2 本あると ssh-keygen -K が両方を同じ id_ecdsa_sk_rk に書こうとして
 #    上書きプロンプトで詰まる。KEYCHAIN_CERTIFICATES で絞る方法は -w の Secure Key 経路では
 #    効かなかった。
-sc_auth delete-ctk-identity -h D93C59C037113F3418EAAB2E4EA5277EB34DCE1B
+cat ~/.ssh/id_git_sign.pub
+sc_auth list-ctk-identities -t sha1 -e hex
+OLD_HASH='<削除する git-sign identity の SHA1 40桁>'
+if [[ ! $OLD_HASH =~ ^[0-9A-Fa-f]{40}$ ]]; then
+  echo "OLD_HASH は40桁のSHA1を指定すること" >&2
+  exit 1
+fi
+printf '削除対象: %s\n' "$OLD_HASH"
+sc_auth delete-ctk-identity -h "$OLD_HASH"
 
-# 2. 「新規セットアップ」を最初からやり直す
+# 2. 「新規セットアップ」を最初からやり直す。GitHub への新鍵登録と
+#    allowedSignerKeys への追記、Home Manager の反映まで実施する
 
-# 3. GitHub の古い signing key は削除しないこと (過去コミットが Unverified になる)
+# 3. 新旧の GitHub signing key を確認する
+#    id=805051 は M4Air が現役利用している間は削除しない
 gh api /user/ssh_signing_keys --jq '.[] | "\(.id)\t\(.title)"'
 ```
 
@@ -201,9 +240,10 @@ gh auth refresh -h github.com -s admin:ssh_signing_key
 
 | 症状 | 原因 |
 |---|---|
-| `No identity found for hash` | `-h` に SHA256 を渡している。SHA1 (40桁) を使う |
+| `No identity found for hash` | `-h` に SHA256 や別端末の値を渡している。対象 identity の SHA1 (40桁) を使う |
 | `ssh-keygen -K` が上書きプロンプトで止まる | CTK identity が複数ある。不要なものを削除する |
 | `allowed_signers:1: bad options: unknown key option` | `no-touch-required` を書いている。不要 |
+| `No principal matched` | 新しい公開鍵が `home/git.nix` の `allowedSignerKeys` に無いか、rebuild が未実施 |
 | コミットが署名エラーで落ちる | `~/.ssh/id_git_sign` の消失、`ssh-keychain.dylib` のパス変更、identity の消失を先に疑う。`sc_auth list-ctk-identities` で存在と `Valid` を確認 |
 | nix で openssh を入れた直後に壊れた | `ssh-keygen` が nix 側に解決されている。`/usr/bin/ssh-keygen` を絶対パスで呼ぶ |
 
@@ -211,7 +251,7 @@ gh auth refresh -h github.com -s admin:ssh_signing_key
 
 このドキュメントのうち実測で確認したもの:
 
-- 新規セットアップ一式 (鍵作成 → 書き出し → 署名 → 検証 → GitHub で `verified=true`)
+- 新規セットアップ一式 (鍵作成 → 書き出し → GitHub/`allowed_signers` 登録 → 署名・検証)
 - 証明書更新の全工程を本番 identity `git-sign` で実行し、以下を確認 (2026-08-10):
   - 有効期限が 2027/08/10 → 2036/08/07 に伸びた
   - public key hash / SSH fingerprint / CN が**すべて不変**
