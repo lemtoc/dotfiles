@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786346300778,
+  "lastUpdate": 1786356487265,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4547,6 +4547,65 @@ window.BENCHMARK_DATA = {
             "range": "3.25 ms",
             "unit": "ms",
             "extra": "median: 37.88 ms\nmin: 35.35 ms\nmax: 46.79 ms\nstddev: 3.25 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "k.suzuki",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "feffb73b95fdb0cba5545c1a6affb98d06e0a1f4",
+          "message": "feat(git): sign commits with a Secure Enclave key on M4Pro (#10)",
+          "timestamp": "2026-08-10T19:07:22+09:00",
+          "tree_id": "c0c7f584b489c11826724ec9d57fa5e2c4425791",
+          "url": "https://github.com/lemtoc/dotfiles/commit/feffb73b95fdb0cba5545c1a6affb98d06e0a1f4"
+        },
+        "date": 1786356485932,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.15,
+            "range": "5.56 ms",
+            "unit": "ms",
+            "extra": "median: 45.15 ms\nmin: 37.32 ms\nmax: 62.5 ms\nstddev: 5.56 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 45.47,
+            "range": "5.56 ms",
+            "unit": "ms",
+            "extra": "median: 45.47 ms\nmin: 37.68 ms\nmax: 62.83 ms\nstddev: 5.56 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.9,
+            "range": "0.03 ms",
+            "unit": "ms",
+            "extra": "median: 0.9 ms\nmin: 0.85 ms\nmax: 0.96 ms\nstddev: 0.03 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.28,
+            "range": "0.64 ms",
+            "unit": "ms",
+            "extra": "median: 2.28 ms\nmin: 1.4 ms\nmax: 4.21 ms\nstddev: 0.64 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.92,
+            "range": "2.49 ms",
+            "unit": "ms",
+            "extra": "median: 36.92 ms\nmin: 34.77 ms\nmax: 43.69 ms\nstddev: 2.49 ms\nruns: 16"
           }
         ]
       }
