@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1786356487265,
+  "lastUpdate": 1786637009185,
   "repoUrl": "https://github.com/lemtoc/dotfiles",
   "entries": {
     "Zsh Startup Time": [
@@ -4606,6 +4606,65 @@ window.BENCHMARK_DATA = {
             "range": "2.49 ms",
             "unit": "ms",
             "extra": "median: 36.92 ms\nmin: 34.77 ms\nmax: 43.69 ms\nstddev: 2.49 ms\nruns: 16"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "committer": {
+            "email": "83203852+lemtoc@users.noreply.github.com",
+            "name": "lemtoc",
+            "username": "lemtoc"
+          },
+          "distinct": true,
+          "id": "96faa07557e08cc834519b2d3eb1c2d600092b0d",
+          "message": "chore(homebrew): add rtk formula\n\n- add rtk (Rust Token Killer) to the Homebrew brews list",
+          "timestamp": "2026-08-14T01:02:31+09:00",
+          "tree_id": "6f71c6ff66db108b5e49f99f029da1ba52e9e7c9",
+          "url": "https://github.com/lemtoc/dotfiles/commit/96faa07557e08cc834519b2d3eb1c2d600092b0d"
+        },
+        "date": 1786637007688,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "first prompt lag",
+            "value": 45.96,
+            "range": "9.77 ms",
+            "unit": "ms",
+            "extra": "median: 45.96 ms\nmin: 40.32 ms\nmax: 79.51 ms\nstddev: 9.77 ms\nruns: 16"
+          },
+          {
+            "name": "first command lag",
+            "value": 46.38,
+            "range": "9.77 ms",
+            "unit": "ms",
+            "extra": "median: 46.38 ms\nmin: 40.64 ms\nmax: 79.88 ms\nstddev: 9.77 ms\nruns: 16"
+          },
+          {
+            "name": "command lag",
+            "value": 0.92,
+            "range": "0.05 ms",
+            "unit": "ms",
+            "extra": "median: 0.92 ms\nmin: 0.83 ms\nmax: 1 ms\nstddev: 0.05 ms\nruns: 16"
+          },
+          {
+            "name": "input lag",
+            "value": 2.63,
+            "range": "6.6 ms",
+            "unit": "ms",
+            "extra": "median: 2.63 ms\nmin: 1.22 ms\nmax: 18.11 ms\nstddev: 6.6 ms\nruns: 16"
+          },
+          {
+            "name": "exit time",
+            "value": 36.94,
+            "range": "18.64 ms",
+            "unit": "ms",
+            "extra": "median: 36.94 ms\nmin: 35.12 ms\nmax: 113.84 ms\nstddev: 18.64 ms\nruns: 16"
           }
         ]
       }
